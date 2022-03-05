@@ -10,6 +10,7 @@ import {
   Typography,
   Card,
   Button,
+  Container,
 } from "@material-ui/core";
 import Nextlink from "next/link";
 import Image from "next/image";
@@ -17,8 +18,11 @@ import Product from "../../models/Product";
 import db from "../../utils/db";
 import Store from "../../utils/Store";
 
+import useStyle from "../../utils/styles";
+
 export default function ProductScreen(props) {
-  const { dispatch } = useContext(Store);
+  const classes = useStyle();
+  // const { dispatch } = useContext(Store);
   const { product } = props;
   let currency = "$";
   const addToCartHandler = async () => {
@@ -30,6 +34,8 @@ export default function ProductScreen(props) {
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
   };
   return (
+    
+    <Container className={classes.container}>
     <Layout title={product.name} description={product.description.long}>
       <div>
         <Nextlink href={"/"} passHref>
@@ -115,6 +121,7 @@ export default function ProductScreen(props) {
         </Grid>
       </Grid>
     </Layout>
+    </Container>
   );
 }
 

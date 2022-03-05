@@ -72,7 +72,7 @@ const data = {
       title: "Product 4 Title",
       slug: "product-4",
       price: 400,
-      image: "https://picsum.photos/200/300",
+      image: "https://picsum.photos/seed/picsum/200/300",
       description: {
         short: "Short description",
         long: "Long description",
@@ -110,7 +110,52 @@ const data = {
       numSold: 10,
       numInStock: 10,
     },
+    {
+      id: 6,
+      name: "Product 6",
+      title: "Product 6 Title",
+      slug: "product-6",
+      price: 100,
+      image: "https://source.unsplash.com/random/400x400",
+      description: {
+        short: "Short description",
+        long: "Long description",
+      },
+      category: "category 1",
+      rating: 4.5,
+      numReviews: 10,
+      numOrders: 10,
+      numViews: 10,
+      numFavorites: 10,
+      numCart: 10,
+      numWishlist: 10,
+      numSold: 10,
+      numInStock: 10,
+    },
+    {
+      id: 7,
+      name: "Product 7",
+      title: "Product 7 Title",
+      slug: "product-7",
+      price: 100,
+      image: "https://source.unsplash.com/random/400x400",
+      description: {
+        short: "Short description",
+        long: "Long description",
+      },
+      category: "category 5",
+      rating: 4.5,
+      numReviews: 10,
+      numOrders: 10,
+      numViews: 10,
+      numFavorites: 10,
+      numCart: 10,
+      numWishlist: 10,
+      numSold: 10,
+      numInStock: 10,
+    },
   ],
+
   users: [
     {
       id: 1,
@@ -149,5 +194,33 @@ const data = {
       ],
     },
   ],
+  banner:[
+    { id: 1, name: "Cheppu", image: "/imgs/Cheppu.png"},
+    { id: 2, name: "Wayne",image: "/imgs/Vintage.png"},
+    { id: 3, name: "J", image: "/imgs/Kirtimukha.png" },
+  ],
+  brands:[
+    { id: 1, name: "Adidas", image: "/imgs/brands/image 1.png"},
+    { id: 2, name: "Caliber", image: "/imgs/brands/image 2.png"},
+    { id: 3, name: "Evo Store", image: "/imgs/brands/image 3.png"},
+    { id: 4, name: "Samsung", image: "/imgs/brands/image 4.png"},
+    { id: 5, name: "Oliz Store", image: "/imgs/brands/image 5.png"}
+  ],
+  category:[
+    { id: 1, name: "Home/Kitchen", image: "/imgs/category/c1.png"},
+    { id: 2, name: "Fashion", image: "/imgs/category/c2.png"},
+    { id: 3, name: "Clothing", image: "/imgs/category/c3.png"},
+    { id: 4, name: "Electronics", image: "/imgs/category/c4.png"},
+    { id: 5, name: "Digital", image: "/imgs/category/c5.png"},
+    { id: 6, name: "Medical", image: "/imgs/category/c6.png"},
+    { id: 7, name: "Decors", image: "/imgs/category/c7.png"},
+    { id: 8, name: "Tools", image: "/imgs/category/c8.png"},
+    { id: 9, name: "Automotive", image: "/imgs/category/c9.png"},
+  ],
+  metamask:[
+    {image:"/imgs/metamask.gif"}
+  ]
+
+
 };
 export default data;
