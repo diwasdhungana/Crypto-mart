@@ -16,19 +16,18 @@ function App({ Component, pageProps }) {
 
   const classes = useStyle();
   return (
-    <ThemeProvider theme={theme}>
     <MoralisProvider
     appId="Yubo28twR1knu4dT7RigGC6X6UmmXneBdDqxImOq"
     serverUrl="https://mknm4od3jlmq.usemoralis.com:2053/server">
+    <ThemeProvider theme={theme}>
     <Layout>
     <Container/>
-
     <StoreProvider>
       <Component {...pageProps} />
     </StoreProvider>
     </Layout>
-    </MoralisProvider>
     </ThemeProvider>
+    </MoralisProvider>
   );
 }
   

@@ -4,10 +4,11 @@ const useStyle = makeStyles({
 
   appBar: {
     padding:'0 10rem',
-    background:"#CFBEBE"
+    background:"#CFBEBE",
+    minheight:'10px'
   },
   container: {
-    width:'75%',
+    width:'70%',
     padding: "2rem",
     minHeight: "100vh",
     textAlign: "Left",
@@ -28,8 +29,8 @@ const useStyle = makeStyles({
   },
   cert_container:{
     marginTop:'20px',
-    minHeight:'40vh',
-    padding:'1.5rem',
+    minHeight:'30vh',
+    padding:'1rem',
     borderRadius:'20px'
   },
   category:{
@@ -46,7 +47,7 @@ const useStyle = makeStyles({
     borderRadius:'20px'
   },
   featured_container:{
-    minHeight:"580px",
+    minHeight:"50px",
     padding:'2rem',
     borderRadius:'20px'
   },
@@ -72,7 +73,8 @@ const useStyle = makeStyles({
     borderRadius:'10px',
   },
   search:{
-    marginLeft:"38rem"
+    marginLeft:"8rem",
+    height:'20px'
   },
   auth_container:{
     minHeight:"500px",
@@ -108,7 +110,18 @@ const useStyle = makeStyles({
     {
       float: 'left',
       height: '100%',
-      width: '20vh',
+      width: '15%',
+      padding: '20px',
+      margin: '20px',
+      background:"#ffff",
+      borderRadius:"20px"
+    },
+
+    right_panel:
+    {
+      float: 'right',
+      minHeight: '50vh',
+      width: '15%',
       padding: '20px',
       margin: '20px',
       background:"#ffff",

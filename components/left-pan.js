@@ -1,3 +1,4 @@
+import { Typography } from "@material-ui/core";
 import useStyle from "../utils/styles"
 
 function Left_panel()
@@ -5,7 +6,7 @@ function Left_panel()
         const classes = useStyle();
     return(
         <div className={classes.left_panel}>
-            <h1>Explore</h1>
+            <Typography variant="h1">Explore</Typography>
             <ul>
                 <li>Featured</li>
                 <li>Top Products</li>
@@ -13,7 +14,7 @@ function Left_panel()
                 <li>Weekly Best</li>
             </ul>
 
-            <h1>Category</h1>
+            <Typography variant="h1">Category</Typography>
             <ul>
                 <li>Home</li>
                 <li>Fashion</li>
@@ -21,7 +22,7 @@ function Left_panel()
                 <li>Arts</li>
             </ul>
 
-            <h1>Coupon</h1>
+            <Typography variant="h1">Coupons</Typography>
             <ul>
                 <li>My Coupons</li>
                 <li>Apply Coupon Code</li>

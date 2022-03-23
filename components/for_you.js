@@ -36,7 +36,7 @@ const ForYou = () => {
                   <CardMedia
                     component="img"
                     alt={item.name}
-                    height="350"
+                    height="250"
                     image={item.image}
                     title={item.name}
                   ></CardMedia>
