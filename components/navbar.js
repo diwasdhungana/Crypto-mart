@@ -35,8 +35,8 @@ import SearchIcon from '@mui/icons-material/Search';
               <Image
                 src={"/logo/cryptomart/logo.png"}
                 alt="logo"
-                height={120}
-                width={120}
+                height={340}
+                width={340}
               />
             </Link>
           </Navlink>

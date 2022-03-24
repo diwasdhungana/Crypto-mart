@@ -72,7 +72,9 @@ const useStyle = makeStyles({
     borderRadius:'10px',
   },
   search:{
-    marginLeft:"38rem"
+    marginLeft:"38rem",
+   
+
   },
   auth_container:{
     minHeight:"500px",
@@ -108,12 +110,21 @@ const useStyle = makeStyles({
     {
       float: 'left',
       height: '100%',
-      width: '20vh',
+      width: '25vh',
       padding: '20px',
       margin: '20px',
       background:"#ffff",
-      borderRadius:"20px"
+      borderRadius:"20px",
     },
+
+    list:
+    {
+      listStyle: "none",
+      
+      '&:hover':{
+        textDecoration: "underline",
+      }
+    }
 });
 
 export default useStyle;

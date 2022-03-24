@@ -6,7 +6,7 @@ function Left_panel()
     return(
         <div className={classes.left_panel}>
             <h1>Explore</h1>
-            <ul>
+            <ul className={classes.list}>
                 <li>Featured</li>
                 <li>Top Products</li>
                 <li>Popular</li>
@@ -14,7 +14,7 @@ function Left_panel()
             </ul>
 
             <h1>Category</h1>
-            <ul>
+            <ul className={classes.list}>
                 <li>Home</li>
                 <li>Fashion</li>
                 <li>Electronics</li>
@@ -22,11 +22,12 @@ function Left_panel()
             </ul>
 
             <h1>Coupon</h1>
-            <ul>
+            <ul className={classes.list}>
                 <li>My Coupons</li>
                 <li>Apply Coupon Code</li>
                 <li>Free Coupon</li>
             </ul>
+            
         </div>
     )
 }
