@@ -48,7 +48,7 @@ const Cert = () => {
                   <CardMedia
                     component="img"
                     alt={item.name}
-                    height="100"
+                    height="80"
                     image={item.image}
                     title={item.name}
                   ></CardMedia>

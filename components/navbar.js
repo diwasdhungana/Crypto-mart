@@ -35,13 +35,13 @@ import SearchIcon from '@mui/icons-material/Search';
               <Image
                 src={"/logo/cryptomart/logo.png"}
                 alt="logo"
-                height={340}
-                width={340}
+                height={80}
+                width={80}
               />
             </Link>
           </Navlink>
 
-      <div className={classes.search}>
+      {/* <div className={classes.search}>
       <FormControl sx={{ m: 1, width: '25rem'}}>
           <OutlinedInput
             id="outlined-adornment-amount"
@@ -49,7 +49,7 @@ import SearchIcon from '@mui/icons-material/Search';
             label="Amount"
           />
         </FormControl>
-      </div>
+      </div> */}
 
           <div className={classes.grow}>
             <div className={classes.growcontent}>
@@ -57,7 +57,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>
                 <Navlink href={"/"} passHref>
                   <Link>
-                  <LoginIcon color="#9747FF" sx={{ fontSize: 30 }}/>
+                  <LoginIcon color="#9747FF" sx={{ fontSize: 20 }}/>
                     <Typography variant="h5" color="textPrimary">
                       LOGIN
                     </Typography>
@@ -67,7 +67,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>
                 <Navlink href={"/profile"} passHref>
                   <Link>
-                  <AccountCircleIcon color="#9747FF" sx={{ fontSize: 30 }}/>
+                  <AccountCircleIcon color="#9747FF" sx={{ fontSize: 20 }}/>
                     <Typography variant="h5" color="textPrimary">
                       PROFILE
                     </Typography>
@@ -77,7 +77,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>
                 <Navlink href={"/cart"} passHref>
                   <Link>
-                      <ShoppingCartIcon color="#9747FF" sx={{ fontSize: 30 }}/>
+                      <ShoppingCartIcon color="#9747FF" sx={{ fontSize: 20 }}/>
                       <Typography variant="h5" color="textPrimary" >
                         CART
                       </Typography>
@@ -87,7 +87,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>  
 
               <Link href={"/wallet"}>
-                  <AccountBalanceWalletIcon color="#9747FF" sx={{ fontSize: 30 }}/>
+                  <AccountBalanceWalletIcon color="#9747FF" sx={{ fontSize: 20 }}/>
                   <Typography variant="h5" color="textPrimary">
                       WALLET
                     </Typography>

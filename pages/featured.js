@@ -15,16 +15,16 @@ import {
   import useStyle from "../utils/styles";
   import data from "../utils/data";
 
-const ForYou = () => {
+const Featured = () => {
   const classes = useStyle()
   let currency = "$";
   const{Products} = data;
 
   return ( 
-    <Paper elevation={6} className={classes.for_you}>
+    <Paper elevation={6} className={classes.featured}>
     <Grid>
           <Typography variant="h1" align="center">
-            For You
+            Featured
           </Typography>
     </Grid>
     <Grid container spacing={2}>
@@ -67,4 +67,4 @@ const ForYou = () => {
    );
 }
  
-export default ForYou
+export default Featured

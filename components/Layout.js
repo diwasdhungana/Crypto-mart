@@ -15,6 +15,7 @@ import {useMoralis} from 'react-moralis'
 import Navbar from "./navbar";
 
 import Left_Panel from "./left-pan"
+import Right_Panel from "./right-pan";
 
 
 export default function Layout({ title, description, children }) {
@@ -24,11 +25,15 @@ export default function Layout({ title, description, children }) {
     <div className={classes.content}>
       <Navbar/>
       <Left_Panel/>
+      
       <Head>
         <title>{title ? title : "Cryptomart"}</title>
         {description && <meta name="description" content={description} />}
       </Head>
+
+      <Right_Panel/>
           {children}
+
         {/* <footer className={classes.footer}>
           <Typography variant="h6">
             Cryptomart © {new Date().getFullYear()}

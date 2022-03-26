@@ -34,7 +34,7 @@ const Category = () => {
                 <CardMedia
                   component="img"
                   alt={item.name}
-                  height="150"
+                  height="120"
                   image={item.image}
                   title={item.name}
                 ></CardMedia>

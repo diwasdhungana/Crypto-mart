@@ -52,13 +52,11 @@ const Featured = () => {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="500"
-                    width="200"
+                    height="350"
                     title={item.name}
                     image={item.image}
                   >
-                  </CardMedia>
-                  
+                  </CardMedia>                 
                 </CardActionArea>
             </Card>
         </Grid>

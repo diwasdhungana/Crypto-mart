@@ -9,7 +9,7 @@ const theme = responsiveFontSizes( createTheme({
     },
     typography: {
       h1: {
-        fontSize: "2rem",
+        fontSize: "20px",
         fontWeight: "400",
         margin: "1rem 0",
         fontFamily: "Montserrat",
@@ -22,26 +22,26 @@ const theme = responsiveFontSizes( createTheme({
       },
       h3: {
         //for product name
-        fontSize: "2rem",
+        fontSize: "1rem",
         fontWeight: "300",
         margin: "1rem 0",
         fontFamily: "Barlow Condensed",
       },
       h4: {
         //for product properties
-        fontSize: "1.5rem",
+        fontSize: "1rem",
         fontWeight: "300",
         margin: "0 0",
         fontFamily: "Barlow Condensed",
       },
       h5: {
-        fontSize: "1rem",
+        fontSize: "12px",
         fontWeight: "500",
         margin: "0rem 0",
         fontFamily: "Barlow Condensed",
       },
       h6: {
-        fontSize: "1rem",
+        fontSize: "35px",
         fontWeight: "500",
         margin: "1rem 0",
         fontFamily: "Barlow Condensed",
