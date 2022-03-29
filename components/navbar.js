@@ -55,7 +55,7 @@ import SearchIcon from '@mui/icons-material/Search';
             <div className={classes.growcontent}>
 
               <div className={classes.growcontentItem}>
-                <Navlink href={"/"} passHref>
+                <Navlink href={"/login"} passHref>
                   <Link>
                   <LoginIcon color="#9747FF" sx={{ fontSize: 20 }}/>
                     <Typography variant="h5" color="textPrimary">

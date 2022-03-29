@@ -162,7 +162,6 @@ const useStyle = makeStyles({
       marginRight:"1%",
       alignItems:'center',
       
-      
     }
 });
 

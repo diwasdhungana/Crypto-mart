@@ -21,7 +21,7 @@ const Featured = () => {
   const{Products} = data;
 
   return ( 
-    <Paper elevation={6} className={classes.featured}>
+    <Paper  className={classes.featured}>
     <Grid>
           <Typography variant="h1" align="center">
             Featured

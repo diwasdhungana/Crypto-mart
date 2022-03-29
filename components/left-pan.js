@@ -8,7 +8,7 @@ function Left_panel()
         <div className={classes.left_panel}>
             <h1>Explore</h1>
             <ul>
-               <Link href={"/featured"}>
+               <Link href={"/feature"}>
                 <li className={classes.list}>Featured</li>
                 </Link>
                 <li className={classes.list}>Top Products</li>
