@@ -81,14 +81,6 @@ const useStyle = makeStyles({
     padding:'0.5rem',
     borderRadius:'10px',
   },
-<<<<<<< HEAD
-=======
-  search:{
-    marginLeft:"38rem",
-   
-
-  },
->>>>>>> 1cc7546e465b8fd0dea118d9acb45ff3f656a9aa
   auth_container:{
     minHeight:"500px",
     background:"white",
@@ -162,7 +154,6 @@ const useStyle = makeStyles({
        
       },
     },
-<<<<<<< HEAD
     product_container:{
       minHeight:"500px",
       background:"white",
@@ -205,21 +196,6 @@ const useStyle = makeStyles({
       transition:'0.5s',
       borderRadius:'10px',
         }}
-=======
-    featured:
-    {
-      background:"#ffff",
-      borderRadius:"20px",
-      width:'70%',
-      padding: "2rem",
-      minHeight: "100vh",
-      textAlign: "Center",
-      marginTop:"7%",
-      marginRight:"1%",
-      alignItems:'center',
-      
-    }
->>>>>>> 1cc7546e465b8fd0dea118d9acb45ff3f656a9aa
 });
 
 export default useStyle;
