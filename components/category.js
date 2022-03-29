@@ -1,4 +1,3 @@
-
 import Nextlink from "next/link";
 import {
     Card,
