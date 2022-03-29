@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     createTheme,
     AppBar,
@@ -6,27 +6,31 @@ import {
     Typography,
     Link,
     Switch,
+    Input,
     FormControl,
     InputLabel,
     InputAdornment,
     TextField,
     OutlinedInput,
   } from "@material-ui/core";
+
 import useStyle from "../utils/styles";
 import Navlink from "next/link";
 import Image from "next/image";
 
+//Moralis Import
 import {useMoralis} from 'react-moralis'
 
+//Icons Import
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 
+
   const Navbar = () => {
     const classes = useStyle(); 
-    const{authenticate, authError, user} = useMoralis()
     return (  
         <AppBar position="fixed" className={classes.appBar} color="secondary">
         <Toolbar>
@@ -41,15 +45,13 @@ import SearchIcon from '@mui/icons-material/Search';
             </Link>
           </Navlink>
 
-      {/* <div className={classes.search}>
-      <FormControl sx={{ m: 1, width: '25rem'}}>
-          <OutlinedInput
-            id="outlined-adornment-amount"
-            startAdornment={<InputAdornment position="start"><SearchIcon color="9747FF"/></InputAdornment>}
-            label="Amount"
-          />
-        </FormControl>
-      </div> */}
+          <TextField className={classes.field} hiddenLabel id="filled-hidden-label-small" placeholder="Search...." variant="filled" size="small"/>
+          <button className={classes.btn_search}>
+          <Navlink href={"/filter"} passHref>
+            <SearchIcon color="#9747FF" sx={{ fontSize: 20 }}/>
+            </Navlink>
+          </button>
+
 
           <div className={classes.grow}>
             <div className={classes.growcontent}>

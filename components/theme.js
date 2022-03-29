@@ -17,14 +17,14 @@ const theme = responsiveFontSizes( createTheme({
       h2: {
         fontSize: "1rem",
         fontWeight: "500",
-        margin: "1rem 0",
+        margin: "0.5rem 0",
         fontFamily: "Barlow Condensed",
       },
       h3: {
         //for product name
-        fontSize: "1rem",
+        fontSize: "20px",
         fontWeight: "300",
-        margin: "1rem 0",
+        margin: "0.5rem 0",
         fontFamily: "Barlow Condensed",
       },
       h4: {

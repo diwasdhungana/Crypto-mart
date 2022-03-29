@@ -16,12 +16,9 @@ import {
     Card,
     Paper,
     Container,
-    CardActionArea,
-    CardContent,
     CardMedia,
     Grid,
     Typography,
-
   } from "@material-ui/core";
 
   import data from "../utils/data";

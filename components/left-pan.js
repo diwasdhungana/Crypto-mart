@@ -1,32 +1,55 @@
 import { Typography } from "@material-ui/core";
 import useStyle from "../utils/styles"
+import Navlink from "next/link";
 
 function Left_panel()
 {
         const classes = useStyle();
     return(
         <div className={classes.left_panel}>
-            <Typography variant="h1">Explore</Typography>
-            <ul>
-                <li>Featured</li>
-                <li>Top Products</li>
-                <li>Popular</li>
-                <li>Weekly Best</li>
+            <Typography variant="h1" component="h2">Explore</Typography>
+            <ul className={classes.left_items}>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Featured</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Top Products</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Popular</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Weekly Best</li>
+                </Navlink>
             </ul>
 
             <Typography variant="h1">Category</Typography>
-            <ul>
-                <li>Home</li>
-                <li>Fashion</li>
-                <li>Electronics</li>
-                <li>Arts</li>
+            <ul className={classes.left_items}>
+            <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Home</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Fashion</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Electronics</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Arts</li>
+                </Navlink>
             </ul>
 
             <Typography variant="h1">Coupons</Typography>
-            <ul>
-                <li>My Coupons</li>
-                <li>Apply Coupon Code</li>
-                <li>Free Coupon</li>
+            <ul className={classes.left_items}>
+            <Navlink href={'/'}>   
+                    <li className={classes.left_list}>My Coupon</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Apply Coupon</li>
+                </Navlink>
+                <Navlink href={'/'}>   
+                    <li className={classes.left_list}>Free Coupon</li>
+                </Navlink>
             </ul>
         </div>
     )

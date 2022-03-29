@@ -7,6 +7,15 @@ const useStyle = makeStyles({
     background:"#CFBEBE",
     minheight:'10px'
   },
+  field:{
+      marginLeft:"10rem",
+      width:'300px'
+  },
+  btn_search:{
+    background:'transparent',
+    border:'none',
+    cursor:'pointer',
+  },
   container: {
     width:'70%',
     padding: "2rem",
@@ -72,10 +81,6 @@ const useStyle = makeStyles({
     padding:'0.5rem',
     borderRadius:'10px',
   },
-  search:{
-    marginLeft:"8rem",
-    height:'20px'
-  },
   auth_container:{
     minHeight:"500px",
     background:"white",
@@ -127,6 +132,48 @@ const useStyle = makeStyles({
       background:"#ffff",
       borderRadius:"20px"
     },
+    product_container:{
+      minHeight:"500px",
+      background:"white",
+      padding:"20px",
+      borderRadius:"20px",
+      alignItems:"center",
+      justifyContent:"center",
+      textAlign:"center",
+    },
+    product_img:{
+        marginLeft:'8.5rem',
+        marginTop:'2.5rem'
+    },
+    product_details:{
+        paddingLeft:'6rem',
+        paddingRight:'6rem',
+        paddingBottom:'2rem',
+        textAlign:'justify',
+    },
+    search_sort:{
+      borderRadius:'10px',
+      padding:'0.5rem',
+      marginLeft:'5px'
+    },
+    search_field:{
+      width:'300px'
+    },
+    left_items:
+    {
+      listStyle: "none",
+      cursor: "pointer", 
+      right: '20px',
+      position: 'relative',
+    },
+
+    left_list:{
+      padding:'5px',
+    '&:hover':{
+      background:'#cfbebe',
+      transition:'0.5s',
+      borderRadius:'10px',
+        }}
 });
 
 export default useStyle;
