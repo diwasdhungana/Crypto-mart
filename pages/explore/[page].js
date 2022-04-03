@@ -1,7 +1,7 @@
 
 const Page = () => {
     const pages = []
-    return ( 
+    return ( <h1>page.</h1>
 
      );
 }

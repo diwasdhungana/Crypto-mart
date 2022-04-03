@@ -35,4 +35,5 @@ export async function getStaticProps() {
       products: products.map(db.convertDocumentToObject),
     },
   };
+  
 }

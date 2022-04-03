@@ -20,6 +20,17 @@ const Featured = () => {
   let currency = "$";
   const{Products} = data;
 
+ return(
+   <Paper>
+     <Grid>
+       <Typography variant="h5" className={classes.title}>
+         LogIn
+         </Typography>
+     </Grid>
+
+   </Paper>
+ )
+
   return ( 
     <Paper  className={classes.featured}>
     <Grid>

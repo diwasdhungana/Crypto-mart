@@ -50,8 +50,6 @@ return (
       <Grid>
         <Typography>
           <h1>Your PortoFolio!</h1>
-          <h2>Welcome User: {user.getUsername()}</h2>
-          <h2>Your Wallet Address: {user.get('ethAddress')}</h2>
           <h2>Balance:{ethBalance} MATIC </h2>
       </Typography>
       <button onClick={logout} className={classes.connect}>Disconnect</button>

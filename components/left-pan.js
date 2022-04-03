@@ -9,7 +9,7 @@ function Left_panel()
         <div className={classes.left_panel}>
             <Typography variant="h1" component="h2">Explore</Typography>
             <ul className={classes.left_items}>
-                <Navlink href={'/'}>   
+                <Navlink href={'/docs/feature'}>   
                     <li className={classes.left_list}>Featured</li>
                 </Navlink>
                 <Navlink href={'/'}>   
