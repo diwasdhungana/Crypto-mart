@@ -5,6 +5,7 @@ function Doc(){
     const {params =[]} = router.query
     console.log(params,params.lenght)
     if(params.length === 2){
+    
         return <h1>Product name {params[0]} and productID {params[1]}</h1>
     }
 else if (params.length === 1){
@@ -16,5 +17,5 @@ else if (params.length === 1){
 
 
 }
-export default  Doc
+export default  Doc;
 
