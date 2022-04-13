@@ -21,7 +21,7 @@ const Category = () => {
   return ( 
     <Paper elevation={6} className={classes.category}>
     <Grid>
-            <Typography variant="h1" align="center">
+            <Typography variant="h1" className={classes.topic} align="center">
                 Category
             </Typography>
     </Grid>

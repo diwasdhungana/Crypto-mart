@@ -1,21 +1,24 @@
 import {useRouter} from 'next/router';
-// import useStyle from "../utils/styles";
+import useStyle from "../../utils/styles";
+import {
+    Container,
+    Paper,
+    Typography,
+  } from "@material-ui/core";
 function Doc(){
     const router = useRouter() 
+    const classes = useStyle();
     const {params =[]} = router.query
-    console.log(params,params.lenght)
-    if(params.length === 2){
-    
-        return <h1>Product name {params[0]} and productID {params[1]}</h1>
+        return (
+            <Container className={classes.container}>
+                <Paper className={classes.param_container} elevation={4}>
+                 <div>
+                    <Typography variant='h1'>{params[0]}</Typography>
+                </div>  
+                </Paper>
+            </Container>
+                     
+        )
     }
-else if (params.length === 1){
-    return <h1>Product name {params[0]}</h1>
-}
-
-    return <h1>404:Page NOT FOUND</h1>
-
-
-
-}
 export default  Doc;
 

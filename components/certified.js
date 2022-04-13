@@ -28,7 +28,7 @@ const Cert = () => {
   return ( 
       <Paper elevation={6} className={classes.cert_container}>
       <Grid>
-              <Typography variant="h1" align="center">
+              <Typography variant="h1" className={classes.topic} align="center">
                   Certified Shops
               </Typography>
       </Grid>

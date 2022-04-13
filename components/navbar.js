@@ -37,10 +37,11 @@ import SearchIcon from '@mui/icons-material/Search';
           <Navlink href={"/"} passHref>
             <Link>
               <Image
+              className={classes.logo}
                 src={"/logo/cryptomart/logo.png"}
                 alt="logo"
-                height={80}
-                width={80}
+                height={85}
+                width={85}
               />
             </Link>
           </Navlink>
@@ -59,7 +60,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>
                 <Navlink href={"/login"} passHref>
                   <Link>
-                  <LoginIcon color="#9747FF" sx={{ fontSize: 20 }}/>
+                  <LoginIcon color="#9747FF" sx={{ fontSize: 25 }}/>
                     <Typography variant="h5" color="textPrimary">
                       LOGIN
                     </Typography>
@@ -69,7 +70,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>
                 <Navlink href={"/profile"} passHref>
                   <Link>
-                  <AccountCircleIcon color="#9747FF" sx={{ fontSize: 20 }}/>
+                  <AccountCircleIcon color="#9747FF" sx={{ fontSize: 25 }}/>
                     <Typography variant="h5" color="textPrimary">
                       PROFILE
                     </Typography>
@@ -79,7 +80,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>
                 <Navlink href={"/cart"} passHref>
                   <Link>
-                      <ShoppingCartIcon color="#9747FF" sx={{ fontSize: 20 }}/>
+                      <ShoppingCartIcon color="#9747FF" sx={{ fontSize: 25 }}/>
                       <Typography variant="h5" color="textPrimary" >
                         CART
                       </Typography>
@@ -89,7 +90,7 @@ import SearchIcon from '@mui/icons-material/Search';
               <div className={classes.growcontentItem}>  
 
               <Link href={"/wallet"}>
-                  <AccountBalanceWalletIcon color="#9747FF" sx={{ fontSize: 20 }}/>
+                  <AccountBalanceWalletIcon color="#9747FF" sx={{ fontSize: 25 }}/>
                   <Typography variant="h5" color="textPrimary">
                       WALLET
                     </Typography>

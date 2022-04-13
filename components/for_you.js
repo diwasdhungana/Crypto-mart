@@ -23,7 +23,7 @@ const ForYou = () => {
   return ( 
     <Paper elevation={6} className={classes.for_you}>
     <Grid>
-          <Typography variant="h1" align="center">
+          <Typography variant="h1" className={classes.topic} align="center">
             For You
           </Typography>
     </Grid>

@@ -13,7 +13,8 @@
     "@emotion/styled": "^11.8.1",
     "@material-ui/core": "^4.12.3",
     "@mui/icons-material": "^5.5.1",
-    "@mui/material": "^5.5.2",
+    "@mui/material": "^5.5.3",
+    "@mui/styles": "^5.5.3",
     "@walletconnect/web3-provider": "^1.7.5",
     "@web3auth/web3auth": "^0.6.2",
     "js-cookie": "^3.0.1",
@@ -21,7 +22,6 @@
     "mongoose": "^6.2.7",
     "moralis": "^1.5.4",
     "next": "12.1.0",
-    "next-auth": "^4.3.1",
     "next-connect": "^0.12.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -31,5 +31,17 @@
   "devDependencies": {
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diwasdhungana/crypto-mart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diwasdhungana/crypto-mart/issues"
+  },
+  "homepage": "https://github.com/diwasdhungana/crypto-mart#readme"
 }

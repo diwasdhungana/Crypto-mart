@@ -6,7 +6,7 @@ function Right_panel()
         const classes = useStyle();
     return(
         <div className={classes.right_panel}>
-            <Typography variant="h1">My Cart</Typography>
+            <Typography variant="h1" className={classes.panel_topic}>My Cart</Typography>
             
         </div>
     )
