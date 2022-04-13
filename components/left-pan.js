@@ -25,11 +25,7 @@ function Left_panel()
 
             <Typography variant="h1" className={classes.panel_topic}>Category</Typography>
             <ul className={classes.left_items}>
-<<<<<<< HEAD
             <Navlink href={'/docs/Home Products'}>   
-=======
-            <Navlink href={'/docs/Home'}>   
->>>>>>> 82f3cc597211142971317345c39c4af03f5d0623
                     <li className={classes.left_list}>Home</li>
                 </Navlink>
                 <Navlink href={'/docs/Fashion'}>   
