@@ -25,16 +25,16 @@ function Left_panel()
 
             <Typography variant="h1" className={classes.panel_topic}>Category</Typography>
             <ul className={classes.left_items}>
-            <Navlink href={'/Home'}>   
+            <Navlink href={'/docs/Home Products'}>   
                     <li className={classes.left_list}>Home</li>
                 </Navlink>
-                <Navlink href={'/Fashion'}>   
+                <Navlink href={'/docs/Fashion'}>   
                     <li className={classes.left_list}>Fashion</li>
                 </Navlink>
-                <Navlink href={'/Electronics'}>   
+                <Navlink href={'/docs/Electronics'}>   
                     <li className={classes.left_list}>Electronics</li>
                 </Navlink>
-                <Navlink href={'/Arts'}>   
+                <Navlink href={'/docs/Arts'}>   
                     <li className={classes.left_list}>Arts</li>
                 </Navlink>
             </ul>
