@@ -18,23 +18,23 @@ function Left_panel()
                 <Navlink href={'/docs/Popular'}>   
                     <li className={classes.left_list}>Popular</li>
                 </Navlink>
-                <Navlink href={'/docs/Weekly Best'}>   
+                <Navlink href={'/docs/Weekly_Best'}>   
                     <li className={classes.left_list}>Weekly Best</li>
                 </Navlink>
             </ul>
 
             <Typography variant="h1" className={classes.panel_topic}>Category</Typography>
             <ul className={classes.left_items}>
-            <Navlink href={'/Home'}>   
+            <Navlink href={'/docs/Home'}>   
                     <li className={classes.left_list}>Home</li>
                 </Navlink>
-                <Navlink href={'/Fashion'}>   
+                <Navlink href={'/docs/Fashion'}>   
                     <li className={classes.left_list}>Fashion</li>
                 </Navlink>
-                <Navlink href={'/Electronics'}>   
+                <Navlink href={'/docs/Electronics'}>   
                     <li className={classes.left_list}>Electronics</li>
                 </Navlink>
-                <Navlink href={'/Arts'}>   
+                <Navlink href={'/docs/Arts'}>   
                     <li className={classes.left_list}>Arts</li>
                 </Navlink>
             </ul>
