@@ -18,17 +18,19 @@ function reducer(state, action) {
     case "CART_ADD_ITEM": {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
-        (item) => item.product._id === newItem.product._id
+        (item) => item._id === newItem._id
       );
       let cartItems;
       if (existItem) {
+        console.log("existItem", existItem);
         cartItems = state.cart.cartItems.map((item) => {
-          if (item.product._id === newItem.product._id) {
+          if (item._id == newItem._id) {
             return { ...item, quantity: item.quantity + 1 };
           }
           return item;
         });
       } else {
+        console.log("firstitem", newItem._id);
         cartItems = [...state.cart.cartItems, newItem];
       }
       return { ...state, cart: { ...state.cart, cartItems } };
