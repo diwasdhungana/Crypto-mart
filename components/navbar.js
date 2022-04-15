@@ -33,11 +33,8 @@ import { Store } from "../utils/Store";
 const Navbar = () => {
   const classes = useStyle();
   const { state, dispatch } = useContext(Store);
-  console.log("state", useContext(Store));
-  const { cart } = state;
-  // const cart = {
-  //   cartItems: [],
-  // };
+  console.log("state", state.cart.cartItems);
+  const { cart, darkMode } = state;
   return (
     <AppBar position="fixed" className={classes.appBar} color="secondary">
       <Toolbar>

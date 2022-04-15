@@ -22,7 +22,6 @@ function reducer(state, action) {
       );
       let cartItems;
       if (existItem) {
-        console.log("existItem", existItem);
         cartItems = state.cart.cartItems.map((item) => {
           if (item._id == newItem._id) {
             return { ...item, quantity: item.quantity + 1 };
@@ -33,9 +32,58 @@ function reducer(state, action) {
         console.log("firstitem", newItem._id);
         cartItems = [...state.cart.cartItems, newItem];
       }
+      Cookies.set("cartItems", JSON.stringify(cartItems));
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+    case "CART_UPDATE_ITEM": {
+      const newItem = action.payload;
+      const existItem = state.cart.cartItems.find(
+        (item) => item._id === newItem._id
+      );
+      let cartItems;
+      if (existItem) {
+        cartItems = state.cart.cartItems.map((item) => {
+          if (item._id == newItem._id) {
+            return { ...item, quantity: newItem.quantity };
+          }
+          return item;
+        });
+      } else {
+        console.log("firstitem", newItem._id);
+        cartItems = [...state.cart.cartItems, newItem];
+      }
+      Cookies.set("cartItems", JSON.stringify(cartItems));
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+    case "CART_REMOVE_ITEM": {
+      const newItem = action.payload;
+      const existItem = state.cart.cartItems.find(
+        (item) => item._id === newItem._id
+      );
+      let cartItems;
+      if (existItem) {
+        cartItems = state.cart.cartItems.map((item) => {
+          if (item._id == newItem._id) {
+            return { ...item, quantity: item.quantity - 1 };
+          }
+          return item;
+        });
+      } else {
+        console.log("firstitem", newItem._id);
+        cartItems = [...state.cart.cartItems, newItem];
+      }
+      Cookies.set("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
 
+    case "CART_DELETE_ITEM": {
+      const newItem = action.payload;
+      const existItem = state.cart.cartItems.filter(
+        (item) => item._id !== newItem._id
+      );
+      Cookies.set("cartItems", JSON.stringify(existItem));
+      return { ...state, cart: { ...state.cart, cartItems: existItem } };
+    }
     default:
       return state;
   }

@@ -24,9 +24,12 @@ import data from "../../utils/data";
 import { Store } from "../../utils/Store";
 
 import useStyle from "../../utils/styles";
+import { Router } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 export default function ProductScreen(props) {
   const classes = useStyle();
+  const router = useRouter();
 
   const { state, dispatch } = useContext(Store);
   const { product } = props;
@@ -35,11 +38,12 @@ export default function ProductScreen(props) {
 
   const addToCartHandler = async () => {
     const data = await axios.get(`/api/products/${product._id}`);
-    if (data.numInStock <= 0) {
+    if (data.numInStock <= 0 || data.numInStock < product.quantity + 1) {
       alert("Out of stock");
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
+    router.push("/cart");
 
     //Quantity Amount
   };
