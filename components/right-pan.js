@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import useStyle from "../utils/styles";
 import { useContext } from "react";
 import { Store } from "../utils/Store";
@@ -15,13 +15,16 @@ function Right_panel() {
   const router = useRouter();
   return (
     <div className={classes.right_panel}>
-      <Nextlink href="/cart" passHref>
-        <Link>
-          <Typography variant="h1" className={classes.panel_topic}>
-            My Cart
-          </Typography>
-        </Link>
-      </Nextlink>
+      <Button>
+        <Nextlink href="/cart" passHref>
+          <Link>
+            <Typography variant="h1" className={classes.panel_topic}>
+              My Cart
+            </Typography>
+          </Link>
+        </Nextlink>
+      </Button>
+      <br />
       items:{cartItems.reduce((a, c) => a + c.quantity, 0)}
       <br />
       Subtotal:{" "}

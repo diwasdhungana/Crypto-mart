@@ -5,16 +5,14 @@ export const Store = createContext();
 const initialState = {
   darkMode: Cookies.get("darkMode") === "true" ? true : false,
   cart: {
-    cartItems: [],
+    cartItems: Cookies.get("cartItems")
+      ? JSON.parse(Cookies.get("cartItems"))
+      : [],
   },
 };
 
 function reducer(state, action) {
   switch (action.type) {
-    case "TOGGLE_DARK_MODE":
-      return { ...Store, darkMode: true };
-    case "TOGGLE_LIGHT_MODE":
-      return { ...Store, darkMode: false };
     case "CART_ADD_ITEM": {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(

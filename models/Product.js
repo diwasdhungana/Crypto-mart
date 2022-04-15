@@ -21,6 +21,17 @@ const productSchema = new mongoose.Schema(
     numWishlist: { type: Number, required: true, default: 0 },
     numSold: { type: Number, required: true, default: 0 },
     numInStock: { type: Number, required: true, default: 0 },
+    Identity: { type: Boolean, required: true, default: false },
+    isObject: { type: Boolean, required: true, default: false },
+    dimensions: {
+      width: { type: Number, required: false, default: 0 },
+      height: { type: Number, required: false, default: 0 },
+      length: { type: Number, required: false, default: 0 },
+    },
+    isFragile: { type: Boolean, required: false, default: false },
+    isLiquid: { type: Boolean, required: false, default: false },
+    isFlammable: { type: Boolean, required: false, default: false },
+    isExplosive: { type: Boolean, required: false, default: false },
   },
   {
     timestamp: true,
