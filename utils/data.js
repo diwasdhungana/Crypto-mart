@@ -1,4 +1,35 @@
+import bcrypt from "bcryptjs";
 const data = {
+  user:[
+    {
+          name:'Diwas',
+          email:'admin@apple.com',
+          password:bcrypt.hashSync('12345'),
+          isAdmin:true,
+  },
+  {
+    name:'Rejin',
+    email:'user@apple.com',
+    password:bcrypt.hashSync('12345'),
+    isAdmin:false,
+}
+
+],
+users: [
+  {
+    id: 1,
+    name: "User 1",
+    email: "diwasdhungana@apple.com",
+    password: bcrypt.hashSync("123456"),
+    isAdmin: true,
+  },
+  {
+    name:'Rejin',
+    email:'user@apple.com',
+    password:bcrypt.hashSync('12345'),
+    isAdmin:false,
+}
+],
   Products: [
     {
       id: 1,
@@ -156,14 +187,7 @@ const data = {
     },
   ],
 
-  users: [
-    {
-      id: 1,
-      name: "User 1",
-      email: "diwasdhungana@gmail.com",
-      password: "123456",
-    },
-  ],
+
   orders: [
     {
       id: 1,
@@ -195,9 +219,9 @@ const data = {
     },
   ],
   banner:[
-    { id: 1, name: "Cheppu", image: "/imgs/Cheppu.png"},
-    { id: 2, name: "Wayne",image: "/imgs/Vintage.png"},
-    { id: 3, name: "J", image: "/imgs/Kirtimukha.png" },
+    { id: 1, name: "Diwas", image: "/imgs/Cheppu.png"},
+    { id: 2, name: "rejin",image: "/imgs/Vintage.png"},
+    { id: 3, name: "Dikshya", image: "/imgs/Kirtimukha.png" },
   ],
   brands:[
     { id: 1, name: "Adidas", image: "/imgs/brands/image 1.png"},

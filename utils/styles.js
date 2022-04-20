@@ -153,11 +153,12 @@ const useStyle = makeStyles({
       borderRadius:"20px",
       textAlign:"left",
       height:"Fixed",
+      fontFamily:'Barlow Condensed',
       // '&:hover':{
       // borderColor:"#4B0082",
       // transition:'0.3s'
       // }
-      fontFamily:'Barlow Condensed',
+     
     },
 
     right_panel:
@@ -220,6 +221,10 @@ const useStyle = makeStyles({
       cursor: "pointer", 
       right: '20px',
       position: 'relative',
+    },
+    navbarButton: {
+        color:"#4B0082",
+        fontFamily:'Barlow Condensed',
     },
 
     left_list:{

@@ -16,6 +16,7 @@ import Navbar from "./navbar";
 
 import Left_Panel from "./left-pan";
 import Right_Panel from "./right-pan";
+// import Footer from "./footer";
 
 export default function Layout({ title, description, children }) {
   const { state, dispatch } = useContext(Store);
@@ -31,6 +32,7 @@ export default function Layout({ title, description, children }) {
       </Head>
 
       <Right_Panel />
+      {/* <Footer /> */}
       {children}
 
       {/* <footer className={classes.footer}>

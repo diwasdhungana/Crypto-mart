@@ -13,6 +13,7 @@ import {
   TextField,
   OutlinedInput,
   Badge,
+  Button,
 } from "@material-ui/core";
 
 import useStyle from "../utils/styles";
@@ -32,7 +33,7 @@ import { Store } from "../utils/Store";
 
 const Navbar = () => {
   const classes = useStyle();
-  const { state, dispatch } = useContext(Store);
+  const { state, dispatch,userInfo } = useContext(Store);
   console.log("state", state.cart.cartItems);
   const { cart, darkMode } = state;
   return (
@@ -67,6 +68,9 @@ const Navbar = () => {
         <div className={classes.grow}>
           <div className={classes.growcontent}>
             <div className={classes.growcontentItem}>
+             {userInfo ? (
+               <Button className="classes.navbarButton">{userInfo.name}</Button>
+              ) : (
               <Navlink href={"/login"} passHref>
                 <Link>
                   <LoginIcon color="#9747FF" sx={{ fontSize: 25 }} />
@@ -75,6 +79,7 @@ const Navbar = () => {
                   </Typography>
                 </Link>
               </Navlink>
+             )} 
             </div>
             <div className={classes.growcontentItem}>
               <Navlink href={"/profile"} passHref>
