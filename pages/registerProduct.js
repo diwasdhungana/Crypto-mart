@@ -16,8 +16,11 @@ import useStyle from "../utils/styles";
 import data from "../utils/data";
 import ImageUpload from "../components/ImageUplode";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function RegisterProduct() {
+  const router = useRouter();
+  const { redirect } = router.query;
   const classes = useStyle();
   const { category } = data;
   const [product, setProduct] = useState({
@@ -287,6 +290,8 @@ export default function RegisterProduct() {
               headers: { "Content-Type": "application/json" },
             });
             const data = await response.json();
+            alert("Product added successfully");
+            router.push(redirect || "/registerProduct");
             console.log(data);
           }}
         >

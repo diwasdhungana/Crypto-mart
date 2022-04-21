@@ -1,34 +1,32 @@
-
 import Nextlink from "next/link";
 import {
-    Card,
-    Paper,
-    CardActions,
-    CardActionArea,
-    CardContent,
-    CardMedia,
-    Grid,
-    Typography,
-    Button,
-  } from "@material-ui/core";
+  Card,
+  Paper,
+  CardActions,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  Button,
+} from "@material-ui/core";
 
-  import useStyle from "../utils/styles";
-  import data from "../utils/data";
+import useStyle from "../utils/styles";
 
-const ForYou = () => {
-  const classes = useStyle()
+const ForYou = (props) => {
+  const classes = useStyle();
   let currency = "$";
-  const{Products} = data;
+  const Products = props.props;
 
-  return ( 
+  return (
     <Paper elevation={6} className={classes.for_you}>
-    <Grid>
-          <Typography variant="h1" className={classes.topic} align="center">
-            For You
-          </Typography>
-    </Grid>
-    <Grid container spacing={2}>
-        {Products.map(item => (
+      <Grid>
+        <Typography variant="h1" className={classes.topic} align="center">
+          For You
+        </Typography>
+      </Grid>
+      <Grid container spacing={2}>
+        {Products.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id}>
             <Card>
               <Nextlink href={`/product/${item.slug}`} passHref>
@@ -63,8 +61,8 @@ const ForYou = () => {
           </Grid>
         ))}
       </Grid>
-  </Paper>
-   );
-}
- 
-export default ForYou
+    </Paper>
+  );
+};
+
+export default ForYou;

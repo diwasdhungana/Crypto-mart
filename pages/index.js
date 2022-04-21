@@ -12,16 +12,14 @@ import Category from "../components/category";
 import useStyle from "../utils/styles";
 import { Container } from "@material-ui/core";
 
-
-
-export default function Home(props) {
-  const classes = useStyle()
+export default function Home({ products }) {
+  const classes = useStyle();
   return (
     <Container className={classes.container}>
-    <Featured/>
-    <Cert/>
-    <Category/>
-    <ForYou/>
+      <Featured />
+      <Cert />
+      <Category />
+      <ForYou props={products} />
     </Container>
   );
 }
@@ -35,5 +33,4 @@ export async function getStaticProps() {
       products: products.map(db.convertDocumentToObject),
     },
   };
-  
 }

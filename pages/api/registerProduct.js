@@ -56,16 +56,16 @@ export default async function registerProduct(req, res) {
         isFlammable: isFlammable,
         isExplosive: isExplosive,
       };
-      console.log(productData);
+      // console.log(productData);
       // handler.post(async (req, res) => {
       await db.connect();
       await Products.insertMany(productData);
       await db.disconnect();
-      //   res.send("success").status(200);
+      res.status(200).json({ Registration: true });
       // });
-      res.status(200).end();
+      // res.status(200).end();
     } catch (err) {
-      res.status(err).json({});
+      res.status(401).json({ err });
     }
   } else {
     res.end("other request");
