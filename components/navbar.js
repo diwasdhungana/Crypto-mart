@@ -33,9 +33,9 @@ import { Store } from "../utils/Store";
 
 const Navbar = () => {
   const classes = useStyle();
-  const { state, dispatch,userInfo } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   console.log("state", state.cart.cartItems);
-  const { cart, darkMode } = state;
+  const { cart, darkMode, userInfo } = state;
   return (
     <AppBar position="fixed" className={classes.appBar} color="secondary">
       <Toolbar>
@@ -68,18 +68,18 @@ const Navbar = () => {
         <div className={classes.grow}>
           <div className={classes.growcontent}>
             <div className={classes.growcontentItem}>
-             {userInfo ? (
-               <Button className="classes.navbarButton">{userInfo.name}</Button>
+              {!userInfo ? (
+                <Navlink href={"/login"} passHref>
+                  <Link>
+                    <LoginIcon color="#9747FF" sx={{ fontSize: 25 }} />
+                    <Typography variant="h5" color="textPrimary">
+                      LOGIN
+                    </Typography>
+                  </Link>
+                </Navlink>
               ) : (
-              <Navlink href={"/login"} passHref>
-                <Link>
-                  <LoginIcon color="#9747FF" sx={{ fontSize: 25 }} />
-                  <Typography variant="h5" color="textPrimary">
-                    LOGIN
-                  </Typography>
-                </Link>
-              </Navlink>
-             )} 
+                <></>
+              )}
             </div>
             <div className={classes.growcontentItem}>
               <Navlink href={"/profile"} passHref>
@@ -121,9 +121,9 @@ const Navbar = () => {
                 </Typography>
               </Link>
             </div>
-            <Switch
+            {/* <Switch
               onChange={() => setMode(mode === "light" ? "dark" : "light")}
-            />
+            /> */}
           </div>
         </div>
       </Toolbar>

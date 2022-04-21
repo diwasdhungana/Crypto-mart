@@ -1,35 +1,21 @@
 import bcrypt from "bcryptjs";
 const data = {
-  user:[
+  user: [
     {
-          name:'Diwas',
-          email:'admin@apple.com',
-          password:bcrypt.hashSync('12345'),
-          isAdmin:true,
-  },
-  {
-    name:'Rejin',
-    email:'user@apple.com',
-    password:bcrypt.hashSync('12345'),
-    isAdmin:false,
-}
-
-],
-users: [
-  {
-    id: 1,
-    name: "User 1",
-    email: "diwasdhungana@apple.com",
-    password: bcrypt.hashSync("123456"),
-    isAdmin: true,
-  },
-  {
-    name:'Rejin',
-    email:'user@apple.com',
-    password:bcrypt.hashSync('12345'),
-    isAdmin:false,
-}
-],
+      name: "Diwas",
+      email: "admin@apple.com",
+      password: bcrypt.hashSync("12345"),
+      isAdmin: true,
+      isActive: true,
+    },
+    {
+      name: "Rejin",
+      email: "user@apple.com",
+      password: bcrypt.hashSync("12345"),
+      isAdmin: false,
+      isActive: true,
+    },
+  ],
   Products: [
     {
       id: 1,
@@ -39,7 +25,8 @@ users: [
       price: 100,
       image: "https://source.unsplash.com/random/400x400",
       description: {
-        short: "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
+        short:
+          "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Automotive",
@@ -61,7 +48,8 @@ users: [
       price: 200,
       image: "https://picsum.photos/200/300",
       description: {
-        short: "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
+        short:
+          "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Home/Kitchen",
@@ -83,7 +71,8 @@ users: [
       price: 900,
       image: "https://picsum.photos/200/300",
       description: {
-        short: "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
+        short:
+          "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Fashion",
@@ -105,7 +94,8 @@ users: [
       price: 400,
       image: "https://picsum.photos/seed/picsum/200/300",
       description: {
-        short: "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
+        short:
+          "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Medical",
@@ -127,7 +117,8 @@ users: [
       price: 500,
       image: "https://picsum.photos/200/300",
       description: {
-        short: "Lorem ipsum dolor sit amet, hinc putant placerat pro ex, meis aliquid laboramus ius ut. No modus accusamus argumentum sed, eu ceteros instructior qui, putent erroribus duo at. ",
+        short:
+          "Lorem ipsum dolor sit amet, hinc putant placerat pro ex, meis aliquid laboramus ius ut. No modus accusamus argumentum sed, eu ceteros instructior qui, putent erroribus duo at. ",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Tools",
@@ -149,7 +140,8 @@ users: [
       price: 100,
       image: "https://source.unsplash.com/random/400x400",
       description: {
-        short: "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
+        short:
+          "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Digital",
@@ -171,7 +163,8 @@ users: [
       price: 100,
       image: "https://picsum.photos/200/300",
       description: {
-        short: "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
+        short:
+          "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
       category: "Clothing",
@@ -186,7 +179,6 @@ users: [
       numInStock: 10,
     },
   ],
-
 
   orders: [
     {
@@ -218,33 +210,29 @@ users: [
       ],
     },
   ],
-  banner:[
-    { id: 1, name: "Diwas", image: "/imgs/Cheppu.png"},
-    { id: 2, name: "rejin",image: "/imgs/Vintage.png"},
+  banner: [
+    { id: 1, name: "Diwas", image: "/imgs/Cheppu.png" },
+    { id: 2, name: "rejin", image: "/imgs/Vintage.png" },
     { id: 3, name: "Dikshya", image: "/imgs/Kirtimukha.png" },
   ],
-  brands:[
-    { id: 1, name: "Adidas", image: "/imgs/brands/image 1.png"},
-    { id: 2, name: "Caliber", image: "/imgs/brands/image 2.png"},
-    { id: 3, name: "Evo Store", image: "/imgs/brands/image 3.png"},
-    { id: 4, name: "Samsung", image: "/imgs/brands/image 4.png"},
-    { id: 5, name: "Oliz Store", image: "/imgs/brands/image 5.png"}
+  brands: [
+    { id: 1, name: "Adidas", image: "/imgs/brands/image 1.png" },
+    { id: 2, name: "Caliber", image: "/imgs/brands/image 2.png" },
+    { id: 3, name: "Evo Store", image: "/imgs/brands/image 3.png" },
+    { id: 4, name: "Samsung", image: "/imgs/brands/image 4.png" },
+    { id: 5, name: "Oliz Store", image: "/imgs/brands/image 5.png" },
   ],
-  category:[
-    { id: 1, name: "Home/Kitchen", image: "/imgs/category/c1.png"},
-    { id: 2, name: "Fashion", image: "/imgs/category/c2.png"},
-    { id: 3, name: "Clothing", image: "/imgs/category/c3.png"},
-    { id: 4, name: "Electronics", image: "/imgs/category/c4.png"},
-    { id: 5, name: "Digital", image: "/imgs/category/c5.png"},
-    { id: 6, name: "Medical", image: "/imgs/category/c6.png"},
-    { id: 7, name: "Decors", image: "/imgs/category/c7.png"},
-    { id: 8, name: "Tools", image: "/imgs/category/c8.png"},
-    { id: 9, name: "Automotive", image: "/imgs/category/c9.png"},
+  category: [
+    { id: 1, name: "Home/Kitchen", image: "/imgs/category/c1.png" },
+    { id: 2, name: "Fashion", image: "/imgs/category/c2.png" },
+    { id: 3, name: "Clothing", image: "/imgs/category/c3.png" },
+    { id: 4, name: "Electronics", image: "/imgs/category/c4.png" },
+    { id: 5, name: "Digital", image: "/imgs/category/c5.png" },
+    { id: 6, name: "Medical", image: "/imgs/category/c6.png" },
+    { id: 7, name: "Decors", image: "/imgs/category/c7.png" },
+    { id: 8, name: "Tools", image: "/imgs/category/c8.png" },
+    { id: 9, name: "Automotive", image: "/imgs/category/c9.png" },
   ],
-  metamask:[
-    {image:"/imgs/metamask.gif"}
-  ]
-
-
+  metamask: [{ image: "/imgs/metamask.gif" }],
 };
 export default data;
