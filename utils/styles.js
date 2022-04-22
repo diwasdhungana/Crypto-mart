@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core";
+import { ImportantDevices } from "@material-ui/icons";
 
 const useStyle = makeStyles({
 
@@ -120,10 +121,187 @@ const useStyle = makeStyles({
     justifyContent:"center",
     textAlign:"center",
   },
-  connect:{
-    padding:'2rem',
+  cart_container:{
+    minHeight:"500px",
+    background:"white",
+    padding:"20px",
+    borderRadius:"20px",
+    justifyContent:"center",
+    textAlign:"center",
+  },
+  cart_items:{
+    listStyle:'none',
+    padding:'10px',
+    margin:'20px',
+    position:'relative',
+    left:'-20px',
+    background:'#ede0ed', 
+    minHeight:'50px',
     borderRadius:'20px',
+    textDecoration:'none',
+    border:'1px solid #cfbebe',
+    '&:hover':{
+      background:'whitesmoke',
+      textDecoration:'none',
+      transition:'0.3s',
+      cursor:'pointer'
+   }},
+   cart_shop:{
+    border:'2px solid purple',
+    borderRadius:'10px',
+    background:'white',
+    '&:hover':{
+      background:'#cfbebe',
+      color:'black',
+      textDecoration:'none',
+    }
+  },
+
+   item_link:{
+    textDecoration:'none',
+    '&:hover':{
+      textDecoration:'none',
+      cursor:'pointer'
+   }},
+   item_name:{
+    margin:' 0 2rem 0',
+    position:'relative',
+    bottom:'60px',
+    fontSize:'20px',
+    fontWeight:'500',
+  },
+  item_rating:{
+    position:'relative',
+    right:'15%',
+    fontSize:'13px',
+    bottom:'40px',
+  },
+  item_cat:{
+    position:'relative',
+    right:'20.6%',
+    fontSize:'13px',
+    bottom:'20px',
+  },
+  item_price:{
+    margin:' 0 2rem 1rem',
+    position:'relative',
+    bottom:'35px',
+    right:'9%'
+  },
+   item_image:{
+     borderRadius:'12px',
+   },
+
+  item_quantity:{
+    position:'relative',
+    top:'0px',
+    height:'30px',
+    width:'55px',
+    border:'1px solid black',
+  },
+  item_menu:{
+    position:'relative',
+    height:'5px',
+  },
+  item_button:{
+    margin:' 0 2rem 1rem',
+    position:'relative',
+    bottom:'35px',
+    right:'60px',
+    height:'30px',
+  },
+  item_control:{
+    borderRadius:'20px',
+    border:'1px solid black',
+    height:'30px',
+  },
+  item_remove:{
+    borderRadius:'20px',
+    height:'30px',
+    position:'relative',
+    bottom:'35px',
+    right:'27px',
+  },
+  checkout_button:{
+    border:'2px solid purple',
+    borderRadius:'10px',
+    background:'white',
+    marginRight:'3rem',
+    '&:hover':{
+      background:'#cfbebe',
+      color:'black',
+      textDecoration:'none',
+    }
+  },
+
+
+  // Register Product
+  product_container:{
+    minHeight:"1400px",
+    overflow:'hidden',
+    background:"white",
+    padding:"25px",
+    borderRadius:"20px",
+  },
+  product_img:{
+      marginLeft:'8.5rem',
+      marginTop:'2.5rem'
+  },
+  product_details:{
+      paddingLeft:'6rem',
+      paddingRight:'6rem',
+      paddingBottom:'2rem',
+      textAlign:'justify',
+  },
+  product_name:{
+    position:'relative',
+    bottom:'25px',
+    left:'0px',
+  },
+  reg_field:{
+    color:'black',
+    border:'0.5px dotted #cfbebe',
+    borderRadius:'10px',
+    background:'#f1f1f1',
+  },
+  reg_select:{
+    color:'black',
+    padding:'5px',
+    border:'0.5px solid #cfbebe',
+    background:'#f1f1f1',
+  },
+  reg_dimension:{
+    color:'black',
+    border:'0.5px dotted #cfbebe',
+    borderRadius:'10px',
+    background:'#f1f1f1',
+    marginRight:'1rem', 
+  },
+  reg_pack:{
+    position:'relative',
+    bottom:'18rem',
+  },
+  reg_dig:{
+    position:'relative',
+    bottom:'20rem',
+  },
+  reg_file:{
+    color:'black',
+    background:'#f1f1f1',
+    position:'relative',
+    bottom:'16rem',
+  },
+  reg_button:{
+    position:'relative',
+    bottom:'13rem',
+  },
+  connect:{
+    padding:'1rem',
+    marginTop:'2rem',
+    borderRadius:'20px',
+    border:'1px solid #cfbebe',
     fontSize:"20px",
+    fontFamily:'Barlow Condensed',
     background:"#CFBEBE",
     transition:'0.3s',
     cursor:'pointer',
@@ -153,12 +331,11 @@ const useStyle = makeStyles({
       borderRadius:"20px",
       textAlign:"left",
       height:"Fixed",
-      fontFamily:'Barlow Condensed',
       // '&:hover':{
       // borderColor:"#4B0082",
       // transition:'0.3s'
       // }
-     
+      fontFamily:'Barlow Condensed',
     },
 
     right_panel:
@@ -188,25 +365,7 @@ const useStyle = makeStyles({
         fontSize:"103%",
       },
     },
-    product_container:{
-      minHeight:"500px",
-      background:"white",
-      padding:"20px",
-      borderRadius:"20px",
-      alignItems:"center",
-      justifyContent:"center",
-      textAlign:"center",
-    },
-    product_img:{
-        marginLeft:'8.5rem',
-        marginTop:'2.5rem'
-    },
-    product_details:{
-        paddingLeft:'6rem',
-        paddingRight:'6rem',
-        paddingBottom:'2rem',
-        textAlign:'justify',
-    },
+
     search_sort:{
       borderRadius:'10px',
       padding:'0.5rem',
@@ -221,10 +380,6 @@ const useStyle = makeStyles({
       cursor: "pointer", 
       right: '20px',
       position: 'relative',
-    },
-    navbarButton: {
-        color:"#4B0082",
-        fontFamily:'Barlow Condensed',
     },
 
     left_list:{
