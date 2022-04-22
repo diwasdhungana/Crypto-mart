@@ -22,6 +22,7 @@ import { useMoralis } from "react-moralis";
 //Icons Import
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
@@ -98,7 +99,7 @@ const Navbar = () => {
 
               <Button >
               
-            {userInfo.name}
+              <LogoutIcon color="#9747FF" sx={{ fontSize: 25 }} />
               </Button>
               <Menu 
                  id="simple-menu"

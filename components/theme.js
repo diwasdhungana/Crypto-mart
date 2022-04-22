@@ -12,7 +12,7 @@ const theme = responsiveFontSizes( createTheme({
         fontSize: "20px",
         fontWeight: "400",
         margin: "1rem 0",
-        fontFamily: "Montserrat",
+        fontFamily: "Barlow Condensed",
       },
       h2: {
         fontSize: "1rem",
