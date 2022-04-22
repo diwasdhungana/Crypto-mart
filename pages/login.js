@@ -12,7 +12,7 @@ import axios from "axios";
 import NextLink from "next/link";
 import useStyle from "../utils/styles";
 import { Store } from "../utils/Store";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
@@ -22,9 +22,12 @@ const Featured = () => {
   const { redirect } = router.query;
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
-  if (userInfo) {
-    router.push("/");
-  }
+  useEffect(() => {
+    if (userInfo) {
+      router.push("/");
+    }
+  },[])
+ 
   const classes = useStyle();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +36,7 @@ const Featured = () => {
     try {
       const data = await axios.post("/api/user/login", { email, password });
       dispatch({ type: "USER_LOGIN", payload: data });
-      // Cookies.set("userInfo", data);
+      Cookies.set("userInfo", data);
       router.push(redirect || "/");
       alert("Login Successful");
     } catch (err) {

@@ -222,10 +222,12 @@ const useStyle = makeStyles({
       right: '20px',
       position: 'relative',
     },
-    navbarButton: {
-        color:"#4B0082",
-        fontFamily:'Barlow Condensed',
-    },
+    // navbarButton: {
+    //     color:"#ffffff",
+    //     fontFamily:'Barlow Condensed',
+    //     textTransform: 'initial',
+  
+    // },
 
     left_list:{
       padding:'5px',

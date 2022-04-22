@@ -86,13 +86,14 @@ function reducer(state, action) {
       return { ...state, cart: { ...state.cart, cartItems: existItem } };
     }
 
-    case "USER_LOGIN": {
+    case "USER_LOGIN": 
       const userInfo = action.payload;
       console.log("userInfo", userInfo);
       Cookies.set("userInfoCryptomart", JSON.stringify(userInfo));
       return { ...state, userInfo };
       //  return {...state, userInfo: action.payload}
-    }
+    case "USER_LOGOUT":
+      return { ...state, userInfo: null,cart:{cartItems:[]} };
     default:
       return state;
   }
