@@ -62,7 +62,7 @@ const data = {
           "Homero ancillae partiendo per te, feugiat omittantur conclusionemque nam ad, ad his amet virtute perpetua.",
         long: "Verear albucius duo ea, ne quas lobortis mea. Nonumy tractatos sit ea. Usu mazim laboramus ex, cu mundi munere conceptam mel, mea animal signiferumque no. No sit wisi dicit recteque, cu atqui vocibus fabellas mel, vix nibh accumsan reformidans eu. Vim ea dicam habemus maluisset.",
       },
-      category: "Home/Kitchen",
+      category: "Home-Kitchen",
       rating: 2.5,
       numReviews: 10,
       numOrders: 10,
@@ -233,7 +233,7 @@ const data = {
     { id: 5, name: "Oliz Store", image: "/imgs/brands/image 5.png" },
   ],
   category: [
-    { id: 1, name: "Home/Kitchen", image: "/imgs/category/c1.png" },
+    { id: 1, name: "Home-Kitchen", image: "/imgs/category/c1.png" },
     { id: 2, name: "Fashion", image: "/imgs/category/c2.png" },
     { id: 3, name: "Clothing", image: "/imgs/category/c3.png" },
     { id: 4, name: "Electronics", image: "/imgs/category/c4.png" },
