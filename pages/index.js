@@ -19,7 +19,7 @@ export default function Home({ products }) {
       <Featured />
       <Cert />
       <Category />
-      <ForYou props={products} />
+      <ForYou Products={products} Name="For You" />
     </Container>
   );
 }

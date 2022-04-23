@@ -2,13 +2,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import {
-  Card,
-  CardActions,
-  CardActionArea,
-  CardContent,
-  CardMedia,
   Grid,
-  ButtonGroup,
   List,
   ListItem,
   Typography,
@@ -20,20 +14,18 @@ import Nextlink from "next/link";
 import Image from "next/image";
 import Product from "../../models/Product";
 import db from "../../utils/db";
-import data from "../../utils/data";
 import { Store } from "../../utils/Store";
-
 import useStyle from "../../utils/styles";
-import { Router } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import ForYou from "../../components/for_you";
 
 export default function ProductScreen(props) {
   const classes = useStyle();
   const router = useRouter();
 
   const { state, dispatch } = useContext(Store);
-  const { product } = props;
-  const { Products } = data;
+  const { product, Products } = props;
+  // const { Products } = data;
   let currency = "$";
   const [incart, setInCart] = useState(false);
 
@@ -136,64 +128,10 @@ export default function ProductScreen(props) {
           </Typography>
         </div>
       </Paper>
-
-      <Paper elevation={6} className={classes.for_you}>
-        <Grid>
-          <Typography variant="h1" align="center">
-            Related Products
-          </Typography>
-        </Grid>
-        <Grid container spacing={2}>
-          {Products.map((item) => (
-            <Grid item xs={12} sm={6} md={3} key={item.id}>
-              <Card>
-                <Nextlink href={`/product/${item.slug}`} passHref>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt={item.name}
-                      height="250"
-                      image={item.image}
-                      title={item.name}
-                    ></CardMedia>
-                    <CardContent>
-                      <Typography gutterBottom variant="h4" component="h4">
-                        {item.name}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Nextlink>
-                <CardActions>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {item.rating} &#11088;
-                  </Typography>
-                  <Typography variant="h5">
-                    {currency}
-                    {item.price}
-                  </Typography>
-                  <Button size="small" color="primary">
-                    <h4>Add to cart</h4>
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Paper>
+      <ForYou Products={Products} Name="Related Products" />
     </Container>
   );
 }
-
-// export async function getStaticPaths(slug) {
-//   return {
-//     paths: [], //indicates that no page needs be created at build time
-//     fallback: false, //indicates the type of fallback
-//   };
-// }
 
 export async function getServerSideProps(context) {
   const slug = context.params.slug;
@@ -201,10 +139,12 @@ export async function getServerSideProps(context) {
   // const { slug } = params;
   await db.connect();
   const product = await Product.findOne({ slug }).lean();
+  const Products = await Product.find({ category: product.category }).lean();
   await db.disconnect();
   return {
     props: {
       product: db.convertDocumentToObject(product),
+      Products: Products.map(db.convertDocumentToObject),
     },
   };
 }
