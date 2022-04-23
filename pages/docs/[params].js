@@ -72,14 +72,14 @@ function Doc(props) {
 }
 export default Doc;
 
-export async function getStaticPaths(params) {
-  return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
-  };
-}
+// export async function getStaticPaths(params) {
+//   return {
+//     paths: [], //indicates that no page needs be created at build time
+//     fallback: "blocking", //indicates the type of fallback
+//   };
+// }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const params = context.params.params;
   await db.connect();
   const products = await Product.find({ category: params }).lean();

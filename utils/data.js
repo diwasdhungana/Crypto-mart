@@ -1,31 +1,5 @@
 import bcrypt from "bcryptjs";
 const data = {
-  user: [
-    {
-      name: "Diwas",
-      email: "admin@apple.com",
-      password: bcrypt.hashSync("12345"),
-      isAdmin: true,
-      isActive: true,
-      fullName: "Diwas Dhungana",
-      address: "Kathmandu",
-      city: "Kathmandu",
-      streetName: "Kathmandu",
-      country: "Nepal",
-    },
-    {
-      name: "Rejin",
-      email: "user@apple.com",
-      password: bcrypt.hashSync("12345"),
-      isAdmin: false,
-      isActive: true,
-      fullName: "Rejin Bhakta Kayastha",
-      address: null,
-      city: null,
-      streetName: null,
-      country: null,
-    },
-  ],
   Products: [
     {
       id: 1,
@@ -221,9 +195,9 @@ const data = {
     },
   ],
   banner: [
-    { id: 1, name: "Diwas", image: "/imgs/Cheppu.png" },
-    { id: 2, name: "rejin", image: "/imgs/Vintage.png" },
-    { id: 3, name: "Dikshya", image: "/imgs/Kirtimukha.png" },
+    { id: 1, name: "Cheppu", image: "/imgs/Cheppu.png" },
+    { id: 2, name: "Vintage", image: "/imgs/Vintage.png" },
+    { id: 3, name: "Kirtimukha", image: "/imgs/Kirtimukha.png" },
   ],
   brands: [
     { id: 1, name: "Adidas", image: "/imgs/brands/image 1.png" },

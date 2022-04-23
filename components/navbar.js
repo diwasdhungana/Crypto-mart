@@ -34,7 +34,6 @@ const Navbar = () => {
   const classes = useStyle();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
-  console.log("state", state.cart.cartItems);
   const { cart, userInfo } = state;
   const [anchorEl, setAnchorEl] = useState(null);
   const loginClickHandler = (e) => {

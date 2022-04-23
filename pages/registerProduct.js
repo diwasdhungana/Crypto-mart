@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import { FileUploader } from "react-drag-drop-files";
+import React, { useEffect, useState } from "react";
 
 import {
   Button,
@@ -17,10 +16,9 @@ import {
 } from "@material-ui/core";
 import useStyle from "../utils/styles";
 import data from "../utils/data";
-import ImageUpload from "../components/ImageUplode";
 import axios from "axios";
 import { Category } from "@material-ui/icons";
-import { display } from '@mui/system';
+import { display } from "@mui/system";
 
 export default function RegisterProduct() {
   const classes = useStyle();
@@ -52,7 +50,7 @@ export default function RegisterProduct() {
   let printedinfo = [];
   let tempTitle = product.same ? product.name : product.title;
 
-  return(
+  return (
     <Container className={classes.container}>
       <Paper className={classes.product_container} elevation={4}>
         <Typography variant="h1">Register Your Product</Typography>
@@ -64,7 +62,7 @@ export default function RegisterProduct() {
           label="Detailed Name"
           variant="outlined"
           style={{ width: "50%" }}
-          InputProps={{className: classes.reg_field}}
+          InputProps={{ className: classes.reg_field }}
           onChange={(e) => setProduct({ ...product, name: e.target.value })}
         />
         <br />
@@ -73,14 +71,14 @@ export default function RegisterProduct() {
           id="outlined-basic"
           label="Title"
           variant="outlined"
-          InputProps={{className: classes.reg_field}}
+          InputProps={{ className: classes.reg_field }}
           style={{ width: "20%", bottom: "50px" }}
           value={tempTitle}
           onChange={(e) => setProduct({ ...product, title: e.target.value })}
         />
         <br />
         <FormControlLabel
-        style={{ position: "relative", bottom: "7.5rem", left: "12rem" }}
+          style={{ position: "relative", bottom: "7.5rem", left: "12rem" }}
           label="Same as Name (keep it unchecked for now)"
           checked={product.same}
           control={
@@ -90,26 +88,28 @@ export default function RegisterProduct() {
               }
             />
           }
-        />    
-        <p style={{position:'relative', bottom:'7.5rem'}}>Price: </p>
+        />
+        <p style={{ position: "relative", bottom: "7.5rem" }}>Price: </p>
         <TextField
           className={classes.product_name}
           id="outlined-basic"
           label="Price $"
           variant="outlined"
           type="number"
-          InputProps={{className: classes.reg_field}}
+          InputProps={{ className: classes.reg_field }}
           style={{ width: "10%", position: "relative", bottom: "9rem" }}
           onChange={(e) => setProduct({ ...product, price: e.target.value })}
         />
         <br />
-        <p style={{position:'relative', bottom:'9rem'}}>Product Description:</p>
+        <p style={{ position: "relative", bottom: "9rem" }}>
+          Product Description:
+        </p>
 
         <TextField
           id="outlined-basic"
           multiline
           rows={4}
-          InputProps={{className: classes.reg_field}}
+          InputProps={{ className: classes.reg_field }}
           label="Long Description"
           variant="outlined"
           type="textarea"
@@ -128,7 +128,7 @@ export default function RegisterProduct() {
           rows={2}
           label="Short Description"
           variant="outlined"
-          InputProps={{className: classes.reg_field}}
+          InputProps={{ className: classes.reg_field }}
           style={{ width: "50%", position: "relative", bottom: "9rem" }}
           onChange={(e) =>
             setProduct({
@@ -138,18 +138,18 @@ export default function RegisterProduct() {
           }
         />
         <br />
-        <p style={{position:'relative', bottom:'9rem'}}>Quantity :</p>
+        <p style={{ position: "relative", bottom: "9rem" }}>Quantity :</p>
         <TextField
           id="outlined-basic"
           label="Quantity"
           variant="outlined"
           type="number"
-          InputProps={{className: classes.reg_field}}
+          InputProps={{ className: classes.reg_field }}
           style={{ width: "12%", position: "relative", bottom: "10rem" }}
           onChange={(e) => setProduct({ ...product, quantity: e.target.value })}
         />
         <br />
-        <p style={{position:'relative', bottom:'9rem'}}>Category: </p>
+        <p style={{ position: "relative", bottom: "9rem" }}>Category: </p>
         <br></br>
         <FormControlLabel
           control={
@@ -173,8 +173,8 @@ export default function RegisterProduct() {
         <br />
         {product.category === "Digital" ? (
           <FormControlLabel
-          className={classes.reg_dig}
-          style={{ position: "relative", bottom: "15rem", left: "0rem" }}
+            className={classes.reg_dig}
+            style={{ position: "relative", bottom: "15rem", left: "0rem" }}
             label="Is Object"
             control={
               <Checkbox
@@ -191,53 +191,63 @@ export default function RegisterProduct() {
         <br />
         {product.isObject ? (
           <>
-          <div className={classes.dimensions}>
-            <Grid>
-            <p style={{position:'relative', bottom:'15.5rem'}}>Dimensions: </p>
-            <TextField
-              id="outlined-basic"
-              label="Width cm"
-              variant="outlined"
-              type="number"
-              style={{position: "relative", bottom: "16rem" }}
-              InputProps={{className: classes.reg_dimension}}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  dimensions: { ...product.dimensions, width: e.target.value },
-                })
-              }
-            />
-            <TextField
-              id="outlined-basic"
-              label="Length cm"
-              variant="outlined"
-              type="number"
-              InputProps={{className: classes.reg_dimension}}
-              style={{position: "relative", bottom: "16rem" }}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  dimensions: { ...product.dimensions, length: e.target.value },
-                })
-              }
-            />
-            <TextField
-              id="outlined-basic"
-              label="Height cm"
-              variant="outlined"
-              type="number"
-              InputProps={{className: classes.reg_dimension}}
-              style={{position: "relative", bottom: "16rem" }}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  dimensions: { ...product.dimensions, height: e.target.value },
-                })
-              }
-            />
-            
-            </Grid>
+            <div className={classes.dimensions}>
+              <Grid>
+                <p style={{ position: "relative", bottom: "15.5rem" }}>
+                  Dimensions:{" "}
+                </p>
+                <TextField
+                  id="outlined-basic"
+                  label="Width cm"
+                  variant="outlined"
+                  type="number"
+                  style={{ position: "relative", bottom: "16rem" }}
+                  InputProps={{ className: classes.reg_dimension }}
+                  onChange={(e) =>
+                    setProduct({
+                      ...product,
+                      dimensions: {
+                        ...product.dimensions,
+                        width: e.target.value,
+                      },
+                    })
+                  }
+                />
+                <TextField
+                  id="outlined-basic"
+                  label="Length cm"
+                  variant="outlined"
+                  type="number"
+                  InputProps={{ className: classes.reg_dimension }}
+                  style={{ position: "relative", bottom: "16rem" }}
+                  onChange={(e) =>
+                    setProduct({
+                      ...product,
+                      dimensions: {
+                        ...product.dimensions,
+                        length: e.target.value,
+                      },
+                    })
+                  }
+                />
+                <TextField
+                  id="outlined-basic"
+                  label="Height cm"
+                  variant="outlined"
+                  type="number"
+                  InputProps={{ className: classes.reg_dimension }}
+                  style={{ position: "relative", bottom: "16rem" }}
+                  onChange={(e) =>
+                    setProduct({
+                      ...product,
+                      dimensions: {
+                        ...product.dimensions,
+                        height: e.target.value,
+                      },
+                    })
+                  }
+                />
+              </Grid>
             </div>
           </>
         ) : (
@@ -250,7 +260,7 @@ export default function RegisterProduct() {
 
         {product.category === "Digital" && product.isObject == false ? (
           <FormControlLabel
-          style={{ position: "relative", bottom: "16.5rem", left: "0rem" }}
+            style={{ position: "relative", bottom: "16.5rem", left: "0rem" }}
             label="Identity Required to Buy"
             control={
               <Checkbox
@@ -264,10 +274,12 @@ export default function RegisterProduct() {
         ) : (
           (product.Identity = true)
         )}
-        
+
         {product.category !== "Digital" ? (
           <div>
-            <p style={{position:'relative', bottom:'16rem'}}>Product Packaging Description: </p>
+            <p style={{ position: "relative", bottom: "16rem" }}>
+              Product Packaging Description:{" "}
+            </p>
             <FormControlLabel
               label="Is Liquid"
               className={classes.reg_pack}
@@ -283,8 +295,8 @@ export default function RegisterProduct() {
             />
             <br />
             <FormControlLabel
-            className={classes.reg_pack}
-            style={{ position: "relative", bottom: "17rem", left: "0rem" }}
+              className={classes.reg_pack}
+              style={{ position: "relative", bottom: "17rem", left: "0rem" }}
               label="Is Flammable"
               control={
                 <Checkbox
@@ -297,8 +309,8 @@ export default function RegisterProduct() {
             />
             <br />
             <FormControlLabel
-            className={classes.reg_pack}
-            style={{ position: "relative", bottom: "17rem", left: "0rem" }}
+              className={classes.reg_pack}
+              style={{ position: "relative", bottom: "17rem", left: "0rem" }}
               label="Is Fragile"
               control={
                 <Checkbox
@@ -311,8 +323,8 @@ export default function RegisterProduct() {
             />
             <br />
             <FormControlLabel
-            className={classes.reg_pack}
-            style={{ position: "relative", bottom: "17rem", left: "0rem" }}
+              className={classes.reg_pack}
+              style={{ position: "relative", bottom: "17rem", left: "0rem" }}
               label="Is Explosive"
               control={
                 <Checkbox
@@ -325,7 +337,7 @@ export default function RegisterProduct() {
             />
           </div>
         ) : null}
-      <p style={{position:'relative', bottom:'16.5rem'}}>Upload Image:</p>
+        <p style={{ position: "relative", bottom: "16.5rem" }}>Upload Image:</p>
         <input
           className={classes.reg_file}
           type="file"
@@ -333,7 +345,7 @@ export default function RegisterProduct() {
           onChange={(e) => {
             setProduct({ ...product, image: e.target.files[0] });
           }}
-        /> 
+        />
 
         <br />
         <Button

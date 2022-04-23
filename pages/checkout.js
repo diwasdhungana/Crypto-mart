@@ -22,22 +22,24 @@ export default function CheckOut() {
   const token = Cookies.get("token");
   const [user, setUser] = useState(null);
 
-  const getusers = async () => {
-    const data = await axios.get("/api/user/shippingAddress", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log(data.data.data);
-    setUser(data.data.data);
-  };
-
   useEffect(() => {
     if (!userInfo) {
       router.push("/login?redirect=/checkout");
     }
+    const getusers = async () => {
+      const data = await axios.get("/api/user/shippingAddress", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setUser(data.data.data);
+      if (data.data.data.Address == null) {
+        router.push("/newaddress");
+      }
+    };
     getusers();
-  }, []);
+  }, [userInfo, router, token]);
 
   const classes = useStyles();
 
@@ -47,9 +49,8 @@ export default function CheckOut() {
         <CheckoutWizard activeStep={1} />
         {user && (
           <Paper>
-            <Typography>Name : {user.fullName} </Typography>
-            <Typography>Address : {user.address} </Typography>
-            <Typography>City : {user.city} </Typography>
+            <Typography>Address : {user.Address} </Typography>
+            <Typography>City, state : {user.city} </Typography>
             <Typography>Street Name : {user.streetName} </Typography>
             <Typography>Country : {user.country} </Typography>
           </Paper>

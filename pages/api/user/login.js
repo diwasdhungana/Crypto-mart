@@ -24,7 +24,7 @@ handler.post(async (req, res) => {
     res.status(200).send({
       token: token,
       _id: user._id,
-      name: user.name,
+      Firstname: user.Firstname,
       email: user.email,
       isAdmin: user.isAdmin,
     });

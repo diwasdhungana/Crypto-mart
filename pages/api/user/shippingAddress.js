@@ -27,7 +27,7 @@ handler.use((req, res, next) => {
 handler.post(async (req, res) => {
   const user = req.user;
   // console.log("user", user);
-  const { fullName, address, city, streetName, country } = req.body;
+  const { address, city, streetName, country } = req.body;
   // console.log("body", req.body);
   try {
     await db.connect();
@@ -35,8 +35,7 @@ handler.post(async (req, res) => {
       { _id: user._id },
       {
         $set: {
-          fullName,
-          address,
+          Address: address,
           city,
           streetName,
           country,

@@ -35,6 +35,7 @@ export default function ProductScreen(props) {
   const { product } = props;
   const { Products } = data;
   let currency = "$";
+  const [incart, setInCart] = useState(false);
 
   const addToCartHandler = async () => {
     const data = await axios.get(`/api/products/${product._id}`);
@@ -43,7 +44,8 @@ export default function ProductScreen(props) {
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
-    router.push("/cart");
+    setInCart(true);
+    // router.push("/cart");
 
     //Quantity Amount
   };
@@ -93,14 +95,26 @@ export default function ProductScreen(props) {
               </ListItem>
 
               <ListItem>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  onClick={addToCartHandler}
-                >
-                  Add to cart
-                </Button>
+                {!incart ? (
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    onClick={addToCartHandler}
+                  >
+                    Add to Cart
+                  </Button>
+                ) : (
+                  <>
+                    <Button fullWidth variant="contained" color="secondary">
+                      Added to Cart
+                    </Button>
+                    <br />
+                    <Typography component="h5" variant="h5">
+                      item can be removed from cart in MyCart page.
+                    </Typography>
+                  </>
+                )}
               </ListItem>
 
               <ListItem>
@@ -174,14 +188,14 @@ export default function ProductScreen(props) {
   );
 }
 
-export async function getStaticPaths(slug) {
-  return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: "blocking", //indicates the type of fallback
-  };
-}
+// export async function getStaticPaths(slug) {
+//   return {
+//     paths: [], //indicates that no page needs be created at build time
+//     fallback: false, //indicates the type of fallback
+//   };
+// }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const slug = context.params.slug;
   // const { params } = context;
   // const { slug } = params;

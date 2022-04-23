@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 function Myinfo() {
   const classes = useStyle();
-  const userinfo = Cookies.get("userEmail");
+  const userinfo = Cookies.get("userName");
   return (
     <Container className={classes.container}>
       <Paper>

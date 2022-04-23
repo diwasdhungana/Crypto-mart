@@ -92,7 +92,7 @@ function reducer(state, action) {
       // Cookies.set("userInfoCryptomart", JSON.stringify(userInfo));
       Cookies.set("token", userInfo.token);
       Cookies.set("userId", userInfo._id);
-      Cookies.set("userName", userInfo.name);
+      Cookies.set("userName", userInfo.Firstname);
       Cookies.set("userEmail", userInfo.email);
       Cookies.set("isAdmin", userInfo.isAdmin);
       return { ...state, userInfo };

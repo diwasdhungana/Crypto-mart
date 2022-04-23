@@ -2,16 +2,19 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    Firstname: { type: String, required: true },
+    Middlename: { type: String, required: false },
+    Lastname: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
     isActive: { type: Boolean, required: true, default: false },
     fullName: { type: String, required: false, default: "" },
-    address: { type: String, required: false, default: "" },
+    Address: { type: String, required: false, default: "" },
     city: { type: String, required: false, default: "" },
     streetName: { type: String, required: false, default: "" },
     country: { type: String, required: false, default: "" },
+    PhoneNumber: { type: String, required: true, default: "" },
   },
   {
     timestamps: true,

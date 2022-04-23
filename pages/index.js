@@ -24,7 +24,7 @@ export default function Home({ products }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   await db.connect();
   const products = await Product.find({}).lean();
   await db.disconnect();
