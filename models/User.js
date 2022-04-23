@@ -7,7 +7,11 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     isAdmin: { type: Boolean, required: true, default: false },
     isActive: { type: Boolean, required: true, default: false },
-    dateCreated: { type: Date, default: Date.now },
+    fullName: { type: String, required: false, default: "" },
+    address: { type: String, required: false, default: "" },
+    city: { type: String, required: false, default: "" },
+    streetName: { type: String, required: false, default: "" },
+    country: { type: String, required: false, default: "" },
   },
   {
     timestamps: true,

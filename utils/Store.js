@@ -1,31 +1,17 @@
 import Cookies from "js-cookie";
 import { createContext, useReducer } from "react";
 
-let tmpship 
-if(Cookies.get('shippingAddress')){
-  tmpship = Cookies.get('shippingAddress')
-}
-else{
-  tmpship = null
-}
-
 export const Store = createContext();
 const initialState = {
-  darkMode: Cookies.get("darkMode") === "true" ? true : false,
   cart: {
     cartItems: Cookies.get("cartItems")
       ? JSON.parse(Cookies.get("cartItems"))
       : [],
-    
-    
   },
   userInfo: Cookies.get("userInfoCryptomart")
-    ? JSON.parse(Cookies.get("userInfoCryptomart"))
+    ? Cookies.get("userInfoCryptomart")
     : null,
-   
-   shippingAddress: tmpship,
-   
-  };
+};
 
 function reducer(state, action) {
   switch (action.type) {
@@ -89,7 +75,7 @@ function reducer(state, action) {
       Cookies.set("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
-    
+
     case "CART_DELETE_ITEM": {
       const newItem = action.payload;
       const existItem = state.cart.cartItems.filter(
@@ -98,23 +84,28 @@ function reducer(state, action) {
       Cookies.set("cartItems", JSON.stringify(existItem));
       return { ...state, cart: { ...state.cart, cartItems: existItem } };
     }
-    case 'SAVE_SHIPPING_ADDRESS':
-      // Cookies.set('shippingAddress',action.payload);
-    
-      return {
-        ...state,
-        cart: { ...state, shippingAddress: action.payload },
-        
-      };
 
-    case "USER_LOGIN": 
+    case "USER_LOGIN":
       const userInfo = action.payload;
       console.log("userInfo", userInfo);
-      Cookies.set("userInfoCryptomart", JSON.stringify(userInfo));
+      Cookies.set("userInfoCryptomart", userInfo);
+      // Cookies.set("userInfoCryptomart", JSON.stringify(userInfo));
+      Cookies.set("token", userInfo.token);
+      Cookies.set("userId", userInfo._id);
+      Cookies.set("userName", userInfo.name);
+      Cookies.set("userEmail", userInfo.email);
+      Cookies.set("isAdmin", userInfo.isAdmin);
       return { ...state, userInfo };
-      //  return {...state, userInfo: action.payload}
+    //  return {...state, userInfo: action.payload}
     case "USER_LOGOUT":
-      return { ...state, userInfo: null,cart:{cartItems:[]} };
+      Cookies.remove("userInfoCryptomart");
+      Cookies.remove("token");
+      Cookies.remove("userId");
+      Cookies.remove("userName");
+      Cookies.remove("userEmail");
+      Cookies.remove("isAdmin");
+      Cookies.remove("cartItems");
+      return { ...state, userInfo: null, cart: { cartItems: [] } };
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import React, { useContext, useReducer,useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import {
   createTheme,
   AppBar,
@@ -22,38 +22,37 @@ import { useMoralis } from "react-moralis";
 //Icons Import
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import { Store } from "../utils/Store";
-import {useRouter}  from "next/router";
+import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
-
 const Navbar = () => {
-  const classes = useStyle(); 
+  const classes = useStyle();
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   console.log("state", state.cart.cartItems);
-  const { cart, darkMode, userInfo } = state;
+  const { cart, userInfo } = state;
   const [anchorEl, setAnchorEl] = useState(null);
-  const loginClickHandler =(e)=>{
+  const loginClickHandler = (e) => {
     setAnchorEl(e.currentTarget);
-};
+  };
   const loginMenuCloseHandler = () => {
     setAnchorEl(null);
-  }
-  const logoutCLickHandler =() =>{
+  };
+  const logoutCLickHandler = () => {
     setAnchorEl(null);
-    dispatch({type:"USER_LOGOUT"});
+    dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("userInfo");
     Cookies.remove("cartItems");
     router.push("/");
 
     loginMenuCloseHandler();
-  }
-    return (
+  };
+  return (
     <AppBar position="fixed" className={classes.appBar} color="secondary">
       <Toolbar>
         <Navlink href={"/"} passHref>
@@ -81,38 +80,40 @@ const Navbar = () => {
             <SearchIcon color="#9747FF" sx={{ fontSize: 20 }} />
           </Navlink>
         </button>
-      {/* classes for navbar icon right side  */}
+        {/* classes for navbar icon right side  */}
         <div className={classes.grow}>
           <div className={classes.growcontent}>
             <div className={classes.growcontentItem}>
-           
-           
-             {/* Check for login and if logged in display name initial */}
-              {userInfo? (
+              {/* Check for login and if logged in display name initial */}
+              {userInfo ? (
                 <>
-                {/* Here to another button effecting navbar user initial display error ass well */}
-                <Button 
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={loginClickHandler}
-                  className={classes.btn_login}>
-
-              <Button >
-              
-              <LogoutIcon color="#9747FF" sx={{ fontSize: 25 }} />
-              </Button>
-              <Menu 
-                 id="simple-menu"
-                 anchorEl={anchorEl}
-                 keepMounted
-                 open={Boolean(anchorEl)}
-                 onClose={loginMenuCloseHandler}
-                 >
-                   <MenuItem onClick={logoutCLickHandler}>Logout</MenuItem>
-                 </Menu>
-                 </Button>
-              </>
-              ): (
+                  <Button
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                    onClick={loginClickHandler}
+                    className={classes.btn_login}
+                  >
+                    <Button>
+                      <LogoutIcon color="#9747FF" sx={{ fontSize: 25 }} />
+                    </Button>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={loginMenuCloseHandler}
+                    >
+                      <MenuItem onClick={logoutCLickHandler}>Logout</MenuItem>
+                    </Menu>
+                  </Button>
+                </>
+              ) : (
+                // <Link>
+                //   <LogoutIcon color="#9747FF" sx={{ fontSize: 25 }} />
+                //   <Typography variant="h5" color="textPrimary">
+                //     LOGOUT
+                //   </Typography>
+                // </Link>
                 // if not login display login icon
                 <Navlink href={"/login"} passHref>
                   <Link>
@@ -122,10 +123,8 @@ const Navbar = () => {
                     </Typography>
                   </Link>
                 </Navlink>
-               
-              )
-              }
-              
+              )}
+
               {/* Profile button */}
             </div>
             <div className={classes.growcontentItem}>
@@ -133,15 +132,16 @@ const Navbar = () => {
                 <Link>
                   <AccountCircleIcon color="#9747FF" sx={{ fontSize: 25 }} />
                   <Typography variant="h5" color="textPrimary">
-                    PROFILE
+                    {Cookies.get("userName")
+                      ? Cookies.get("userName")
+                      : "Profile"}
                   </Typography>
                 </Link>
               </Navlink>
             </div>
-           
-           
-           {/* cart button with increment and decrement for items added */}
-           
+
+            {/* cart button with increment and decrement for items added */}
+
             <div className={classes.growcontentItem}>
               <Navlink href={"/cart"} passHref>
                 <Link>
@@ -161,9 +161,9 @@ const Navbar = () => {
                 </Link>
               </Navlink>
             </div>
-            
+
             {/* wallet button */}
-            
+
             <div className={classes.growcontentItem}>
               <Link href={"/wallet"}>
                 <AccountBalanceWalletIcon

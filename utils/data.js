@@ -7,6 +7,11 @@ const data = {
       password: bcrypt.hashSync("12345"),
       isAdmin: true,
       isActive: true,
+      fullName: "Diwas Dhungana",
+      address: "Kathmandu",
+      city: "Kathmandu",
+      streetName: "Kathmandu",
+      country: "Nepal",
     },
     {
       name: "Rejin",
@@ -14,6 +19,11 @@ const data = {
       password: bcrypt.hashSync("12345"),
       isAdmin: false,
       isActive: true,
+      fullName: "Rejin Bhakta Kayastha",
+      address: null,
+      city: null,
+      streetName: null,
+      country: null,
     },
   ],
   Products: [

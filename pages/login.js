@@ -26,8 +26,8 @@ const Featured = () => {
     if (userInfo) {
       router.push("/");
     }
-  },[])
- 
+  }, []);
+
   const classes = useStyle();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,10 +35,10 @@ const Featured = () => {
     e.preventDefault();
     try {
       const data = await axios.post("/api/user/login", { email, password });
-      dispatch({ type: "USER_LOGIN", payload: data });
-      Cookies.set("userInfo", data);
-      router.push(redirect || "/");
+      dispatch({ type: "USER_LOGIN", payload: data.data });
+      console.log("user data", data.data);
       alert("Login Successful");
+      router.push(redirect || "/");
     } catch (err) {
       alert(err.response.data ? err.response.data.message : err.message);
       // alert("something is still not working");
