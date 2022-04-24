@@ -2,7 +2,6 @@ import { makeStyles } from "@material-ui/core";
 import { ImportantDevices } from "@material-ui/icons";
 
 const useStyle = makeStyles({
-
   appBar: {
     padding:'0 5rem',
     background:"#CFBEBE",
