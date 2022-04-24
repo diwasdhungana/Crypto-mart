@@ -24,12 +24,13 @@ export default async function registerProduct(req, res) {
         dimensions,
         category,
       } = req.body;
+
       const productData = {
         name: name,
         title: title,
         slug: `${title}000${Math.floor(Math.random() * 1000)}`,
         price: price,
-        image: "https://picsum.photos/seed/picsum/200/300",
+        image,
         description: {
           short: description.short,
           long: description.long,
@@ -61,6 +62,7 @@ export default async function registerProduct(req, res) {
       await db.connect();
       await Products.insertMany(productData);
       await db.disconnect();
+      console.log(productData);
       res.status(200).json({ Registration: true });
       // });
       // res.status(200).end();

@@ -2,8 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["picsum.photos", "source.unsplash.com"],
-    formats: ["image/webp"],
+    domains: ["picsum.photos", "source.unsplash.com", "res.cloudinary.com"],
   },
 };
 module.exports = nextConfig;

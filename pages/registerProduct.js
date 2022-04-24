@@ -47,7 +47,50 @@ export default function RegisterProduct() {
     isFlammable: false,
     isExplosive: false,
   });
-  let printedinfo = [];
+
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+  let Bigdata;
+
+  function handleOnChange(changeEvent) {
+    const reader = new FileReader();
+
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+  }
+
+  async function handleOnSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
+    const formData = new FormData();
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+    formData.append("upload_preset", "cryptomart-images");
+    Bigdata = await fetch(
+      "https://api.cloudinary.com/v1_1/cryptomart/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((res) => res.json());
+    alert("Image uploaded successfully, Submit to finalize");
+    setUploadData(Bigdata);
+    console.log("URL : ", Bigdata.secure_url);
+    setImageSrc(Bigdata.secure_url);
+    setProduct({
+      ...product,
+      image: Bigdata.secure_url,
+    });
+  }
+
   let tempTitle = product.same ? product.name : product.title;
 
   return (
@@ -104,7 +147,6 @@ export default function RegisterProduct() {
         <p style={{ position: "relative", bottom: "9rem" }}>
           Product Description:
         </p>
-
         <TextField
           id="outlined-basic"
           multiline
@@ -257,7 +299,6 @@ export default function RegisterProduct() {
             {(product.dimensions.height = null)}
           </>
         )}
-
         {product.category === "Digital" && product.isObject == false ? (
           <FormControlLabel
             style={{ position: "relative", bottom: "16.5rem", left: "0rem" }}
@@ -274,7 +315,6 @@ export default function RegisterProduct() {
         ) : (
           (product.Identity = true)
         )}
-
         {product.category !== "Digital" ? (
           <div>
             <p style={{ position: "relative", bottom: "16rem" }}>
@@ -337,34 +377,46 @@ export default function RegisterProduct() {
             />
           </div>
         ) : null}
-        <p style={{ position: "relative", bottom: "16.5rem" }}>Upload Image:</p>
-        <input
-          className={classes.reg_file}
-          type="file"
-          id="image"
-          onChange={(e) => {
-            setProduct({ ...product, image: e.target.files[0] });
-          }}
-        />
-
         <br />
+        <p style={{ position: "relative", bottom: "16.5rem" }}>Upload Image:</p>
+        <form method="post" onChange={handleOnChange} onSubmit={handleOnSubmit}>
+          <p>
+            <input type="file" name="file" />
+          </p>
+          <img src={imageSrc} />
+
+          {/* {imageSrc && !uploadData && ( */}
+          <p>
+            <button>Confirm Image</button>
+          </p>
+          {/* )} */}
+
+          {/* {uploadData && (
+            <code>
+            <pre>{JSON.stringify(uploadData, null, 2)}</pre>
+            </code>
+          )} */}
+        </form>
         <Button
           className={classes.reg_button}
           variant="contained"
           color="primary"
           onClick={async () => {
+            console.log(imageSrc);
+            console.log("PRODUCT :", product);
             const response = await fetch("/api/registerProduct", {
               method: "POST",
               body: JSON.stringify(product),
               headers: { "Content-Type": "application/json" },
             });
-            const data = await response.json();
-            console.log(data);
+            const res = await response.json();
+            alert("upload Successful");
+            // console.log(datatoapi);
           }}
         >
           {" "}
           Submit{" "}
-        </Button>
+        </Button>{" "}
       </Paper>
     </Container>
   );

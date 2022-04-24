@@ -15,6 +15,7 @@ import useStyle from "../utils/styles";
 import axios from "axios";
 import { Store } from "../utils/Store";
 import React, { useContext } from "react";
+import Image from "next/image";
 
 const ForYou = (props) => {
   const classes = useStyle();
