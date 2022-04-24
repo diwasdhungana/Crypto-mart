@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { useContext } from "react";
 import { Store } from "../utils/Store";
@@ -25,6 +25,7 @@ function CartScreen() {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems } = cart;
+  const [quantity, setQuantity] = useState(0);
 
   const updateCartHandler = async (product, quantity) => {
     const data = await axios.get(`/api/products/${product._id}`);
@@ -40,9 +41,18 @@ function CartScreen() {
       alert("Out of stock");
       return;
     }
+    // console.log("Quantity", product.quantity);
+    // console.log("Instock", product.numInStock);
+    if (product.quantity == product.numInStock) {
+      alert("Max available quantity Selected");
+      return;
+    }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product } });
   };
   const RemoveCartHandler = async (product) => {
+    if (product.quantity == 1) {
+      return;
+    }
     dispatch({ type: "CART_REMOVE_ITEM", payload: { ...product } });
   };
   let currency = "$";
@@ -97,7 +107,6 @@ function CartScreen() {
                       >
                         -
                       </Button>
-
                       <Select
                         components={{ DropdownIndicator: () => null }}
                         className={classes.item_quantity}
@@ -118,7 +127,6 @@ function CartScreen() {
                           </MenuItem>
                         ))}
                       </Select>
-
                       <Button
                         className={classes.item_control}
                         onClick={() => {
@@ -127,7 +135,7 @@ function CartScreen() {
                       >
                         +
                       </Button>
-                      {}
+                      )
                     </ButtonGroup>
                   }
                   <Button
