@@ -16,6 +16,12 @@ import { Controller, useForm } from "react-hook-form";
 import CheckoutWizard from "../components/CheckoutWizard";
 import axios from "axios";
 
+//Icon Imports
+import HomeIcon from '@mui/icons-material/Home';
+import SignpostIcon from '@mui/icons-material/Signpost';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import FlagIcon from '@mui/icons-material/Flag';
+
 export default function CheckOut() {
   const {
     handleSubmit,
@@ -59,14 +65,13 @@ export default function CheckOut() {
   };
   return (
     <Container className={classes.container}>
-      <Paper>
+      <Paper className={classes.ship_container}>
         <CheckoutWizard activeStep={1} />
         <form onSubmit={handleSubmit(submitHandler)} className={classes.form}>
           <Typography component="h1" variant="h1">
             Please Enter Your Shipping Address
           </Typography>
-          <List>
-            <ListItem>
+          <HomeIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
               <Controller
                 name="address"
                 control={control}
@@ -75,11 +80,12 @@ export default function CheckOut() {
                   required: true,
                   minLength: 2,
                 }}
+              
                 render={({ field }) => (
                   <TextField
                     variant="outlined"
-                    fullWidth
                     id="address"
+                    className={classes.log_field}
                     label="Address (block no, Area/colony name)"
                     error={Boolean(errors.address)}
                     helperText={
@@ -90,11 +96,13 @@ export default function CheckOut() {
                         : ""
                     }
                     {...field}
-                  ></TextField>
+                  >
+                  </TextField>
+
                 )}
               ></Controller>
-            </ListItem>
-            <ListItem>
+              <br/>
+              <SignpostIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
               <Controller
                 name="streetName"
                 control={control}
@@ -106,9 +114,9 @@ export default function CheckOut() {
                 render={({ field }) => (
                   <TextField
                     variant="outlined"
-                    fullWidth
                     id="streetName"
                     label="Street Name"
+                    className={classes.log_field}
                     error={Boolean(errors.streetName)}
                     helperText={
                       errors.streetName
@@ -121,8 +129,8 @@ export default function CheckOut() {
                   ></TextField>
                 )}
               ></Controller>
-            </ListItem>
-            <ListItem>
+              <br/>
+              <LocationCityIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
               <Controller
                 name="city"
                 control={control}
@@ -134,7 +142,7 @@ export default function CheckOut() {
                 render={({ field }) => (
                   <TextField
                     variant="outlined"
-                    fullWidth
+                    className={classes.log_field}
                     id="city"
                     label="City, State"
                     error={Boolean(errors.city)}
@@ -149,8 +157,8 @@ export default function CheckOut() {
                   ></TextField>
                 )}
               ></Controller>
-            </ListItem>
-            <ListItem>
+              <br/>
+              <FlagIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
               <Controller
                 name="country"
                 control={control}
@@ -162,7 +170,7 @@ export default function CheckOut() {
                 render={({ field }) => (
                   <TextField
                     variant="outlined"
-                    fullWidth
+                    className={classes.log_field}
                     id="country"
                     label="Country"
                     error={Boolean(errors.country)}
@@ -177,18 +185,14 @@ export default function CheckOut() {
                   ></TextField>
                 )}
               ></Controller>
-            </ListItem>
-            <ListItem>
+              <br/>
               <Button
                 variant="contained"
                 type="submit"
-                fullWidth
                 color="primary"
               >
                 Continue
               </Button>
-            </ListItem>
-          </List>
         </form>
       </Paper>
     </Container>

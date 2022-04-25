@@ -1,3 +1,6 @@
+import * as React from 'react';
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {
   Paper,
   Grid,
@@ -7,6 +10,8 @@ import {
   Button,
   Link,
   ListItem,
+  IconButton,
+  InputAdornment,
 } from "@material-ui/core";
 import axios from "axios";
 import NextLink from "next/link";
@@ -16,7 +21,19 @@ import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
-const Featured = () => {
+//Icon Imports
+import KeyIcon from '@mui/icons-material/Key';
+import LockIcon from '@mui/icons-material/Lock';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PhoneIcon from '@mui/icons-material/Phone';
+
+const Login = () => {
+  //For password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
+  
   const router = useRouter();
   //login?redirect=shipping
   const { redirect } = router.query;
@@ -47,7 +64,7 @@ const Featured = () => {
 
   return (
     <Container className={classes.container}>
-      <Paper>
+      <Paper className={classes.log_container}>
         <Grid>
           <Typography variant="h1" className={classes.title}>
             Login
@@ -55,39 +72,54 @@ const Featured = () => {
         </Grid>
         <form onSubmit={submitHandler} className={classes.form}>
           <br></br>
+          <AccountCircleIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
             label="Email"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "email" }}
             onChange={(e) => setEmail(e.target.value)}
+            className={classes.log_field}
           />
           <br></br>
+          <KeyIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
             label="Password"
             variant="outlined"
-            fullWidth
-            inputProps={{ type: "Password" }}
             onChange={(e) => setPassword(e.target.value)}
+            className={classes.log_field}
+            type={showPassword ? "text" : "password"}
+            InputProps={{ // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
           />
           <br></br>
 
-          <Button variant="contained" type="submit" fullWidth color="primary">
+          <Button variant="contained" type="submit"  color="primary">
             Submit
           </Button>
         </form>
 
-        <ListItem>
-          Dont have an account? {""}
+          Dont have an account? {""}<br></br>
           <NextLink href="/register" passHref>
-            <Link>Register</Link>
+            <Link>
+            <Button>Register</Button>
+            </Link>
           </NextLink>
-        </ListItem>
       </Paper>
     </Container>
   );
 };
 
-export default Featured;
+export default Login;

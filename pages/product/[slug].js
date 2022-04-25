@@ -44,7 +44,7 @@ export default function ProductScreen(props) {
 
   return (
     <Container className={classes.container}>
-      <Paper className={classes.product_container} elevation={4}>
+      <Paper className={classes.product_container}>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6} md={4} className={classes.product_img}>
             <Image
@@ -72,18 +72,23 @@ export default function ProductScreen(props) {
               <ListItem>
                 <Typography component="h2" variant="h2">
                   {" "}
-                  Price:{" "}
+                  <span style={{'fontWeight':'bold'}}>Price:     </span>{" "}{currency}{product.price}
                 </Typography>
-                <Typography component="h2" variant="h4">
-                  {currency}
-                  {product.price}
-                </Typography>
+
               </ListItem>
 
               <ListItem>
                 <Typography component="h4" variant="h4">
-                  Description: {product.description.short}
+                  <span style={{'fontWeight':'bold'}}>Description:  </span> {product.description.short}
                 </Typography>
+              </ListItem>
+              
+              <ListItem>
+                <Typography component="h4" variant="h4">
+                <span style={{'fontWeight':'bold'}}>Category:  </span>
+                  {product.category}
+                </Typography>
+
               </ListItem>
 
               <ListItem>
@@ -98,32 +103,20 @@ export default function ProductScreen(props) {
                   </Button>
                 ) : (
                   <>
-                    <Button fullWidth variant="contained" color="secondary">
+                    <Button variant="contained" color="secondary" style={{'width':'120%'}}>
                       Added to Cart
                     </Button>
-                    <br />
-                    <Typography component="h5" variant="h5">
-                      item can be removed from cart in MyCart page.
-                    </Typography>
                   </>
-                )}
-              </ListItem>
 
-              <ListItem>
-                <Typography component="h2" variant="h2">
-                  Category :
-                </Typography>
-                <Typography component="h4" variant="h4">
-                  {product.category}
-                </Typography>
+                )}
               </ListItem>
             </List>
           </Grid>
         </Grid>
-
+        <br></br>
         <div className={classes.product_details}>
-          <Typography>Product Details:</Typography>
-          <Typography component="h4" variant="h4">
+          <Typography component="h4" variant="h3" style={{'fontWeight':'400'}}>Product Details:</Typography>
+          <Typography component="h4" variant="h4" style={{'fontSize':'18px'}}>
             {product.description.long}
           </Typography>
         </div>

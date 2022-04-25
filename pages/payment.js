@@ -7,7 +7,7 @@ export default function Payment() {
   const classes = useStyles();
   return (
     <Container className={classes.container}>
-      <Paper>
+      <Paper className={classes.ship_container}>
         <CheckoutWizard activeStep={2} />
         <Typography>
           This is the payment page. You can pay with your favoutire crypto.

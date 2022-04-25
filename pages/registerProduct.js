@@ -379,7 +379,7 @@ export default function RegisterProduct() {
         ) : null}
         <br />
         <p style={{ position: "relative", bottom: "16.5rem" }}>Upload Image:</p>
-        <form method="post" onChange={handleOnChange} onSubmit={handleOnSubmit}>
+        <form method="post" onChange={handleOnChange} onSubmit={handleOnSubmit} className={classes.reg_img}>
           <p>
             <input type="file" name="file" />
           </p>
@@ -399,8 +399,7 @@ export default function RegisterProduct() {
         </form>
         <Button
           className={classes.reg_button}
-          variant="contained"
-          color="primary"
+          style={{'backgroundColor':'#c88bd1', 'color':'black', 'padding':'10px 20px', 'borderRadius':'10px'}}
           onClick={async () => {
             console.log(imageSrc);
             console.log("PRODUCT :", product);

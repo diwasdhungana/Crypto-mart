@@ -69,6 +69,15 @@ function CartScreen() {
           </div>
         ) : (
           <div>
+            <Button
+              style={{'margin':'-10% 74% 0 0'}}
+              className={classes.checkout_button}>
+              <Nextlink href="/" passHref>
+                <Link style={{ textDecoration: "none" }}>
+                  Continue Shopping
+                </Link>
+              </Nextlink>
+            </Button>
             <Typography variant="h2">
               Items Added to your Shopping Cart
             </Typography>
@@ -154,23 +163,9 @@ function CartScreen() {
                 </li>
               ))}
             </ul>
+
             <Button
               className={classes.checkout_button}
-              style={{
-                position: "relative",
-                bottom: "17rem",
-                right: "12.5rem",
-              }}
-            >
-              <Nextlink href="/" passHref>
-                <Link style={{ textDecoration: "none" }}>
-                  Continue Shopping
-                </Link>
-              </Nextlink>
-            </Button>
-            <Button
-              className={classes.checkout_button}
-              style={{ position: "relative", right: "5rem" }}
             >
               <Nextlink href="/checkout" passHref>
                 <Link style={{ textDecoration: "none" }}>

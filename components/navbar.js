@@ -1,15 +1,11 @@
 import React, { useContext, useReducer, useState } from "react";
 import {
-  createTheme,
   AppBar,
   Toolbar,
   Typography,
   Link,
   TextField,
   Badge,
-  Button,
-  Menu,
-  MenuItem,
 } from "@material-ui/core";
 
 import useStyle from "../utils/styles";
@@ -35,21 +31,15 @@ const Navbar = () => {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
-  const [anchorEl, setAnchorEl] = useState(null);
-  const loginClickHandler = (e) => {
-    setAnchorEl(e.currentTarget);
-  };
-  const loginMenuCloseHandler = () => {
-    setAnchorEl(null);
-  };
+
+
   const logoutCLickHandler = () => {
-    setAnchorEl(null);
+
     dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("userInfo");
     Cookies.remove("cartItems");
     router.push("/");
 
-    loginMenuCloseHandler();
   };
   return (
     <AppBar position="fixed" className={classes.appBar} color="secondary">
@@ -86,36 +76,17 @@ const Navbar = () => {
               {/* Check for login and if logged in display name initial */}
               {userInfo ? (
                 <>
-                  <Button
-                    aria-controls="simple-menu"
-                    aria-haspopup="true"
-                    onClick={loginClickHandler}
-                    className={classes.btn_login}
-                  >
-                    <Button>
-                      <LogoutIcon color="#9747FF" sx={{ fontSize: 25 }} />
-                    </Button>
-                    <Menu
-                      id="simple-menu"
-                      anchorEl={anchorEl}
-                      keepMounted
-                      open={Boolean(anchorEl)}
-                      onClose={loginMenuCloseHandler}
-                    >
-                      <MenuItem onClick={logoutCLickHandler}>Logout</MenuItem>
-                    </Menu>
-                  </Button>
+                  <Link onClick={logoutCLickHandler} style={{'cursor':'pointer', 'textDecoration':'none'}} >
+                      <LogoutIcon color="#9747FF" sx={{ fontSize: 20 }} className={classes.nav_logout}/>
+                    <Typography variant="h5" color="textPrimary" >
+                      LOGOUT
+                    </Typography>
+
+                  </Link>
                 </>
               ) : (
-                // <Link>
-                //   <LogoutIcon color="#9747FF" sx={{ fontSize: 25 }} />
-                //   <Typography variant="h5" color="textPrimary">
-                //     LOGOUT
-                //   </Typography>
-                // </Link>
-                // if not login display login icon
                 <Navlink href={"/login"} passHref>
-                  <Link>
+                  <Link style={{'textDecoration':'none'}}>
                     <LoginIcon color="#9747FF" sx={{ fontSize: 25 }} />
                     <Typography variant="h5" color="textPrimary">
                       LOGIN
@@ -128,7 +99,7 @@ const Navbar = () => {
             </div>
             <div className={classes.growcontentItem}>
               <Navlink href={"/profile"} passHref>
-                <Link>
+                <Link style={{'textDecoration':'none'}}>
                   <AccountCircleIcon color="#9747FF" sx={{ fontSize: 25 }} />
                   <Typography variant="h5" color="textPrimary">
                     {Cookies.get("userName")
@@ -143,7 +114,7 @@ const Navbar = () => {
 
             <div className={classes.growcontentItem}>
               <Navlink href={"/cart"} passHref>
-                <Link>
+                <Link style={{'textDecoration':'none'}}>
                   {cart.cartItems.length ? (
                     <Badge
                       badgeContent={cart.cartItems.length}
@@ -164,7 +135,7 @@ const Navbar = () => {
             {/* wallet button */}
 
             <div className={classes.growcontentItem}>
-              <Link href={"/wallet"}>
+              <Link href={"/wallet"} style={{'textDecoration':'none'}}>
                 <AccountBalanceWalletIcon
                   color="#9747FF"
                   sx={{ fontSize: 25 }}

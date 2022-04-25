@@ -34,7 +34,7 @@ const useStyle = makeStyles(
     container: {
       width: "70%",
       padding: "2rem",
-      minHeight: "100vh",
+      minHeight: "110vh",
       textAlign: "Left",
       marginTop: "4%",
       alignItems: "center",
@@ -66,25 +66,44 @@ const useStyle = makeStyles(
       minHeight: "30vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#B0C4DE",
+      background: "#d0c9d1",
+    },
+    cert_swiper:{
+      "& .swiper-button-next": {
+            padding: "10px",
+            color: "purple",
+      },
+      "& .swiper-button-prev": {
+        padding: "10px",
+        color: "purple",
+      },
+      "& .MuiPaper-root":{
+        padding: "10px",
+      },
     },
     category: {
       marginTop: "20px",
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#B0C4DE",
+      background: "#d0c9d1",
     },
     for_you: {
       marginTop: "20px",
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#B0C4DE",
+      background: "#d0c9d1",
+    },
+    product_card:{
+      "& .MuiCardActions-root":{
+        position: "relative",
+        bottom: "3rem",
+      },
     },
     featured_container: {
       minHeight: "50px",
-      padding: "2rem",
+      padding: "0.5rem",
       borderRadius: "20px",
     },
     media: {
@@ -111,6 +130,10 @@ const useStyle = makeStyles(
       margin: "-1rem 0.5rem",
       padding: "0.5rem",
       borderRadius: "10px",
+    },
+    nav_logout: {
+      marginLeft: "8px",
+      cursor: "pointer",
     },
     auth_container: {
       minHeight: "500px",
@@ -148,9 +171,9 @@ const useStyle = makeStyles(
       },
     },
     cart_shop: {
-      border: "2px solid purple",
+      border: "1px solid purple",
       borderRadius: "10px",
-      background: "white",
+      background: "#cfbebe",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
@@ -225,12 +248,11 @@ const useStyle = makeStyles(
       right: "27px",
     },
     checkout_button: {
-      border: "2px solid purple",
+      border: "1px solid purple",
       borderRadius: "10px",
       background: "white",
-      marginRight: "3rem",
+      color:'black',
       "&:hover": {
-        background: "#cfbebe",
         color: "black",
         textDecoration: "none",
       },
@@ -238,7 +260,7 @@ const useStyle = makeStyles(
 
     // Register Product
     product_container: {
-      minHeight: "1400px",
+      minHeight: "500px",
       overflow: "hidden",
       background: "white",
       padding: "25px",
@@ -294,8 +316,33 @@ const useStyle = makeStyles(
     },
     reg_button: {
       position: "relative",
-      bottom: "13rem",
+      bottom: "15rem",
+      backgroundColor: "#cfbebe",
     },
+    reg_img:{
+      position: "relative",
+      bottom: "15rem",
+    },
+  //Login
+  log_container:{
+    minHeight:"500px",
+    background:"white",
+    padding:"20px",
+    borderRadius:"20px",
+    alignItems:"center",
+    justifyContent:"center",
+    textAlign:"center",
+  },
+  log_field:{
+    width:'35%',
+  },
+  log_icon:{
+    position:'relative',
+    top:'2rem',
+    right:'1rem',
+  },
+
+  
     connect: {
       padding: "1rem",
       marginTop: "2rem",
@@ -364,6 +411,17 @@ const useStyle = makeStyles(
       },
     },
 
+    //Checkout Page CSS
+    ship_container: {
+      minHeight: "500px",
+      background: "white",
+      padding: "20px",
+      borderRadius: "20px",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+
     search_sort: {
       borderRadius: "10px",
       padding: "0.5rem",
@@ -389,6 +447,7 @@ const useStyle = makeStyles(
       },
     },
   },
+
   { index: 1 }
 );
 

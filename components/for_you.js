@@ -25,7 +25,7 @@ const ForYou = (props) => {
   const { state, dispatch } = useContext(Store);
 
   return (
-    <Paper elevation={6} className={classes.for_you}>
+    <Paper className={classes.for_you}>
       <Grid>
         <Typography variant="h1" className={classes.topic} align="center">
           {Name}
@@ -34,7 +34,7 @@ const ForYou = (props) => {
       <Grid container spacing={2}>
         {Products.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id}>
-            <Card>
+            <Card style={{'borderRadius':'20px', 'height':'360px',}} className={classes.product_card}>
               <Nextlink href={`/product/${item.slug}`} passHref>
                 <CardActionArea>
                   <CardMedia
@@ -45,7 +45,7 @@ const ForYou = (props) => {
                     title={item.name}
                   ></CardMedia>
                   <CardContent>
-                    <Typography gutterBottom variant="h4" component="h4">
+                    <Typography gutterBottom variant="h1" component="h1" style={{'position':'relative', 'bottom':'20px'}}>
                       {item.name}
                     </Typography>
                   </CardContent>
@@ -55,13 +55,13 @@ const ForYou = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                   {item.rating} &#11088;
                 </Typography>
-                <Typography variant="h5">
+                <Typography variant="h5" style={{'fontSize':'14px'}}>
                   {currency}
                   {item.price}
                 </Typography>
                 <Button
                   size="small"
-                  color="primary"
+                  style={{'backgroundColor':'rgb(255 225 150)', 'color':'black',}}
                   onClick={async () => {
                     const data = await axios.get(`/api/products/${item._id}`);
                     if (
@@ -77,7 +77,7 @@ const ForYou = (props) => {
                     });
                   }}
                 >
-                  <h4>Add to cart</h4>
+                  Add to cart
                 </Button>
               </CardActions>
             </Card>

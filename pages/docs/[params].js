@@ -2,7 +2,7 @@ import useStyle from "../../utils/styles";
 import Nextlink from "next/link";
 import db from "../../utils/db";
 import Product from "../../models/Product";
-import { Container } from "@material-ui/core";
+import { Container, Paper } from "@material-ui/core";
 import ForYou from "../../components/for_you";
 function Doc(props) {
   const { params, Products } = props;
@@ -10,7 +10,9 @@ function Doc(props) {
   let currency = "$";
   return (
     <Container className={classes.container}>
-      <ForYou Products={Products} Name={params} />
+      <Paper className={classes.param_container}>
+      <ForYou Products={Products} Name={params}/>
+      </Paper>
     </Container>
   );
 }

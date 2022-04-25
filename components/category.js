@@ -19,7 +19,7 @@ const Category = () => {
   const { category } = data;
 
   return (
-    <Paper elevation={6} className={classes.category}>
+    <Paper className={classes.category}>
       <Grid>
         <Typography variant="h1" className={classes.topic} align="center">
           Category
@@ -39,7 +39,7 @@ const Category = () => {
                     title={item.name}
                   ></CardMedia>
                   <CardContent>
-                    <Typography gutterBottom variant="h4" component="h4">
+                    <Typography gutterBottom variant="h2" component="h3" style={{'fontSize':'18px'}}>
                       {item.name}
                     </Typography>
                   </CardContent>

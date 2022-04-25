@@ -1,3 +1,6 @@
+import * as React from 'react';
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {
   Paper,
   Grid,
@@ -6,7 +9,8 @@ import {
   Typography,
   Button,
   Link,
-  ListItem,
+  InputAdornment,
+  IconButton,
 } from "@material-ui/core";
 import axios from "axios";
 import NextLink from "next/link";
@@ -14,7 +18,19 @@ import useStyle from "../utils/styles";
 import { useState } from "react";
 import bcrypt from "bcryptjs";
 
+//Icon Imports
+import KeyIcon from '@mui/icons-material/Key';
+import LockIcon from '@mui/icons-material/Lock';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PhoneIcon from '@mui/icons-material/Phone';
+
 const Register = () => {
+  //For password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
   const classes = useStyle();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -98,7 +114,7 @@ const Register = () => {
 
   return (
     <Container className={classes.container}>
-      <Paper>
+      <Paper className={classes.log_container}>
         <Grid>
           <Typography variant="h1" className={classes.title}>
             Register
@@ -106,85 +122,118 @@ const Register = () => {
         </Grid>
         <form onSubmit={submitHandler} className={classes.form}>
           <br></br>
+          <DriveFileRenameOutlineIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
+            className={classes.log_field}
             label="First Name"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "First Name" }}
             onChange={handleChangeOnFirstname}
           />
           <br></br>
+          <DriveFileRenameOutlineIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
+            className={classes.log_field}
             label="Middle Name"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "Middle Name" }}
             onChange={handleChangeOnMiddlename}
           />
           <br></br>
+          <DriveFileRenameOutlineIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
+            className={classes.log_field}
             label="Last Name"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "Last name " }}
             onChange={handleChangeOnLastname}
           />
           <br></br>
           <br></br>
+          <AccountCircleIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
+            className={classes.log_field}
             label="Email"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "email" }}
             onChange={handleChangeOnEmail}
           />
           <br></br>
+          <KeyIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
+            className={classes.log_field}
             label="Password"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "Password" }}
             onChange={handleChangeOnPassword}
+            type={showPassword ? "text" : "password"}
+            InputProps={{ // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
           />
           <br></br>
 
           <br></br>
+          <LockIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
             label="Re-type Password"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "Password" }}
             onChange={handleChangeOnPassword2}
+            className={classes.log_field}
+            type={showPassword ? "text" : "password"}
+            InputProps={{ // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
           />
 
           <br></br>
           <br></br>
+          <PhoneIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
           <TextField
             id="outlined-basic"
+            className={classes.log_field}
             label="Phone Number"
             variant="outlined"
-            fullWidth
             inputProps={{ type: "Number" }}
             onChange={handleChangeOnPhoneNumber}
           />
           <br></br>
 
-          <Button variant="contained" fullWidth color="primary" type="submit">
+          <Button variant="contained" color="primary" type="submit">
             Register
           </Button>
         </form>
-        <ListItem>
-          Already have an account?{" "}
+          Already have an account?{" "}<br></br>
           <NextLink href="/login" passHref>
             <Link>Login</Link>
           </NextLink>
-        </ListItem>
       </Paper>
     </Container>
   );

@@ -25,15 +25,16 @@ const Featured = () => {
   const { banner } = data;
 
   return (
-    <Paper elevation={6} className={classes.featured_container}>
+    <Paper className={classes.featured_container}>
       <Swiper
         autoplay={{
           delay: 3000,
-          disableOnInteraction: true,
+          disableOnInteraction: true,  
         }}
         spaceBetween={30}
         loop={true}
         effect={"fade"}
+        className={classes.cert_swiper}
         modules={[Autoplay, EffectFade, Navigation, Pagination, A11y]}
         slidesPerView={1}
         navigation

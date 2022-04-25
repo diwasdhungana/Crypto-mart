@@ -6,6 +6,9 @@ import {
   Paper,
   Button,
   Container,
+  Grid,
+  Column,
+  UserProfile,
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
@@ -14,6 +17,8 @@ import useStyles from "../utils/styles";
 import Cookies from "js-cookie";
 import CheckoutWizard from "../components/CheckoutWizard";
 import axios from "axios";
+
+
 
 export default function CheckOut() {
   const router = useRouter();
@@ -45,20 +50,29 @@ export default function CheckOut() {
 
   return (
     <Container className={classes.container}>
-      <Paper>
+      <Paper className={classes.ship_container}>
         <CheckoutWizard activeStep={1} />
         {user && (
-          <Paper>
-            <Typography>Address : {user.Address} </Typography>
-            <Typography>City, state : {user.city} </Typography>
-            <Typography>Street Name : {user.streetName} </Typography>
-            <Typography>Country : {user.country} </Typography>
-          </Paper>
+          <Grid container>
+          <Grid item xs={6} style={{'textAlign':'right','paddingRight':'3rem', 'borderRight':'1px solid black'}}>
+          <Typography>Address : </Typography>
+          <Typography>City, State: </Typography>
+          <Typography>Street Name: </Typography>
+          <Typography>Country: </Typography>
+          </Grid>
+          <Grid item xs={6} style={{'textAlign':'left', 'paddingLeft':'3rem'}}>          
+             <Typography>{user.Address}</Typography>              
+            <Typography>{user.city} </Typography>
+            <Typography>{user.streetName} </Typography>
+            <Typography>{user.country} </Typography>
+          </Grid>
+     </Grid>
         )}
         <Typography> Are These information still Valid? </Typography>
         <Button
           variant="contained"
           color="primary"
+          style={{ marginRight: "10px" }}
           onClick={() => {
             router.push("/payment");
           }}

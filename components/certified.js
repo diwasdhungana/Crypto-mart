@@ -26,7 +26,7 @@ const Cert = () => {
   const { brands } = data;
 
   return (
-    <Paper elevation={6} className={classes.cert_container}>
+    <Paper className={classes.cert_container}>
       <Grid>
         <Typography variant="h1" className={classes.topic} align="center">
           Certified Shops
@@ -38,6 +38,7 @@ const Cert = () => {
         modules={[Navigation, A11y]}
         slidesPerView={4}
         navigation
+        className={classes.cert_swiper}
       >
         <Grid container direction="column" className={classes.cert_grid}>
           {brands.map((item) => (
@@ -53,7 +54,7 @@ const Cert = () => {
                       title={item.name}
                     ></CardMedia>
                     <CardContent>
-                      <Typography gutterBottom variant="h3">
+                      <Typography gutterBottom variant="h2" component="h3" style={{'fontSize':'18px'}}>
                         {item.name}
                       </Typography>
                     </CardContent>
