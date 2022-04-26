@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 import {
   Button,
@@ -13,14 +15,21 @@ import {
   Select,
   TextField,
   Typography,
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardContent,
 } from "@material-ui/core";
 import useStyle from "../utils/styles";
 import data from "../utils/data";
 import axios from "axios";
-import { Category } from "@material-ui/icons";
-import { display } from "@mui/system";
 
 export default function RegisterProduct() {
+  // let imageSrc = [];
+  // useEffect(() => {
+  //   handleOnChange();
+  // }, []);
+
   const classes = useStyle();
   const { category } = data;
   const [product, setProduct] = useState({
@@ -47,44 +56,80 @@ export default function RegisterProduct() {
     isFlammable: false,
     isExplosive: false,
   });
-
-  const [imageSrc, setImageSrc] = useState();
+  let imagearray;
+  const [images, setImages] = useState([]);
   const [uploadData, setUploadData] = useState();
   let Bigdata;
 
   function handleOnChange(changeEvent) {
-    const reader = new FileReader();
+    setImages((images) => (images = []));
+    if (changeEvent.target.files.length > 0) {
+      if (changeEvent.target.files.length > 5) {
+        alert("You can only upload 5 images");
+      } else {
+        Array.from(changeEvent.target.files).forEach((file) => {
+          const objecturl = URL.createObjectURL(file);
+          imagearray = {
+            img: objecturl,
+            name: file.name,
+            id: `${file.name}000${Math.floor(Math.random() * 1000)}`,
+          };
+          setImages((images) => [
+            ...images,
+            {
+              img: objecturl,
+              name: file.name,
+              id: `${file.name}000${Math.floor(Math.random() * 1000)}`,
+            },
+          ]);
+          console.log("images", images);
+        });
 
-    reader.onload = function (onLoadEvent) {
-      setImageSrc(onLoadEvent.target.result);
-      setUploadData(undefined);
-    };
+        const form = changeEvent.currentTarget;
+        const fileInput = Array.from(form.elements).find(
+          ({ name }) => name === "file"
+        );
+        console.log("fileInput", fileInput);
+        const formData = new FormData();
+        for (const file of fileInput.files) {
+          formData.append("file", file);
+        }
+        // console.log(formData);
+        formData.append("upload_preset", "cryptomart-images");
+        setUploadData((uploadData) => {
+          uploadData = null;
+          return formData;
+        });
+        console.log("uploadData", uploadData);
+      }
+    }
 
-    reader.readAsDataURL(changeEvent.target.files[0]);
+    // const reader = new FileReader();
+    // reader.onload = function (onLoadEvent) {
+    //   setImageSrc([...imageSrc, { img: onLoadEvent.target.result }]);
+    //   console.log(onLoadEvent);
+    //   console.log(
+    //     Array.from(changeEvent.target.files).map((file) => file.name)
+    //   );
+    //   setUploadData(undefined);
+    // };
+    // reader.readAsDataURL(changeEvent.target.files[0]);
   }
 
   async function handleOnSubmit(event) {
     event.preventDefault();
-    const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
-      ({ name }) => name === "file"
-    );
-    const formData = new FormData();
-    for (const file of fileInput.files) {
-      formData.append("file", file);
-    }
-    formData.append("upload_preset", "cryptomart-images");
+    // console.log(event.currentTarget);
     Bigdata = await fetch(
       "https://api.cloudinary.com/v1_1/cryptomart/image/upload",
       {
         method: "POST",
-        body: formData,
+        body: uploadData,
       }
     ).then((res) => res.json());
     alert("Image uploaded successfully, Submit to finalize");
+    console.log("Bigdata :", Bigdata);
     setUploadData(Bigdata);
     console.log("URL : ", Bigdata.secure_url);
-    setImageSrc(Bigdata.secure_url);
     setProduct({
       ...product,
       image: Bigdata.secure_url,
@@ -379,29 +424,15 @@ export default function RegisterProduct() {
         ) : null}
         <br />
         <p style={{ position: "relative", bottom: "16.5rem" }}>Upload Image:</p>
-        <form method="post" onChange={handleOnChange} onSubmit={handleOnSubmit} className={classes.reg_img}>
-          <p>
-            <input type="file" name="file" />
-          </p>
-          <img src={imageSrc} />
-
-          {/* {imageSrc && !uploadData && ( */}
-          <p>
-            <button>Confirm Image</button>
-          </p>
-          {/* )} */}
-
-          {/* {uploadData && (
-            <code>
-            <pre>{JSON.stringify(uploadData, null, 2)}</pre>
-            </code>
-          )} */}
-        </form>
         <Button
           className={classes.reg_button}
-          style={{'backgroundColor':'#c88bd1', 'color':'black', 'padding':'10px 20px', 'borderRadius':'10px'}}
+          style={{
+            backgroundColor: "#c88bd1",
+            color: "black",
+            padding: "10px 20px",
+            borderRadius: "10px",
+          }}
           onClick={async () => {
-            console.log(imageSrc);
             console.log("PRODUCT :", product);
             const response = await fetch("/api/registerProduct", {
               method: "POST",
@@ -416,6 +447,52 @@ export default function RegisterProduct() {
           {" "}
           Submit{" "}
         </Button>{" "}
+      </Paper>{" "}
+      <br />
+      <Paper className={classes.upload_container}>
+        {images.length > 0 ? (
+          <Grid container className={classes.cert_grid} spacing={0}>
+            {images.map((item) => (
+              <Grid item xs={12} sm={6} md={5} key={item.id}>
+                <Card style={{ height: "300px", width: "300px" }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="300"
+                      image={item.img}
+                      title="Contemplative Reptile"
+                    ></CardMedia>
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h2"
+                        component="h3"
+                        style={{
+                          fontSize: "15px",
+                          position: "relative",
+                          bottom: "2.5rem",
+                          backgroundColor: "white",
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        ) : null}
+        <form
+          method="post"
+          onChange={handleOnChange}
+          onSubmit={handleOnSubmit}
+          className={classes.reg_img}
+        >
+          <input type="file" name="file" multiple />
+          {images.length > 0 ? <button>Confirm Image</button> : null}
+        </form>
       </Paper>
     </Container>
   );

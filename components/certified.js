@@ -43,21 +43,16 @@ const Cert = () => {
         <Grid container direction="column" className={classes.cert_grid}>
           {brands.map((item) => (
             <SwiperSlide key={item.id}>
-              <Grid item xs={12} key={item.id} spacing={0}>
+              <Grid item xs={12} key={item.image} spacing={0}>
                 <Card>
                   <CardActionArea>
                     <CardMedia
                       component="img"
                       alt={item.name}
                       height="80"
+                      width="80"
                       image={item.image}
-                      title={item.name}
                     ></CardMedia>
-                    <CardContent>
-                      <Typography gutterBottom variant="h2" component="h3" style={{'fontSize':'18px'}}>
-                        {item.name}
-                      </Typography>
-                    </CardContent>
                   </CardActionArea>
                 </Card>
               </Grid>

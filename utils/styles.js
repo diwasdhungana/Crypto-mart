@@ -68,16 +68,16 @@ const useStyle = makeStyles(
       borderRadius: "20px",
       background: "#d0c9d1",
     },
-    cert_swiper:{
+    cert_swiper: {
       "& .swiper-button-next": {
-            padding: "10px",
-            color: "purple",
+        padding: "10px",
+        color: "purple",
       },
       "& .swiper-button-prev": {
         padding: "10px",
         color: "purple",
       },
-      "& .MuiPaper-root":{
+      "& .MuiPaper-root": {
         padding: "10px",
       },
     },
@@ -95,8 +95,8 @@ const useStyle = makeStyles(
       borderRadius: "20px",
       background: "#d0c9d1",
     },
-    product_card:{
-      "& .MuiCardActions-root":{
+    product_card: {
+      "& .MuiCardActions-root": {
         position: "relative",
         bottom: "3rem",
       },
@@ -251,7 +251,7 @@ const useStyle = makeStyles(
       border: "1px solid purple",
       borderRadius: "10px",
       background: "white",
-      color:'black',
+      color: "black",
       "&:hover": {
         color: "black",
         textDecoration: "none",
@@ -319,30 +319,45 @@ const useStyle = makeStyles(
       bottom: "15rem",
       backgroundColor: "#cfbebe",
     },
-    reg_img:{
+    reg_img: {
       position: "relative",
       bottom: "15rem",
     },
-  //Login
-  log_container:{
-    minHeight:"500px",
-    background:"white",
-    padding:"20px",
-    borderRadius:"20px",
-    alignItems:"center",
-    justifyContent:"center",
-    textAlign:"center",
-  },
-  log_field:{
-    width:'35%',
-  },
-  log_icon:{
-    position:'relative',
-    top:'2rem',
-    right:'1rem',
-  },
+    reg_img_container: {
+      position: "relative",
+      backgroundcolor: "black",
+      width: "300px",
+      height: "300px",
+      bottom: "15rem",
+    },
+    //Login
+    log_container: {
+      minHeight: "500px",
+      background: "white",
+      padding: "20px",
+      borderRadius: "20px",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+    upload_container: {
+      minHeight: "1000px",
+      background: "white",
+      padding: "20px",
+      borderRadius: "20px",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+    },
+    log_field: {
+      width: "35%",
+    },
+    log_icon: {
+      position: "relative",
+      top: "2rem",
+      right: "1rem",
+    },
 
-  
     connect: {
       padding: "1rem",
       marginTop: "2rem",
