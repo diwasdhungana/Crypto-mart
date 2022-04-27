@@ -23,6 +23,14 @@ import {
 import useStyle from "../utils/styles";
 import data from "../utils/data";
 import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, EffectFade, Autoplay } from "swiper";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/effect-fade";
 
 export default function RegisterProduct() {
   // let imageSrc = [];
@@ -424,65 +432,56 @@ export default function RegisterProduct() {
         ) : null}
         <br />
         <p style={{ position: "relative", bottom: "16.5rem" }}>Upload Image:</p>
-        <Button
-          className={classes.reg_button}
-          style={{
-            backgroundColor: "#c88bd1",
-            color: "black",
-            padding: "10px 20px",
-            borderRadius: "10px",
-          }}
-          onClick={async () => {
-            console.log("PRODUCT :", product);
-            const response = await fetch("/api/registerProduct", {
-              method: "POST",
-              body: JSON.stringify(product),
-              headers: { "Content-Type": "application/json" },
-            });
-            const res = await response.json();
-            alert("upload Successful");
-            // console.log(datatoapi);
-          }}
-        >
-          {" "}
-          Submit{" "}
-        </Button>{" "}
-      </Paper>{" "}
-      <br />
-      <Paper className={classes.upload_container}>
         {images.length > 0 ? (
-          <Grid container className={classes.cert_grid} spacing={0}>
-            {images.map((item) => (
-              <Grid item xs={12} sm={6} md={5} key={item.id}>
-                <Card style={{ height: "300px", width: "300px" }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      alt="Contemplative Reptile"
-                      height="300"
-                      image={item.img}
-                      title="Contemplative Reptile"
-                    ></CardMedia>
-                    <CardContent>
-                      <Typography
-                        gutterBottom
-                        variant="h2"
-                        component="h3"
-                        style={{
-                          fontSize: "15px",
-                          position: "relative",
-                          bottom: "2.5rem",
-                          backgroundColor: "white",
-                        }}
-                      >
-                        {item.name}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+          <Swiper
+            spaceBetween={20}
+            modules={[Navigation, A11y]}
+            slidesPerView={3}
+            navigation
+            className={classes.cert_swiper_upload}
+          >
+            <Grid container direction="column" className={classes.cert_grid}>
+              {images.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={12}
+                    key={item.image}
+                    spacing={0}
+                  >
+                    <Card>
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          alt={item.name}
+                          height="320"
+                          width="320"
+                          image={item.img}
+                        ></CardMedia>
+                        <CardContent>
+                          <Typography
+                            gutterBottom
+                            variant="h2"
+                            component="h3"
+                            style={{
+                              fontSize: "15px",
+                              position: "relative",
+                              bottom: "2.5rem",
+                              backgroundColor: "white",
+                            }}
+                          >
+                            {item.name}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </Grid>
+                </SwiperSlide>
+              ))}
+            </Grid>
+          </Swiper>
         ) : null}
         <form
           method="post"
@@ -490,9 +489,50 @@ export default function RegisterProduct() {
           onSubmit={handleOnSubmit}
           className={classes.reg_img}
         >
-          <input type="file" name="file" multiple />
-          {images.length > 0 ? <button>Confirm Image</button> : null}
+          {images.length > 0 ? (
+            <label>
+              ^^^^^^^^^^^^^^^^^^^^ <br></br> First image will be taken as
+              thumbnail <br />
+              {product.image == null ? "Change Pictures" : null}
+            </label>
+          ) : (
+            <label>Choose Pictures</label>
+          )}
+
+          <br></br>
+          {product.image == null ? (
+            <input type="file" name="file" multiple />
+          ) : null}
+
+          {images.length > 0 && product.image == null ? (
+            <button>Confirm Image</button>
+          ) : null}
         </form>
+        {product.image == null ? null : (
+          <Button
+            className={classes.reg_button}
+            style={{
+              backgroundColor: "#c88bd1",
+              color: "black",
+              padding: "10px 20px",
+              borderRadius: "10px",
+            }}
+            onClick={async () => {
+              console.log("PRODUCT :", product);
+              const response = await fetch("/api/registerProduct", {
+                method: "POST",
+                body: JSON.stringify(product),
+                headers: { "Content-Type": "application/json" },
+              });
+              const res = await response.json();
+              alert("upload Successful");
+              // console.log(datatoapi);
+            }}
+          >
+            {" "}
+            Submit{" "}
+          </Button>
+        )}
       </Paper>
     </Container>
   );

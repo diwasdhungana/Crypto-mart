@@ -24,11 +24,10 @@ export default function ProductScreen(props) {
   const router = useRouter();
 
   const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+  const { cartItems } = cart;
   const { product, Products } = props;
-  // const { Products } = data;
   let currency = "$";
-  const [incart, setInCart] = useState(false);
-
   const addToCartHandler = async () => {
     const data = await axios.get(`/api/products/${product._id}`);
     if (data.numInStock <= 0 || data.numInStock < product.quantity + 1) {
@@ -36,7 +35,6 @@ export default function ProductScreen(props) {
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
-    setInCart(true);
     // router.push("/cart");
 
     //Quantity Amount
@@ -72,27 +70,35 @@ export default function ProductScreen(props) {
               <ListItem>
                 <Typography component="h2" variant="h2">
                   {" "}
-                  <span style={{'fontWeight':'bold'}}>Price:     </span>{" "}{currency}{product.price}
+                  <span style={{ fontWeight: "bold" }}>Price: </span> {currency}
+                  {product.price}
                 </Typography>
-
               </ListItem>
 
               <ListItem>
                 <Typography component="h4" variant="h4">
-                  <span style={{'fontWeight':'bold'}}>Description:  </span> {product.description.short}
+                  <span style={{ fontWeight: "bold" }}>Description: </span>{" "}
+                  {product.description.short}
                 </Typography>
               </ListItem>
-              
+
               <ListItem>
                 <Typography component="h4" variant="h4">
-                <span style={{'fontWeight':'bold'}}>Category:  </span>
+                  <span style={{ fontWeight: "bold" }}>Category: </span>
                   {product.category}
                 </Typography>
-
               </ListItem>
 
               <ListItem>
-                {!incart ? (
+                {cartItems.find(({ slug }) => slug === product.slug) ? (
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    style={{ width: "120%" }}
+                  >
+                    Added to Cart
+                  </Button>
+                ) : (
                   <Button
                     fullWidth
                     variant="contained"
@@ -101,13 +107,6 @@ export default function ProductScreen(props) {
                   >
                     Add to Cart
                   </Button>
-                ) : (
-                  <>
-                    <Button variant="contained" color="secondary" style={{'width':'120%'}}>
-                      Added to Cart
-                    </Button>
-                  </>
-
                 )}
               </ListItem>
             </List>
@@ -115,8 +114,10 @@ export default function ProductScreen(props) {
         </Grid>
         <br></br>
         <div className={classes.product_details}>
-          <Typography component="h4" variant="h3" style={{'fontWeight':'400'}}>Product Details:</Typography>
-          <Typography component="h4" variant="h4" style={{'fontSize':'18px'}}>
+          <Typography component="h4" variant="h3" style={{ fontWeight: "400" }}>
+            Product Details:
+          </Typography>
+          <Typography component="h4" variant="h4" style={{ fontSize: "18px" }}>
             {product.description.long}
           </Typography>
         </div>

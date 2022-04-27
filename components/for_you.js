@@ -14,7 +14,7 @@ import {
 import useStyle from "../utils/styles";
 import axios from "axios";
 import { Store } from "../utils/Store";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 
 const ForYou = (props) => {
@@ -23,6 +23,9 @@ const ForYou = (props) => {
   const Products = props.Products;
   const Name = props.Name;
   const { state, dispatch } = useContext(Store);
+  const { cart } = state;
+  const { cartItems } = cart;
+  console.log("CartItems", cartItems);
 
   return (
     <Paper className={classes.for_you}>
@@ -34,7 +37,10 @@ const ForYou = (props) => {
       <Grid container spacing={2}>
         {Products.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id}>
-            <Card style={{'borderRadius':'20px', 'height':'360px',}} className={classes.product_card}>
+            <Card
+              style={{ borderRadius: "20px", height: "360px" }}
+              className={classes.product_card}
+            >
               <Nextlink href={`/product/${item.slug}`} passHref>
                 <CardActionArea>
                   <CardMedia
@@ -45,7 +51,12 @@ const ForYou = (props) => {
                     title={item.name}
                   ></CardMedia>
                   <CardContent>
-                    <Typography gutterBottom variant="h1" component="h1" style={{'position':'relative', 'bottom':'20px'}}>
+                    <Typography
+                      gutterBottom
+                      variant="h1"
+                      component="h1"
+                      style={{ position: "relative", bottom: "20px" }}
+                    >
                       {item.name}
                     </Typography>
                   </CardContent>
@@ -55,30 +66,36 @@ const ForYou = (props) => {
                 <Typography variant="body2" color="textSecondary" component="p">
                   {item.rating} &#11088;
                 </Typography>
-                <Typography variant="h5" style={{'fontSize':'14px'}}>
+                <Typography variant="h5" style={{ fontSize: "14px" }}>
                   {currency}
                   {item.price}
                 </Typography>
-                <Button
-                  size="small"
-                  style={{'backgroundColor':'rgb(255 225 150)', 'color':'black',}}
-                  onClick={async () => {
-                    const data = await axios.get(`/api/products/${item._id}`);
-                    if (
-                      data.numInStock <= 0 ||
-                      data.numInStock < item.quantity + 1
-                    ) {
-                      alert("Out of stock");
-                      return;
-                    }
-                    dispatch({
-                      type: "CART_ADD_ITEM",
-                      payload: { ...item, quantity: 1 },
-                    });
-                  }}
-                >
-                  Add to cart
-                </Button>
+                {cartItems.find(({ slug }) => slug === item.slug) ? (
+                  <Button size="small" color="primary">
+                    Added to Cart
+                  </Button>
+                ) : (
+                  <Button
+                    size="small"
+                    color="secondary"
+                    onClick={async () => {
+                      const data = await axios.get(`/api/products/${item._id}`);
+                      if (
+                        data.numInStock <= 0 ||
+                        data.numInStock < item.quantity + 1
+                      ) {
+                        alert("Out of stock");
+                        return;
+                      }
+                      dispatch({
+                        type: "CART_ADD_ITEM",
+                        payload: { ...item, quantity: 1 },
+                      });
+                    }}
+                  >
+                    Add to Cart
+                  </Button>
+                )}
               </CardActions>
             </Card>
           </Grid>

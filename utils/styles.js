@@ -81,6 +81,22 @@ const useStyle = makeStyles(
         padding: "10px",
       },
     },
+    cert_swiper_upload: {
+      bottom: "15rem",
+      height: "330px",
+      marginBottom: "-10rem",
+      "& .swiper-button-next": {
+        padding: "10px",
+        color: "purple",
+      },
+      "& .swiper-button-prev": {
+        padding: "10px",
+        color: "purple",
+      },
+      "& .MuiPaper-root": {
+        padding: "10px",
+      },
+    },
     category: {
       marginTop: "20px",
       minHeight: "80vh",
@@ -316,18 +332,18 @@ const useStyle = makeStyles(
     },
     reg_button: {
       position: "relative",
-      bottom: "15rem",
+      bottom: "3rem",
       backgroundColor: "#cfbebe",
     },
     reg_img: {
       position: "relative",
-      bottom: "15rem",
+      bottom: "5rem",
     },
     reg_img_container: {
       position: "relative",
       backgroundcolor: "black",
-      width: "300px",
-      height: "300px",
+      height: "350px",
+      height: "fixed",
       bottom: "15rem",
     },
     //Login

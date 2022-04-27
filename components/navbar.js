@@ -32,14 +32,11 @@ const Navbar = () => {
   const { state, dispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
-
   const logoutCLickHandler = () => {
-
     dispatch({ type: "USER_LOGOUT" });
     Cookies.remove("userInfo");
     Cookies.remove("cartItems");
     router.push("/");
-
   };
   return (
     <AppBar position="fixed" className={classes.appBar} color="secondary">
@@ -76,17 +73,23 @@ const Navbar = () => {
               {/* Check for login and if logged in display name initial */}
               {userInfo ? (
                 <>
-                  <Link onClick={logoutCLickHandler} style={{'cursor':'pointer', 'textDecoration':'none'}} >
-                      <LogoutIcon color="#9747FF" sx={{ fontSize: 20 }} className={classes.nav_logout}/>
-                    <Typography variant="h5" color="textPrimary" >
+                  <Link
+                    onClick={logoutCLickHandler}
+                    style={{ cursor: "pointer", textDecoration: "none" }}
+                  >
+                    <LogoutIcon
+                      color="#9747FF"
+                      sx={{ fontSize: 20 }}
+                      className={classes.nav_logout}
+                    />
+                    <Typography variant="h5" color="textPrimary">
                       LOGOUT
                     </Typography>
-
                   </Link>
                 </>
               ) : (
                 <Navlink href={"/login"} passHref>
-                  <Link style={{'textDecoration':'none'}}>
+                  <Link style={{ textDecoration: "none" }}>
                     <LoginIcon color="#9747FF" sx={{ fontSize: 25 }} />
                     <Typography variant="h5" color="textPrimary">
                       LOGIN
@@ -99,7 +102,7 @@ const Navbar = () => {
             </div>
             <div className={classes.growcontentItem}>
               <Navlink href={"/profile"} passHref>
-                <Link style={{'textDecoration':'none'}}>
+                <Link style={{ textDecoration: "none" }}>
                   <AccountCircleIcon color="#9747FF" sx={{ fontSize: 25 }} />
                   <Typography variant="h5" color="textPrimary">
                     {Cookies.get("userName")
@@ -114,7 +117,7 @@ const Navbar = () => {
 
             <div className={classes.growcontentItem}>
               <Navlink href={"/cart"} passHref>
-                <Link style={{'textDecoration':'none'}}>
+                <Link style={{ textDecoration: "none" }}>
                   {cart.cartItems.length ? (
                     <Badge
                       badgeContent={cart.cartItems.length}
@@ -135,7 +138,7 @@ const Navbar = () => {
             {/* wallet button */}
 
             <div className={classes.growcontentItem}>
-              <Link href={"/wallet"} style={{'textDecoration':'none'}}>
+              <Link href={"/wallet"} style={{ textDecoration: "none" }}>
                 <AccountBalanceWalletIcon
                   color="#9747FF"
                   sx={{ fontSize: 25 }}
@@ -145,9 +148,6 @@ const Navbar = () => {
                 </Typography>
               </Link>
             </div>
-            {/* <Switch
-              onChange={() => setMode(mode === "light" ? "dark" : "light")}
-            /> */}
           </div>
         </div>
       </Toolbar>

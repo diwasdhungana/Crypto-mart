@@ -38,8 +38,13 @@ const Category = () => {
                     image={item.image}
                     title={item.name}
                   ></CardMedia>
-                  <CardContent>
-                    <Typography gutterBottom variant="h2" component="h3" style={{'fontSize':'18px'}}>
+                  <CardContent height="4px">
+                    <Typography
+                      gutterBottom
+                      variant="h2"
+                      component="h3"
+                      style={{ fontSize: "18px" }}
+                    >
                       {item.name}
                     </Typography>
                   </CardContent>
