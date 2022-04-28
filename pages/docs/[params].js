@@ -11,7 +11,7 @@ function Doc(props) {
   return (
     <Container className={classes.container}>
       <Paper className={classes.param_container}>
-      <ForYou Products={Products} Name={params}/>
+        <ForYou Products={Products} Name={params} />
       </Paper>
     </Container>
   );

@@ -42,15 +42,15 @@ const useStyle = makeStyles(
     },
     param_container: {
       minHeight: "500px",
-      background: "white",
       padding: "20px",
+      background: "#d0c9d1",
       borderRadius: "20px",
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
     },
     content: {
-      background: "#E0E0E0",
+      background: "#DAD6D6",
     },
     footer: {
       padding: "1rem",
@@ -66,7 +66,7 @@ const useStyle = makeStyles(
       minHeight: "30vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#d0c9d1",
+      background: "#f7f7f7",
     },
     cert_swiper: {
       "& .swiper-button-next": {
@@ -109,7 +109,7 @@ const useStyle = makeStyles(
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#d0c9d1",
+      background: "#white",
     },
     product_card: {
       "& .MuiCardActions-root": {
@@ -400,12 +400,13 @@ const useStyle = makeStyles(
 
     left_panel: {
       float: "left",
+      position: "fixed",
       height: "100%",
       width: "15%",
       padding: "20px",
       marginTop: "3rem",
       marginLeft: "1rem",
-      background: "#ffff",
+      background: "#ffffff",
       borderRadius: "20px",
       textAlign: "left",
       height: "Fixed",
@@ -417,12 +418,13 @@ const useStyle = makeStyles(
     },
 
     right_panel: {
+      position: "fixed",
       float: "right",
       minHeight: "50vh",
       width: "15%",
       padding: "20px",
       marginTop: "3rem",
-      marginRight: "1rem",
+      marginLeft: "84%",
       background: "#ffff",
       borderRadius: "20px",
       fontFamily: "Barlow Condensed",

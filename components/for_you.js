@@ -17,6 +17,9 @@ import { Store } from "../utils/Store";
 import React, { useContext, useState } from "react";
 import Image from "next/image";
 
+import StarRateTwoToneIcon from "@mui/icons-material/StarRateTwoTone";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 const ForYou = (props) => {
   const classes = useStyle();
   let currency = "$";
@@ -26,6 +29,14 @@ const ForYou = (props) => {
   const { cart } = state;
   const { cartItems } = cart;
   console.log("CartItems", cartItems);
+
+  const namehandler = (e) => {
+    const name = "";
+    for (let i = 0; i < 60; i++) {
+      e[i] ? (name += e[i]) : (name += " ");
+    }
+    return name;
+  };
 
   return (
     <Paper className={classes.for_you}>
@@ -38,33 +49,61 @@ const ForYou = (props) => {
         {Products.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id}>
             <Card
-              style={{ borderRadius: "20px", height: "360px" }}
+              style={{
+                minHeight: "360px",
+                background: "transparent",
+                boxShadow: "none",
+              }}
               className={classes.product_card}
             >
               <Nextlink href={`/product/${item.slug}`} passHref>
-                <CardActionArea>
+                <CardActionArea style={{ background: "transparent" }}>
                   <CardMedia
                     component="img"
                     alt={item.name}
                     height="250"
                     image={item.image}
                     title={item.name}
+                    style={{ borderRadius: "8px 8px 0 0" }}
                   ></CardMedia>
                   <CardContent>
                     <Typography
                       gutterBottom
-                      variant="h1"
-                      component="h1"
-                      style={{ position: "relative", bottom: "20px" }}
+                      variant="h2"
+                      component="h2"
+                      style={{
+                        position: "relative",
+                        bottom: "20px",
+                        display: "inline",
+                        maxLength: 20,
+                      }}
                     >
-                      {item.name}
+                      {namehandler(item.name)}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
               </Nextlink>
               <CardActions>
+                <FavoriteIcon
+                  style={{
+                    color: "red",
+                    fontSize: "20px",
+                    position: "relative",
+                    top: "3px",
+                  }}
+                  sx={{ fontSize: "20px" }}
+                ></FavoriteIcon>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  {item.rating} &#11088;
+                  {item.rating}{" "}
+                  <StarRateTwoToneIcon
+                    style={{
+                      color: "#ffc107",
+                      fontSize: "20px",
+                      position: "relative",
+                      top: "3px",
+                    }}
+                    sx={{ fontSize: "20px" }}
+                  ></StarRateTwoToneIcon>
                 </Typography>
                 <Typography variant="h5" style={{ fontSize: "14px" }}>
                   {currency}
