@@ -31,7 +31,7 @@ const ForYou = (props) => {
   console.log("CartItems", cartItems);
 
   const namehandler = (e) => {
-    const name = "";
+    let name = "";
     for (let i = 0; i < 60; i++) {
       e[i] ? (name += e[i]) : (name += " ");
     }
@@ -73,7 +73,7 @@ const ForYou = (props) => {
                       component="h2"
                       style={{
                         position: "relative",
-                        bottom: "20px",
+                        bottom: "10px",
                         display: "inline",
                         maxLength: 20,
                       }}

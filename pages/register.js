@@ -169,7 +169,6 @@ const Register = () => {
             className={classes.log_field}
             label="Password"
             variant="outlined"
-            inputProps={{ type: "Password" }}
             onChange={handleChangeOnPassword}
             type={showPassword ? "text" : "password"}
             InputProps={{ // <-- This is where the toggle button is added.
@@ -194,7 +193,6 @@ const Register = () => {
             id="outlined-basic"
             label="Re-type Password"
             variant="outlined"
-            inputProps={{ type: "Password" }}
             onChange={handleChangeOnPassword2}
             className={classes.log_field}
             type={showPassword ? "text" : "password"}
