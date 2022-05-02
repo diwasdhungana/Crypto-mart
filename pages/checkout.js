@@ -18,8 +18,6 @@ import Cookies from "js-cookie";
 import CheckoutWizard from "../components/CheckoutWizard";
 import axios from "axios";
 
-
-
 export default function CheckOut() {
   const router = useRouter();
   const { state } = useContext(Store);
@@ -51,24 +49,39 @@ export default function CheckOut() {
   return (
     <Container className={classes.container}>
       <Paper className={classes.ship_container}>
-        <CheckoutWizard activeStep={1} />
+        <CheckoutWizard activeStep={1} style={{ backgroundColor: "#1b1b1b" }} />
         {user && (
           <Grid container>
-          <Grid item xs={6} style={{'textAlign':'right','paddingRight':'3rem', 'borderRight':'1px solid black'}}>
-          <Typography>Address : </Typography>
-          <Typography>City, State: </Typography>
-          <Typography>Street Name: </Typography>
-          <Typography>Country: </Typography>
+            <Grid
+              item
+              xs={6}
+              style={{
+                textAlign: "right",
+                paddingRight: "3rem",
+                borderRight: "1px solid black",
+              }}
+            >
+              <Typography color="primary">Address : </Typography>
+              <Typography color="primary">City, State: </Typography>
+              <Typography color="primary">Street Name: </Typography>
+              <Typography color="primary">Country: </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              style={{ textAlign: "left", paddingLeft: "3rem" }}
+            >
+              <Typography color="primary">{user.Address}</Typography>
+              <Typography color="primary">{user.city} </Typography>
+              <Typography color="primary">{user.streetName} </Typography>
+              <Typography color="primary">{user.country} </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={6} style={{'textAlign':'left', 'paddingLeft':'3rem'}}>          
-             <Typography>{user.Address}</Typography>              
-            <Typography>{user.city} </Typography>
-            <Typography>{user.streetName} </Typography>
-            <Typography>{user.country} </Typography>
-          </Grid>
-     </Grid>
         )}
-        <Typography> Are These information still Valid? </Typography>
+        <Typography color="primary">
+          {" "}
+          Are These information still Valid?{" "}
+        </Typography>
         <Button
           variant="contained"
           color="primary"

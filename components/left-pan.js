@@ -6,7 +6,12 @@ function Left_panel() {
   const classes = useStyle();
   return (
     <div className={classes.left_panel}>
-      <Typography variant="h1" component="h3" className={classes.panel_topic}>
+      <Typography
+        variant="h1"
+        component="h3"
+        className={classes.panel_topic}
+        color="primary"
+      >
         Explore
       </Typography>
       <ul className={classes.left_items}>
@@ -24,7 +29,7 @@ function Left_panel() {
         </Navlink>
       </ul>
 
-      <Typography variant="h1" className={classes.panel_topic}>
+      <Typography variant="h1" className={classes.panel_topic} color="primary">
         Category
       </Typography>
       <ul className={classes.left_items}>
@@ -42,7 +47,7 @@ function Left_panel() {
         </Navlink>
       </ul>
 
-      <Typography variant="h1" className={classes.panel_topic}>
+      <Typography variant="h1" className={classes.panel_topic} color="primary">
         Coupons
       </Typography>
       <ul className={classes.left_items}>

@@ -10,7 +10,7 @@ function Myinfo() {
     <Container className={classes.container}>
       <Paper>
         <h1>myinfo</h1>
-        <Typography component="h1" variant="h1">
+        <Typography component="h1" variant="h1" color="primary">
           {userinfo}
         </Typography>
       </Paper>

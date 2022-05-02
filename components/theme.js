@@ -1,13 +1,11 @@
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import React, { useState } from "react";
 
-import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import React, {useState} from 'react'
-
-
-const theme = responsiveFontSizes( createTheme({
-    root: {
-      backgroundColor: "#CFBEBE",
-    },
+const theme = responsiveFontSizes(
+  createTheme({
+    root: {},
     typography: {
+      color: "#000000",
       h1: {
         fontSize: "20px",
         fontWeight: "400",
@@ -22,6 +20,7 @@ const theme = responsiveFontSizes( createTheme({
       },
       h3: {
         //for product name
+
         fontSize: "20px",
         fontWeight: "300",
         margin: "0.5rem 0",
@@ -72,6 +71,7 @@ const theme = responsiveFontSizes( createTheme({
       },
       overline: {
         fontSize: "1rem",
+
         fontWeight: "500",
         margin: "1rem 0",
         fontFamily: "Barlow Condensed",
@@ -82,6 +82,15 @@ const theme = responsiveFontSizes( createTheme({
         margin: "1rem 0",
       },
     },
-  }));
+    palette: {
+      primary: {
+        main: "#ffc107",
+      },
+      secondary: {
+        main: "#eeffff",
+      },
+    },
+  })
+);
 
-  export default theme
+export default theme;

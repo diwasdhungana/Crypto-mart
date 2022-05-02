@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {
@@ -19,11 +19,11 @@ import { useState } from "react";
 import bcrypt from "bcryptjs";
 
 //Icon Imports
-import KeyIcon from '@mui/icons-material/Key';
-import LockIcon from '@mui/icons-material/Lock';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PhoneIcon from '@mui/icons-material/Phone';
+import KeyIcon from "@mui/icons-material/Key";
+import LockIcon from "@mui/icons-material/Lock";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const Register = () => {
   //For password visibility
@@ -116,13 +116,17 @@ const Register = () => {
     <Container className={classes.container}>
       <Paper className={classes.log_container}>
         <Grid>
-          <Typography variant="h1" className={classes.title}>
+          <Typography variant="h1" className={classes.title} color="primary">
             Register
           </Typography>
         </Grid>
         <form onSubmit={submitHandler} className={classes.form}>
           <br></br>
-          <DriveFileRenameOutlineIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <DriveFileRenameOutlineIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             className={classes.log_field}
@@ -132,7 +136,11 @@ const Register = () => {
             onChange={handleChangeOnFirstname}
           />
           <br></br>
-          <DriveFileRenameOutlineIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <DriveFileRenameOutlineIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             className={classes.log_field}
@@ -142,7 +150,11 @@ const Register = () => {
             onChange={handleChangeOnMiddlename}
           />
           <br></br>
-          <DriveFileRenameOutlineIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <DriveFileRenameOutlineIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             className={classes.log_field}
@@ -153,7 +165,11 @@ const Register = () => {
           />
           <br></br>
           <br></br>
-          <AccountCircleIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <AccountCircleIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             className={classes.log_field}
@@ -163,7 +179,11 @@ const Register = () => {
             onChange={handleChangeOnEmail}
           />
           <br></br>
-          <KeyIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <KeyIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             className={classes.log_field}
@@ -171,7 +191,8 @@ const Register = () => {
             variant="outlined"
             onChange={handleChangeOnPassword}
             type={showPassword ? "text" : "password"}
-            InputProps={{ // <-- This is where the toggle button is added.
+            InputProps={{
+              // <-- This is where the toggle button is added.
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -182,13 +203,17 @@ const Register = () => {
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
           <br></br>
 
           <br></br>
-          <LockIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <LockIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             label="Re-type Password"
@@ -196,7 +221,8 @@ const Register = () => {
             onChange={handleChangeOnPassword2}
             className={classes.log_field}
             type={showPassword ? "text" : "password"}
-            InputProps={{ // <-- This is where the toggle button is added.
+            InputProps={{
+              // <-- This is where the toggle button is added.
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -207,13 +233,17 @@ const Register = () => {
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
 
           <br></br>
           <br></br>
-          <PhoneIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <PhoneIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             className={classes.log_field}
@@ -228,10 +258,10 @@ const Register = () => {
             Register
           </Button>
         </form>
-          Already have an account?{" "}<br></br>
-          <NextLink href="/login" passHref>
-            <Link>Login</Link>
-          </NextLink>
+        Already have an account? <br></br>
+        <NextLink href="/login" passHref>
+          <Link>Login</Link>
+        </NextLink>
       </Paper>
     </Container>
   );

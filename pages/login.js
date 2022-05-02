@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {
@@ -22,18 +22,18 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
 //Icon Imports
-import KeyIcon from '@mui/icons-material/Key';
-import LockIcon from '@mui/icons-material/Lock';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PhoneIcon from '@mui/icons-material/Phone';
+import KeyIcon from "@mui/icons-material/Key";
+import LockIcon from "@mui/icons-material/Lock";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const Login = () => {
   //For password visibility
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
-  
+
   const router = useRouter();
   //login?redirect=shipping
   const { redirect } = router.query;
@@ -66,13 +66,17 @@ const Login = () => {
     <Container className={classes.container}>
       <Paper className={classes.log_container}>
         <Grid>
-          <Typography variant="h1" className={classes.title}>
+          <Typography variant="h1" className={classes.title} color="primary">
             Login
           </Typography>
         </Grid>
         <form onSubmit={submitHandler} className={classes.form}>
           <br></br>
-          <AccountCircleIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <AccountCircleIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             label="Email"
@@ -82,7 +86,11 @@ const Login = () => {
             className={classes.log_field}
           />
           <br></br>
-          <KeyIcon className={classes.log_icon} style={{'color':"#9747FF"}} sx={{ fontSize: 30 }} />
+          <KeyIcon
+            className={classes.log_icon}
+            style={{ color: "#9747FF" }}
+            sx={{ fontSize: 30 }}
+          />
           <TextField
             id="outlined-basic"
             label="Password"
@@ -90,7 +98,8 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className={classes.log_field}
             type={showPassword ? "text" : "password"}
-            InputProps={{ // <-- This is where the toggle button is added.
+            InputProps={{
+              // <-- This is where the toggle button is added.
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
@@ -101,22 +110,22 @@ const Login = () => {
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
-              )
+              ),
             }}
           />
           <br></br>
 
-          <Button variant="contained" type="submit"  color="primary">
+          <Button variant="contained" type="submit" color="primary">
             Submit
           </Button>
         </form>
-
-          Dont have an account? {""}<br></br>
-          <NextLink href="/register" passHref>
-            <Link>
+        Dont have an account? {""}
+        <br></br>
+        <NextLink href="/register" passHref>
+          <Link>
             <Button>Register</Button>
-            </Link>
-          </NextLink>
+          </Link>
+        </NextLink>
       </Paper>
     </Container>
   );

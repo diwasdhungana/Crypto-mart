@@ -19,6 +19,7 @@ import Image from "next/image";
 
 import StarRateTwoToneIcon from "@mui/icons-material/StarRateTwoTone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { height } from "@mui/system";
 
 const ForYou = (props) => {
   const classes = useStyle();
@@ -41,7 +42,12 @@ const ForYou = (props) => {
   return (
     <Paper className={classes.for_you}>
       <Grid>
-        <Typography variant="h1" className={classes.topic} align="center">
+        <Typography
+          variant="h1"
+          className={classes.topic}
+          align="center"
+          color="primary"
+        >
           {Name}
         </Typography>
       </Grid>
@@ -50,73 +56,122 @@ const ForYou = (props) => {
           <Grid item xs={12} sm={6} md={3} key={item.id}>
             <Card
               style={{
-                minHeight: "360px",
-                background: "transparent",
-                boxShadow: "none",
+                minHeight: "380px",
+                maxHeight: "380px",
+                // minWidth: "220px",
+                // maxWidth: "220px",
+                backgroundColor: "#1b1b1b",
+                // boxShadow: "none",
               }}
               className={classes.product_card}
             >
               <Nextlink href={`/product/${item.slug}`} passHref>
-                <CardActionArea style={{ background: "transparent" }}>
+                <CardActionArea
+                  style={{ background: "#222222", height: "310px" }}
+                >
                   <CardMedia
                     component="img"
                     alt={item.name}
                     height="250"
                     image={item.image}
                     title={item.name}
-                    style={{ borderRadius: "8px 8px 0 0" }}
+                    style={{ backgroundColor: "white" }}
                   ></CardMedia>
                   <CardContent>
                     <Typography
                       gutterBottom
                       variant="h2"
                       component="h2"
+                      color="secondary"
                       style={{
+                        display: "-webkit-box",
+                        overflow: "hidden",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 2,
                         position: "relative",
                         bottom: "10px",
-                        display: "inline",
-                        maxLength: 20,
                       }}
                     >
-                      {namehandler(item.name)}
+                      {item.name}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
               </Nextlink>
-              <CardActions>
+              <CardActions
+                style={{
+                  background: "#1b1b1b",
+                  top: "0rem",
+                  paddingTop: "0rem",
+                  width: "100%",
+                  height: "90px",
+                }}
+              >
                 <FavoriteIcon
                   style={{
                     color: "red",
-                    fontSize: "20px",
-                    position: "relative",
-                    top: "3px",
+                    fontSize: "23px",
+                    position: "absolute",
+                    top: "0.5rem",
+                    left: "1rem",
                   }}
                   sx={{ fontSize: "20px" }}
                 ></FavoriteIcon>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {item.rating}{" "}
-                  <StarRateTwoToneIcon
-                    style={{
-                      color: "#ffc107",
-                      fontSize: "20px",
-                      position: "relative",
-                      top: "3px",
-                    }}
-                    sx={{ fontSize: "20px" }}
-                  ></StarRateTwoToneIcon>
+                <Typography
+                  variant="h5"
+                  style={{
+                    fontSize: "20px",
+                    position: "absolute",
+                    top: "2rem",
+                    left: "1rem",
+                  }}
+                  color="primary"
+                >
+                  {item.rating}
                 </Typography>
-                <Typography variant="h5" style={{ fontSize: "14px" }}>
+                <StarRateTwoToneIcon
+                  style={{
+                    color: "#ffc107",
+                    fontSize: "20px",
+                    position: "absolute",
+                    top: "2.2rem",
+                    left: "2.5rem",
+                  }}
+                  sx={{ fontSize: "20px" }}
+                ></StarRateTwoToneIcon>
+                <Typography
+                  variant="h5"
+                  style={{
+                    fontSize: "20px",
+                    position: "absolute",
+                    top: "0.5rem",
+                    right: "1rem",
+                  }}
+                  color="primary"
+                >
                   {currency}
                   {item.price}
                 </Typography>
                 {cartItems.find(({ slug }) => slug === item.slug) ? (
-                  <Button size="small" color="primary">
+                  <Button
+                    size="small"
+                    color="primary"
+                    style={{
+                      position: "absolute",
+                      top: "1rem",
+                      right: "1rem",
+                    }}
+                  >
                     Added to Cart
                   </Button>
                 ) : (
                   <Button
                     size="small"
                     color="secondary"
+                    style={{
+                      position: "absolute",
+                      top: "1rem",
+                      right: "1rem",
+                    }}
                     onClick={async () => {
                       const data = await axios.get(`/api/products/${item._id}`);
                       if (

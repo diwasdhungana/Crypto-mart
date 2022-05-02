@@ -29,7 +29,7 @@ const Featured = () => {
       <Swiper
         autoplay={{
           delay: 3000,
-          disableOnInteraction: true,  
+          disableOnInteraction: true,
         }}
         spaceBetween={30}
         loop={true}
@@ -52,6 +52,7 @@ const Featured = () => {
                     height="350"
                     title={item.name}
                     image={item.image}
+                    backgroundColor="#1b1b1b"
                   ></CardMedia>
                 </CardActionArea>
               </Card>

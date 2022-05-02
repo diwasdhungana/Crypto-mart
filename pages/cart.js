@@ -25,6 +25,7 @@ function CartScreen() {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems } = cart;
+  console.log(cartItems);
   const [quantity, setQuantity] = useState(0);
 
   const updateCartHandler = async (product, quantity) => {
@@ -59,10 +60,14 @@ function CartScreen() {
   return (
     <Container className={classes.container}>
       <Paper title="Cart" className={classes.cart_container}>
-        <Typography className={classes.topic}>Your Cart</Typography>
+        <Typography className={classes.topic} color="primary">
+          Your Cart
+        </Typography>
         {cartItems.length === 0 ? (
           <div>
-            <Typography variant="h1">No items in cart</Typography>
+            <Typography variant="h1" color="primary">
+              No items in cart
+            </Typography>
             <Nextlink href="/" passHref>
               <Button className={classes.cart_shop}>Go Shopping</Button>
             </Nextlink>
@@ -70,20 +75,21 @@ function CartScreen() {
         ) : (
           <div>
             <Button
-              style={{'margin':'-10% 74% 0 0'}}
-              className={classes.checkout_button}>
+              style={{ margin: "-10% 74% 0 0" }}
+              className={classes.checkout_button}
+            >
               <Nextlink href="/" passHref>
                 <Link style={{ textDecoration: "none" }}>
                   Continue Shopping
                 </Link>
               </Nextlink>
             </Button>
-            <Typography variant="h2">
+            <Typography variant="h2" color="primary">
               Items Added to your Shopping Cart
             </Typography>
             <ul>
               {cartItems.map((item) => (
-                <li key={item.id} className={classes.cart_items}>
+                <li key={item._id} className={classes.cart_items}>
                   <Nextlink href={`/product/${item.slug}`} passHref>
                     <Link className={classes.item_link}>
                       {
@@ -102,14 +108,21 @@ function CartScreen() {
                       <span className={classes.item_cat}>{item.category}</span>
                     </Link>
                   </Nextlink>
-                  <span className={classes.item_price}>
+                  {/* <span className={classes.item_price}> */}
+                  <Typography
+                    variant="h5"
+                    color="primary"
+                    className={classes.item_price}
+                  >
                     {item.price} {currency}
-                  </span>
+                  </Typography>
+                  {/* </span> */}
 
                   {
                     <ButtonGroup className={classes.item_button}>
                       <Button
                         className={classes.item_control}
+                        color="primary"
                         onClick={() => {
                           RemoveCartHandler(item);
                         }}
@@ -122,9 +135,11 @@ function CartScreen() {
                         value={item.quantity}
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
+                        color="primary"
                         onChange={(e) => {
                           updateCartHandler(item, e.target.value);
                         }}
+                        style={{ backgroundColor: "#2b2b2b", color: "white" }}
                       >
                         {[...Array(item.numInStock).keys()].map((x) => (
                           <MenuItem
@@ -137,6 +152,7 @@ function CartScreen() {
                         ))}
                       </Select>
                       <Button
+                        color="primary"
                         className={classes.item_control}
                         onClick={() => {
                           AddCartHandler(item);
@@ -150,7 +166,7 @@ function CartScreen() {
                   <Button
                     className={classes.item_remove}
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     onClick={() => {
                       dispatch({
                         type: "CART_DELETE_ITEM",
@@ -164,15 +180,17 @@ function CartScreen() {
               ))}
             </ul>
 
-            <Button
-              className={classes.checkout_button}
-            >
-              <Nextlink href="/checkout" passHref>
-                <Link style={{ textDecoration: "none" }}>
+            <Nextlink href="/checkout" passHref>
+              <Link style={{ textDecoration: "none" }}>
+                <Button
+                  className={classes.checkout_button}
+                  color="primary"
+                  variant="contained"
+                >
                   Proceed To Checkout
-                </Link>
-              </Nextlink>
-            </Button>
+                </Button>
+              </Link>
+            </Nextlink>
           </div>
         )}
       </Paper>

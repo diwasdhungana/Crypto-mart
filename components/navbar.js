@@ -63,7 +63,7 @@ const Navbar = () => {
         />
         <button className={classes.btn_search}>
           <Navlink href={"/filter"} passHref>
-            <SearchIcon color="#9747FF" sx={{ fontSize: 20 }} />
+            <SearchIcon sx={{ fontSize: 20 }} />
           </Navlink>
         </button>
         {/* classes for navbar icon right side  */}
@@ -78,11 +78,10 @@ const Navbar = () => {
                     style={{ cursor: "pointer", textDecoration: "none" }}
                   >
                     <LogoutIcon
-                      color="#9747FF"
                       sx={{ fontSize: 20 }}
                       className={classes.nav_logout}
                     />
-                    <Typography variant="h5" color="textPrimary">
+                    <Typography variant="h5" color="primary">
                       LOGOUT
                     </Typography>
                   </Link>
@@ -90,8 +89,8 @@ const Navbar = () => {
               ) : (
                 <Navlink href={"/login"} passHref>
                   <Link style={{ textDecoration: "none" }}>
-                    <LoginIcon color="#9747FF" sx={{ fontSize: 25 }} />
-                    <Typography variant="h5" color="textPrimary">
+                    <LoginIcon sx={{ fontSize: 25 }} />
+                    <Typography variant="h5" color="primary">
                       LOGIN
                     </Typography>
                   </Link>
@@ -103,8 +102,8 @@ const Navbar = () => {
             <div className={classes.growcontentItem}>
               <Navlink href={"/profile"} passHref>
                 <Link style={{ textDecoration: "none" }}>
-                  <AccountCircleIcon color="#9747FF" sx={{ fontSize: 25 }} />
-                  <Typography variant="h5" color="textPrimary">
+                  <AccountCircleIcon sx={{ fontSize: 25 }} />
+                  <Typography variant="h5" color="primary">
                     {Cookies.get("userName")
                       ? Cookies.get("userName")
                       : "Profile"}
@@ -123,12 +122,12 @@ const Navbar = () => {
                       badgeContent={cart.cartItems.length}
                       color="secondary"
                     >
-                      <ShoppingCartIcon color="#9747FF" sx={{ fontSize: 25 }} />
+                      <ShoppingCartIcon sx={{ fontSize: 25 }} />
                     </Badge>
                   ) : (
-                    <ShoppingCartIcon color="#9747FF" sx={{ fontSize: 25 }} />
+                    <ShoppingCartIcon sx={{ fontSize: 25 }} />
                   )}
-                  <Typography variant="h5" color="textPrimary">
+                  <Typography variant="h5" color="primary">
                     CART
                   </Typography>
                 </Link>
@@ -139,11 +138,8 @@ const Navbar = () => {
 
             <div className={classes.growcontentItem}>
               <Link href={"/wallet"} style={{ textDecoration: "none" }}>
-                <AccountBalanceWalletIcon
-                  color="#9747FF"
-                  sx={{ fontSize: 25 }}
-                />
-                <Typography variant="h5" color="textPrimary">
+                <AccountBalanceWalletIcon sx={{ fontSize: 25 }} />
+                <Typography variant="h5" color="primary">
                   WALLET
                 </Typography>
               </Link>

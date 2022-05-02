@@ -28,7 +28,12 @@ const Cert = () => {
   return (
     <Paper className={classes.cert_container}>
       <Grid>
-        <Typography variant="h1" className={classes.topic} align="center">
+        <Typography
+          variant="h1"
+          className={classes.topic}
+          align="center"
+          color="primary"
+        >
           Certified Shops
         </Typography>
       </Grid>
@@ -44,7 +49,7 @@ const Cert = () => {
           {brands.map((item) => (
             <SwiperSlide key={item.id}>
               <Grid item xs={12} key={item.image} spacing={0}>
-                <Card>
+                <Card style={{ backgroundColor: "#1b1b1b", padding: "1px" }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"

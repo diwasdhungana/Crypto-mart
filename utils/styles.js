@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core";
-import { ImportantDevices } from "@material-ui/icons";
 
 const useStyle = makeStyles(
   {
     appBar: {
       padding: "0 5rem",
-      background: "#CFBEBE",
+      background: "#1b1b1b",
       height: "65px",
+      color: "white",
     },
     logo: {
       marginTop: "1rem",
@@ -25,6 +25,7 @@ const useStyle = makeStyles(
       fontWeight: "500",
       fontFamily: "Barlow Condensed",
       textDecoration: "underline",
+      color: "primary",
     },
     btn_search: {
       background: "transparent",
@@ -39,18 +40,19 @@ const useStyle = makeStyles(
       marginTop: "4%",
       alignItems: "center",
       paddingTop: "3rem",
+      backgroundColor: "black",
     },
     param_container: {
       minHeight: "500px",
       padding: "20px",
-      background: "#d0c9d1",
+      background: "#1b1b1b",
       borderRadius: "20px",
       alignItems: "center",
       justifyContent: "center",
       textAlign: "center",
     },
     content: {
-      background: "#DAD6D6",
+      background: "black",
     },
     footer: {
       padding: "1rem",
@@ -66,7 +68,7 @@ const useStyle = makeStyles(
       minHeight: "30vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#f7f7f7",
+      background: "#2b2b2b",
     },
     cert_swiper: {
       "& .swiper-button-next": {
@@ -102,25 +104,35 @@ const useStyle = makeStyles(
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#d0c9d1",
+      background: "#2b2b2b",
     },
     for_you: {
       marginTop: "20px",
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#white",
+      background: "#2b2b2b",
     },
     product_card: {
+      boxShadow: "none",
+      border: " 1px solid #1b1b1b",
+      padding: "0rem",
       "& .MuiCardActions-root": {
         position: "relative",
-        bottom: "3rem",
+        // bottom: "20px",
+      },
+      "&:hover": {
+        transform: "scale(1.01)",
+        transition: "0.1s",
+        boxShadow: "1",
+        background: "#f8F8F8",
       },
     },
     featured_container: {
       minHeight: "50px",
       padding: "0.5rem",
       borderRadius: "20px",
+      backgroundColor: "#2b2b2b",
     },
     media: {
       height: 0,
@@ -153,7 +165,7 @@ const useStyle = makeStyles(
     },
     auth_container: {
       minHeight: "500px",
-      background: "white",
+      background: "1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -162,7 +174,7 @@ const useStyle = makeStyles(
     },
     cart_container: {
       minHeight: "500px",
-      background: "white",
+      background: "#1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       justifyContent: "center",
@@ -174,13 +186,13 @@ const useStyle = makeStyles(
       margin: "20px",
       position: "relative",
       left: "-20px",
-      background: "#ede0ed",
+      background: "#1b1b1b",
       minHeight: "50px",
       borderRadius: "20px",
       textDecoration: "none",
-      border: "1px solid #cfbebe",
+      border: "1px solid black",
       "&:hover": {
-        background: "whitesmoke",
+        background: "#222222",
         textDecoration: "none",
         transition: "0.3s",
         cursor: "pointer",
@@ -255,6 +267,7 @@ const useStyle = makeStyles(
       borderRadius: "20px",
       border: "1px solid black",
       height: "30px",
+      backgroundColor: "#2b2b2b",
     },
     item_remove: {
       borderRadius: "20px",
@@ -262,23 +275,19 @@ const useStyle = makeStyles(
       position: "relative",
       bottom: "35px",
       right: "27px",
+      backgroundColor: "#363636",
     },
     checkout_button: {
-      border: "1px solid purple",
-      borderRadius: "10px",
-      background: "white",
-      color: "black",
-      "&:hover": {
-        color: "black",
-        textDecoration: "none",
-      },
+      borderRadius: "20px",
+      height: "45px",
+      backgroundColor: "#363636",
     },
 
     // Register Product
     product_container: {
       minHeight: "500px",
       overflow: "hidden",
-      background: "white",
+      background: "#1b1b1b",
       padding: "25px",
       borderRadius: "20px",
     },
@@ -301,19 +310,19 @@ const useStyle = makeStyles(
       color: "black",
       border: "0.5px dotted #cfbebe",
       borderRadius: "10px",
-      background: "#f1f1f1",
+      background: "#1b1b1b",
     },
     reg_select: {
       color: "black",
       padding: "5px",
       border: "0.5px solid #cfbebe",
-      background: "#f1f1f1",
+      background: "#1b1b1b",
     },
     reg_dimension: {
       color: "black",
       border: "0.5px dotted #cfbebe",
       borderRadius: "10px",
-      background: "#f1f1f1",
+      background: "#1b1b1b",
       marginRight: "1rem",
     },
     reg_pack: {
@@ -326,7 +335,7 @@ const useStyle = makeStyles(
     },
     reg_file: {
       color: "black",
-      background: "#f1f1f1",
+      background: "#1b1b1b",
       position: "relative",
       bottom: "16rem",
     },
@@ -349,7 +358,7 @@ const useStyle = makeStyles(
     //Login
     log_container: {
       minHeight: "500px",
-      background: "white",
+      background: "1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -358,7 +367,7 @@ const useStyle = makeStyles(
     },
     upload_container: {
       minHeight: "1000px",
-      background: "white",
+      background: "1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -381,7 +390,7 @@ const useStyle = makeStyles(
       border: "1px solid #cfbebe",
       fontSize: "20px",
       fontFamily: "Barlow Condensed",
-      background: "#CFBEBE",
+      background: "#1b1b1b",
       transition: "0.3s",
       cursor: "pointer",
       "&:hover": {
@@ -390,7 +399,7 @@ const useStyle = makeStyles(
     },
     profile_container: {
       minHeight: "500px",
-      background: "white",
+      background: "1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -406,18 +415,17 @@ const useStyle = makeStyles(
       padding: "20px",
       marginTop: "3rem",
       marginLeft: "1rem",
-      background: "#ffffff",
+      background: "#222222",
       borderRadius: "20px",
+      border: "1px solid #1b1b1b",
       textAlign: "left",
+      color: "white",
       height: "Fixed",
-      // '&:hover':{
-      // borderColor:"#4B0082",
-      // transition:'0.3s'
-      // }
       fontFamily: "Barlow Condensed",
     },
 
     right_panel: {
+      color: "white",
       position: "fixed",
       float: "right",
       minHeight: "50vh",
@@ -425,9 +433,10 @@ const useStyle = makeStyles(
       padding: "20px",
       marginTop: "3rem",
       marginLeft: "84%",
-      background: "#ffff",
+      background: "#222222",
       borderRadius: "20px",
       fontFamily: "Barlow Condensed",
+      border: "1px solid #1b1b1b",
     },
 
     list: {
@@ -447,7 +456,7 @@ const useStyle = makeStyles(
     //Checkout Page CSS
     ship_container: {
       minHeight: "500px",
-      background: "white",
+      background: "#1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -474,7 +483,7 @@ const useStyle = makeStyles(
       padding: "5px",
       fontSize: "20px",
       "&:hover": {
-        background: "#cfbebe",
+        background: "#1b1b1b",
         transition: "0.5s",
         borderRadius: "10px",
       },

@@ -57,34 +57,45 @@ export default function ProductScreen(props) {
           <Grid item xs={12} sm={6} md={4}>
             <List>
               <ListItem>
-                <Typography component="h1" variant="h1">
+                <Typography
+                  component="h1"
+                  variant="h1"
+                  style={{ fontSize: "25px" }}
+                  color="secondary"
+                >
                   {product.name}
                 </Typography>
               </ListItem>
               <ListItem>
-                <Typography component="h3" variant="h4">
+                <Typography component="h3" variant="h4" color="secondary">
                   {product.rating} &#11088; ({product.numReviews}) Reviews
                 </Typography>
               </ListItem>
 
               <ListItem>
-                <Typography component="h2" variant="h2">
-                  {" "}
-                  <span style={{ fontWeight: "bold" }}>Price: </span> {currency}
+                <Typography component="h2" variant="h2" color="primary">
+                  <span style={{ fontWeight: "bold" }}>Price: </span>
+                </Typography>
+                <Typography component="h2" variant="h2" color="secondary">
+                  {currency}
                   {product.price}
                 </Typography>
               </ListItem>
 
               <ListItem>
-                <Typography component="h4" variant="h4">
+                <Typography component="h4" variant="h4" color="primary">
                   <span style={{ fontWeight: "bold" }}>Description: </span>{" "}
+                </Typography>
+                <Typography component="h4" variant="h4" color="secondary">
                   {product.description.short}
                 </Typography>
               </ListItem>
 
               <ListItem>
-                <Typography component="h4" variant="h4">
+                <Typography component="h4" variant="h4" color="primary">
                   <span style={{ fontWeight: "bold" }}>Category: </span>
+                </Typography>
+                <Typography component="h4" variant="h4" color="secondary">
                   {product.category}
                 </Typography>
               </ListItem>
@@ -114,10 +125,20 @@ export default function ProductScreen(props) {
         </Grid>
         <br></br>
         <div className={classes.product_details}>
-          <Typography component="h4" variant="h3" style={{ fontWeight: "400" }}>
+          <Typography
+            component="h4"
+            variant="h3"
+            style={{ fontWeight: "400" }}
+            color="primary"
+          >
             Product Details:
           </Typography>
-          <Typography component="h4" variant="h4" style={{ fontSize: "18px" }}>
+          <Typography
+            component="h4"
+            variant="h4"
+            style={{ fontSize: "16px" }}
+            color="secondary"
+          >
             {product.description.long}
           </Typography>
         </div>

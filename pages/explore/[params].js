@@ -9,7 +9,9 @@ function Doc() {
     <Container className={classes.container}>
       <Paper className={classes.param_container} elevation={4}>
         <div>
-          <Typography variant="h1">{params[0]}</Typography>
+          <Typography variant="h1" color="primary">
+            {params[0]}
+          </Typography>
         </div>
       </Paper>
     </Container>

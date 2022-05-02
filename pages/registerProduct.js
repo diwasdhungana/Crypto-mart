@@ -149,7 +149,9 @@ export default function RegisterProduct() {
   return (
     <Container className={classes.container}>
       <Paper className={classes.product_container} elevation={4}>
-        <Typography variant="h1">Register Your Product</Typography>
+        <Typography variant="h1" color="primary">
+          Register Your Product
+        </Typography>
         <br></br>
         <p>Product Name</p>
         <TextField
@@ -469,8 +471,9 @@ export default function RegisterProduct() {
                               fontSize: "15px",
                               position: "relative",
                               bottom: "2.5rem",
-                              backgroundColor: "white",
+                              backgroundColor: "#2b2b2b",
                             }}
+                            color="primary"
                           >
                             {item.name}
                           </Typography>
@@ -512,7 +515,7 @@ export default function RegisterProduct() {
           <Button
             className={classes.reg_button}
             style={{
-              backgroundColor: "#c88bd1",
+              backgroundColor: "#2b2b2b",
               color: "black",
               padding: "10px 20px",
               borderRadius: "10px",

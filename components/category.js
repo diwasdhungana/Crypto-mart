@@ -21,14 +21,19 @@ const Category = () => {
   return (
     <Paper className={classes.category}>
       <Grid>
-        <Typography variant="h1" className={classes.topic} align="center">
+        <Typography
+          variant="h1"
+          className={classes.topic}
+          align="center"
+          color="primary"
+        >
           Category
         </Typography>
       </Grid>
       <Grid container spacing={2}>
         {category.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id} spacing={3}>
-            <Card>
+            <Card style={{ backgroundColor: "#1b1b1b" }}>
               <Nextlink href={`/docs/${item.name}`} passHref>
                 <CardActionArea>
                   <CardMedia
@@ -38,12 +43,16 @@ const Category = () => {
                     image={item.image}
                     title={item.name}
                   ></CardMedia>
-                  <CardContent height="4px">
+                  <CardContent
+                    height="4px"
+                    style={{ backgroundColor: "#1b1b1b" }}
+                  >
                     <Typography
                       gutterBottom
                       variant="h2"
                       component="h3"
                       style={{ fontSize: "18px" }}
+                      color="secondary"
                     >
                       {item.name}
                     </Typography>
