@@ -14,6 +14,12 @@ const useStyle = makeStyles(
     field: {
       marginLeft: "18rem",
       width: "300px",
+      // border: "1px solid white",
+      "& .MuiFilledInput-root ": {
+        color: "white",
+        border: "1px solid #ffc107",
+        borderRadius: "5px",
+      },
     },
     topic: {
       fontSize: "30px",
@@ -47,9 +53,6 @@ const useStyle = makeStyles(
       padding: "20px",
       background: "#1b1b1b",
       borderRadius: "20px",
-      alignItems: "center",
-      justifyContent: "center",
-      textAlign: "center",
     },
     content: {
       background: "black",
@@ -73,11 +76,11 @@ const useStyle = makeStyles(
     cert_swiper: {
       "& .swiper-button-next": {
         padding: "10px",
-        color: "purple",
+        color: "#ffc107",
       },
       "& .swiper-button-prev": {
         padding: "10px",
-        color: "purple",
+        color: "#ffc107",
       },
       "& .MuiPaper-root": {
         padding: "10px",
@@ -169,7 +172,6 @@ const useStyle = makeStyles(
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
-      justifyContent: "center",
       textAlign: "center",
     },
     cart_container: {
@@ -243,6 +245,9 @@ const useStyle = makeStyles(
     },
     item_image: {
       borderRadius: "12px",
+      position: "relative",
+      top: "-10px",
+      left: "-10px",
     },
 
     item_quantity: {
@@ -358,7 +363,7 @@ const useStyle = makeStyles(
     //Login
     log_container: {
       minHeight: "500px",
-      background: "1b1b1b",
+      background: "#2b2b2b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -376,6 +381,13 @@ const useStyle = makeStyles(
     },
     log_field: {
       width: "35%",
+      "& .MuiOutlinedInput-root ": {
+        border: "1px solid #ffc107",
+        borderRadius: "5px",
+      },
+      "& .MuiInputBase-input ": {
+        color: "white",
+      },
     },
     log_icon: {
       position: "relative",
@@ -399,7 +411,7 @@ const useStyle = makeStyles(
     },
     profile_container: {
       minHeight: "500px",
-      background: "1b1b1b",
+      background: "#2b2b2b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",

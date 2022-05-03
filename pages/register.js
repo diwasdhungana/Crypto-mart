@@ -124,7 +124,7 @@ const Register = () => {
           <br></br>
           <DriveFileRenameOutlineIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -138,7 +138,7 @@ const Register = () => {
           <br></br>
           <DriveFileRenameOutlineIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -152,7 +152,7 @@ const Register = () => {
           <br></br>
           <DriveFileRenameOutlineIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -167,7 +167,7 @@ const Register = () => {
           <br></br>
           <AccountCircleIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -181,7 +181,7 @@ const Register = () => {
           <br></br>
           <KeyIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -211,7 +211,7 @@ const Register = () => {
           <br></br>
           <LockIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -241,7 +241,7 @@ const Register = () => {
           <br></br>
           <PhoneIcon
             className={classes.log_icon}
-            style={{ color: "#9747FF" }}
+            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField

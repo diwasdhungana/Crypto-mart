@@ -122,7 +122,7 @@ const ForYou = (props) => {
                     fontSize: "20px",
                     position: "absolute",
                     top: "2rem",
-                    left: "1rem",
+                    left: "0.5rem",
                   }}
                   color="primary"
                 >
@@ -134,7 +134,7 @@ const ForYou = (props) => {
                     fontSize: "20px",
                     position: "absolute",
                     top: "2.2rem",
-                    left: "2.5rem",
+                    left: "2rem",
                   }}
                   sx={{ fontSize: "20px" }}
                 ></StarRateTwoToneIcon>

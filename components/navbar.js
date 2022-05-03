@@ -63,7 +63,7 @@ const Navbar = () => {
         />
         <button className={classes.btn_search}>
           <Navlink href={"/filter"} passHref>
-            <SearchIcon sx={{ fontSize: 20 }} />
+            <SearchIcon sx={{ fontSize: 20, color: "#ffc107" }} />
           </Navlink>
         </button>
         {/* classes for navbar icon right side  */}

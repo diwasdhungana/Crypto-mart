@@ -95,6 +95,7 @@ function CartScreen() {
                       {
                         <Image
                           className={classes.item_image}
+                          style={{ position: "absolute", left: "1rem" }}
                           src={item.image}
                           alt={item.name}
                           width={80}
@@ -108,15 +109,13 @@ function CartScreen() {
                       <span className={classes.item_cat}>{item.category}</span>
                     </Link>
                   </Nextlink>
-                  {/* <span className={classes.item_price}> */}
-                  <Typography
-                    variant="h5"
-                    color="primary"
+                  <span
                     className={classes.item_price}
+                    style={{ color: "orange" }}
                   >
+                    {" "}
                     {item.price} {currency}
-                  </Typography>
-                  {/* </span> */}
+                  </span>
 
                   {
                     <ButtonGroup className={classes.item_button}>

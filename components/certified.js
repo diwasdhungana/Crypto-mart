@@ -58,6 +58,20 @@ const Cert = () => {
                       width="80"
                       image={item.image}
                     ></CardMedia>
+                    <CardContent
+                      height="4px"
+                      style={{ backgroundColor: "#1b1b1b" }}
+                    >
+                      <Typography
+                        gutterBottom
+                        variant="h2"
+                        component="h3"
+                        style={{ fontSize: "18px" }}
+                        color="secondary"
+                      >
+                        {item.name}
+                      </Typography>
+                    </CardContent>
                   </CardActionArea>
                 </Card>
               </Grid>
