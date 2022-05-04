@@ -115,15 +115,15 @@ const Login = () => {
           />
           <br></br>
 
-          <Button variant="contained" type="submit" color="primary">
+          <Button className={classes.log_button} variant="contained" type="submit" color="primary">
             Submit
           </Button>
         </form>
         Dont have an account? {""}
         <br></br>
         <NextLink href="/register" passHref>
-          <Link>
-            <Button>Register</Button>
+          <Link style={{'textDecoration':'none'}}>
+            <Button className={classes.log_button} variant="contained" type="submit" color="primary">Register</Button>
           </Link>
         </NextLink>
       </Paper>

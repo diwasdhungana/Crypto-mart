@@ -49,7 +49,7 @@ export default function CheckOut() {
   return (
     <Container className={classes.container}>
       <Paper className={classes.ship_container}>
-        <CheckoutWizard activeStep={1} style={{ backgroundColor: "#1b1b1b" }} />
+        <CheckoutWizard activeStep={1}/>
         {user && (
           <Grid container>
             <Grid
@@ -86,6 +86,7 @@ export default function CheckOut() {
           variant="contained"
           color="primary"
           style={{ marginRight: "10px" }}
+          className={classes.log_button}
           onClick={() => {
             router.push("/payment");
           }}
@@ -94,7 +95,8 @@ export default function CheckOut() {
         </Button>
         <Button
           variant="contained"
-          color="secondary"
+          color="primary"
+          className={classes.log_button}
           onClick={() => {
             router.push("/newaddress");
           }}

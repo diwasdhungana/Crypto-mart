@@ -124,7 +124,6 @@ const Register = () => {
           <br></br>
           <DriveFileRenameOutlineIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -138,7 +137,6 @@ const Register = () => {
           <br></br>
           <DriveFileRenameOutlineIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -152,7 +150,6 @@ const Register = () => {
           <br></br>
           <DriveFileRenameOutlineIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -167,7 +164,6 @@ const Register = () => {
           <br></br>
           <AccountCircleIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -181,7 +177,6 @@ const Register = () => {
           <br></br>
           <KeyIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -211,7 +206,6 @@ const Register = () => {
           <br></br>
           <LockIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -241,7 +235,6 @@ const Register = () => {
           <br></br>
           <PhoneIcon
             className={classes.log_icon}
-            style={{ color: "#ffc107" }}
             sx={{ fontSize: 30 }}
           />
           <TextField
@@ -254,13 +247,15 @@ const Register = () => {
           />
           <br></br>
 
-          <Button variant="contained" color="primary" type="submit">
+          <Button variant="contained" color="primary" type="submit" className={classes.log_button}>
             Register
           </Button>
         </form>
         Already have an account? <br></br>
         <NextLink href="/login" passHref>
-          <Link>Login</Link>
+        <Button className={classes.log_button}>
+          <Link style={{'textDecoration':'none', 'color':'white'}}>Login</Link>
+          </Button>
         </NextLink>
       </Paper>
     </Container>

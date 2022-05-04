@@ -14,6 +14,8 @@ import {
   Container,
   Typography,
   Grid,
+  Stack,
+  Divider,
 } from "@material-ui/core";
 import Nextlink from "next/link";
 import Image from "next/image";
@@ -69,33 +71,32 @@ function CartScreen() {
               No items in cart
             </Typography>
             <Nextlink href="/" passHref>
-              <Button className={classes.cart_shop}>Go Shopping</Button>
+              <Button className={classes.cart_shop} variant="contained" type="submit" color="primary">Go Shopping</Button>
             </Nextlink>
           </div>
         ) : (
           <div>
-            <Button
-              style={{ margin: "-10% 74% 0 0" }}
-              className={classes.checkout_button}
-            >
               <Nextlink href="/" passHref>
                 <Link style={{ textDecoration: "none" }}>
+                  <Button style={{ margin: "-10% 74% 0 0" }} className={classes.log_button} variant="contained" type="submit" color="primary">
                   Continue Shopping
+                  </Button>
                 </Link>
               </Nextlink>
-            </Button>
             <Typography variant="h2" color="primary">
               Items Added to your Shopping Cart
             </Typography>
+
             <ul>
               {cartItems.map((item) => (
+
                 <li key={item._id} className={classes.cart_items}>
                   <Nextlink href={`/product/${item.slug}`} passHref>
                     <Link className={classes.item_link}>
                       {
                         <Image
                           className={classes.item_image}
-                          style={{ position: "absolute", left: "1rem" }}
+                          style={{ position: "relative", left: "1rem" }}
                           src={item.image}
                           alt={item.name}
                           width={80}

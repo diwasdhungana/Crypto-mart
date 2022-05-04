@@ -45,14 +45,14 @@ const Category = () => {
                   ></CardMedia>
                   <CardContent
                     height="4px"
-                    style={{ backgroundColor: "#1b1b1b" }}
+                    style={{ backgroundColor: "rgb(231 231 231)" }}
                   >
                     <Typography
                       gutterBottom
                       variant="h2"
                       component="h3"
                       style={{ fontSize: "18px" }}
-                      color="secondary"
+                      color="primary"
                     >
                       {item.name}
                     </Typography>

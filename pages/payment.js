@@ -75,7 +75,10 @@ function Payment({ product }) {
       receiver: "0x72563b13Cb51739c0e0eAdA7BF90556c1B80B485",
     };
 
-    let result = await Moralis.transfer(options1);
+    let receipt = await Moralis.transfer(options1).then((receipt) => {
+      console.log(receipt);
+      alert.apply(("Done!"));
+        }).catch((e) => alert(e.message))
   };
 
   return (
@@ -159,7 +162,7 @@ function Payment({ product }) {
             </Typography>
           </Grid>
         </Grid>
-        <Button onClick={handleOk} style={{ backgroundColor: "#2b2b2b" }}>
+        <Button onClick={handleOk} variant="contained" color="primary" className={classes.log_button} >
           Buy Now
         </Button>
       </Paper>

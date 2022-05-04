@@ -43,7 +43,7 @@ export default function ProductScreen(props) {
   return (
     <Container className={classes.container}>
       <Paper className={classes.product_container}>
-        <Grid container spacing={1}>
+        <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={4} className={classes.product_img}>
             <Image
               src={product.image}
@@ -60,14 +60,14 @@ export default function ProductScreen(props) {
                 <Typography
                   component="h1"
                   variant="h1"
-                  style={{ fontSize: "25px" }}
-                  color="secondary"
+                  style={{ fontSize: "35px" }}
+                  color="primary"
                 >
                   {product.name}
                 </Typography>
               </ListItem>
               <ListItem>
-                <Typography component="h3" variant="h4" color="secondary">
+                <Typography component="h3" variant="h4" color="primary">
                   {product.rating} &#11088; ({product.numReviews}) Reviews
                 </Typography>
               </ListItem>
@@ -76,7 +76,7 @@ export default function ProductScreen(props) {
                 <Typography component="h2" variant="h2" color="primary">
                   <span style={{ fontWeight: "bold" }}>Price: </span>
                 </Typography>
-                <Typography component="h2" variant="h2" color="secondary">
+                <Typography component="h2" variant="h2" color="primary">
                   {currency}
                   {product.price}
                 </Typography>
@@ -84,10 +84,10 @@ export default function ProductScreen(props) {
 
               <ListItem>
                 <Typography component="h4" variant="h4" color="primary">
-                  <span style={{ fontWeight: "bold" }}>Description: </span>{" "}
+                  <span style={{ fontWeight: "bold" }}>Description: <span style={{ fontWeight: "200" }}>{product.description.short}</span> </span>{" "}
                 </Typography>
-                <Typography component="h4" variant="h4" color="secondary">
-                  {product.description.short}
+                <Typography component="h4" variant="h4" color="primary">
+                 
                 </Typography>
               </ListItem>
 
@@ -95,7 +95,7 @@ export default function ProductScreen(props) {
                 <Typography component="h4" variant="h4" color="primary">
                   <span style={{ fontWeight: "bold" }}>Category: </span>
                 </Typography>
-                <Typography component="h4" variant="h4" color="secondary">
+                <Typography component="h4" variant="h4" color="primary">
                   {product.category}
                 </Typography>
               </ListItem>
@@ -104,7 +104,7 @@ export default function ProductScreen(props) {
                 {cartItems.find(({ slug }) => slug === product.slug) ? (
                   <Button
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     style={{ width: "120%" }}
                   >
                     Added to Cart
@@ -113,8 +113,9 @@ export default function ProductScreen(props) {
                   <Button
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    color="primary"s
                     onClick={addToCartHandler}
+                    className={classes.log_button}
                   >
                     Add to Cart
                   </Button>
@@ -126,9 +127,9 @@ export default function ProductScreen(props) {
         <br></br>
         <div className={classes.product_details}>
           <Typography
-            component="h4"
-            variant="h3"
-            style={{ fontWeight: "400" }}
+            component="h1"
+            variant="h1"
+            style={{ 'fontSize': '25px' }}
             color="primary"
           >
             Product Details:
@@ -137,7 +138,7 @@ export default function ProductScreen(props) {
             component="h4"
             variant="h4"
             style={{ fontSize: "16px" }}
-            color="secondary"
+            color="primary"
           >
             {product.description.long}
           </Typography>

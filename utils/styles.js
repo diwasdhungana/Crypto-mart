@@ -1,15 +1,25 @@
 import { makeStyles } from "@material-ui/core";
+import { color } from "@mui/system";
 
+
+const colors = {
+  container: "#E0E0E0",
+  main : '#F7F7F7',
+
+}
 const useStyle = makeStyles(
   {
     appBar: {
       padding: "0 5rem",
-      background: "#1b1b1b",
+      background:  "#CFBEBE",
       height: "65px",
       color: "white",
     },
     logo: {
       marginTop: "1rem",
+    },
+    nav_icons:{
+      color: "#9747FF",
     },
     field: {
       marginLeft: "18rem",
@@ -17,7 +27,7 @@ const useStyle = makeStyles(
       // border: "1px solid white",
       "& .MuiFilledInput-root ": {
         color: "white",
-        border: "1px solid #ffc107",
+        border: "1px solid #grey",
         borderRadius: "5px",
       },
     },
@@ -46,16 +56,15 @@ const useStyle = makeStyles(
       marginTop: "4%",
       alignItems: "center",
       paddingTop: "3rem",
-      backgroundColor: "black",
+      backgroundColor: colors.container,
     },
     param_container: {
       minHeight: "500px",
       padding: "20px",
-      background: "#1b1b1b",
       borderRadius: "20px",
     },
     content: {
-      background: "black",
+      background: colors.container,
     },
     footer: {
       padding: "1rem",
@@ -71,16 +80,16 @@ const useStyle = makeStyles(
       minHeight: "30vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#2b2b2b",
+      background: colors.main,
     },
     cert_swiper: {
       "& .swiper-button-next": {
         padding: "10px",
-        color: "#ffc107",
+        color: "#9747FF",
       },
       "& .swiper-button-prev": {
         padding: "10px",
-        color: "#ffc107",
+        color: "#9747FF",
       },
       "& .MuiPaper-root": {
         padding: "10px",
@@ -107,18 +116,17 @@ const useStyle = makeStyles(
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#2b2b2b",
+      background: colors.main,
     },
     for_you: {
       marginTop: "20px",
       minHeight: "80vh",
       padding: "1rem",
       borderRadius: "20px",
-      background: "#2b2b2b",
+      background: colors.main,
     },
     product_card: {
       boxShadow: "none",
-      border: " 1px solid #1b1b1b",
       padding: "0rem",
       "& .MuiCardActions-root": {
         position: "relative",
@@ -135,7 +143,7 @@ const useStyle = makeStyles(
       minHeight: "50px",
       padding: "0.5rem",
       borderRadius: "20px",
-      backgroundColor: "#2b2b2b",
+      backgroundColor: colors.main,
     },
     media: {
       height: 0,
@@ -165,6 +173,7 @@ const useStyle = makeStyles(
     nav_logout: {
       marginLeft: "8px",
       cursor: "pointer",
+      color: "#9747FF",
     },
     auth_container: {
       minHeight: "500px",
@@ -176,7 +185,7 @@ const useStyle = makeStyles(
     },
     cart_container: {
       minHeight: "500px",
-      background: "#1b1b1b",
+      background: "white",
       padding: "20px",
       borderRadius: "20px",
       justifyContent: "center",
@@ -188,22 +197,19 @@ const useStyle = makeStyles(
       margin: "20px",
       position: "relative",
       left: "-20px",
-      background: "#1b1b1b",
       minHeight: "50px",
       borderRadius: "20px",
       textDecoration: "none",
       border: "1px solid black",
       "&:hover": {
-        background: "#222222",
+        background: 'whitesmoke',
         textDecoration: "none",
         transition: "0.3s",
         cursor: "pointer",
       },
     },
     cart_shop: {
-      border: "1px solid purple",
-      borderRadius: "10px",
-      background: "#cfbebe",
+        background: "rgb(151 71 255)",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
@@ -262,7 +268,7 @@ const useStyle = makeStyles(
       height: "5px",
     },
     item_button: {
-      margin: " 0 2rem 1rem",
+      margin: "0 2rem 1rem",
       position: "relative",
       bottom: "35px",
       right: "60px",
@@ -272,7 +278,7 @@ const useStyle = makeStyles(
       borderRadius: "20px",
       border: "1px solid black",
       height: "30px",
-      backgroundColor: "#2b2b2b",
+      backgroundColor: colors.main,
     },
     item_remove: {
       borderRadius: "20px",
@@ -283,16 +289,18 @@ const useStyle = makeStyles(
       backgroundColor: "#363636",
     },
     checkout_button: {
-      borderRadius: "20px",
-      height: "45px",
-      backgroundColor: "#363636",
+      background : "rgb(151 71 255)",
+      "&:hover": {
+        background: "#cfbebe",
+        color: "black",
+        textDecoration: "none",
+      },
     },
-
     // Register Product
     product_container: {
       minHeight: "500px",
       overflow: "hidden",
-      background: "#1b1b1b",
+      background: "white",
       padding: "25px",
       borderRadius: "20px",
     },
@@ -313,21 +321,17 @@ const useStyle = makeStyles(
     },
     reg_field: {
       color: "black",
-      border: "0.5px dotted #cfbebe",
       borderRadius: "10px",
-      background: "#1b1b1b",
     },
     reg_select: {
       color: "black",
       padding: "5px",
       border: "0.5px solid #cfbebe",
-      background: "#1b1b1b",
     },
     reg_dimension: {
       color: "black",
       border: "0.5px dotted #cfbebe",
       borderRadius: "10px",
-      background: "#1b1b1b",
       marginRight: "1rem",
     },
     reg_pack: {
@@ -340,18 +344,28 @@ const useStyle = makeStyles(
     },
     reg_file: {
       color: "black",
-      background: "#1b1b1b",
       position: "relative",
       bottom: "16rem",
     },
     reg_button: {
       position: "relative",
+      color: "white",
       bottom: "3rem",
-      backgroundColor: "#cfbebe",
+      padding: "0.5rem",
+      background : "rgb(151 71 255)",
+      "&:hover": {
+        background: "#cfbebe",
+        color: "black",
+        textDecoration: "none",
+      },
+
     },
     reg_img: {
       position: "relative",
       bottom: "5rem",
+    },
+    reg_choose: {
+      
     },
     reg_img_container: {
       position: "relative",
@@ -363,7 +377,7 @@ const useStyle = makeStyles(
     //Login
     log_container: {
       minHeight: "500px",
-      background: "#2b2b2b",
+      background: colors.main,
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -382,36 +396,36 @@ const useStyle = makeStyles(
     log_field: {
       width: "35%",
       "& .MuiOutlinedInput-root ": {
-        border: "1px solid #ffc107",
+        border: "1px solid #9747FF",
         borderRadius: "5px",
       },
-      "& .MuiInputBase-input ": {
-        color: "white",
+    },
+    log_button: {
+      background : "rgb(151 71 255)",
+      "&:hover": {
+        background: "#cfbebe",
+        color: "black",
+        textDecoration: "none",
       },
     },
     log_icon: {
       position: "relative",
       top: "2rem",
       right: "1rem",
+      color: "#9747FF"
     },
 
     connect: {
-      padding: "1rem",
-      marginTop: "2rem",
-      borderRadius: "20px",
-      border: "1px solid #cfbebe",
-      fontSize: "20px",
-      fontFamily: "Barlow Condensed",
-      background: "#1b1b1b",
-      transition: "0.3s",
-      cursor: "pointer",
+      background : "rgb(151 71 255)",
       "&:hover": {
-        background: "#E0E0E0",
+        background: "#cfbebe",
+        color: "black",
+        textDecoration: "none",
       },
     },
     profile_container: {
       minHeight: "500px",
-      background: "#2b2b2b",
+      background: colors.main,
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -427,9 +441,8 @@ const useStyle = makeStyles(
       padding: "20px",
       marginTop: "3rem",
       marginLeft: "1rem",
-      background: "#222222",
+      background: colors.main,
       borderRadius: "20px",
-      border: "1px solid #1b1b1b",
       textAlign: "left",
       color: "white",
       height: "Fixed",
@@ -445,10 +458,9 @@ const useStyle = makeStyles(
       padding: "20px",
       marginTop: "3rem",
       marginLeft: "84%",
-      background: "#222222",
+      background: colors.main,
       borderRadius: "20px",
       fontFamily: "Barlow Condensed",
-      border: "1px solid #1b1b1b",
     },
 
     list: {
@@ -468,7 +480,6 @@ const useStyle = makeStyles(
     //Checkout Page CSS
     ship_container: {
       minHeight: "500px",
-      background: "#1b1b1b",
       padding: "20px",
       borderRadius: "20px",
       alignItems: "center",
@@ -494,8 +505,9 @@ const useStyle = makeStyles(
     left_list: {
       padding: "5px",
       fontSize: "20px",
+      color: "black",
       "&:hover": {
-        background: "#1b1b1b",
+        background: "#CFBEBE",
         transition: "0.5s",
         borderRadius: "10px",
       },

@@ -19,6 +19,7 @@ import {
   CardMedia,
   Grid,
   Typography,
+  Button
 } from "@material-ui/core";
 
 import data from "../utils/data";
@@ -31,7 +32,7 @@ const Auth = () => {
     <Container className={classes.container}>
       <Paper elevation={4} className={classes.auth_container}>
         <Grid>
-          <Typography variant="h1">Connect Your Wallet </Typography>
+          <Typography variant="h1" style={{'fontSize':'35px'}}>Connect Your Wallet </Typography>
           <Typography variant="h1">
             Connect with one of our available wallet providers or create a new
             one.
@@ -43,9 +44,9 @@ const Auth = () => {
               {authError.message}
             </p>
           )}
-          <button onClick={authenticate} className={classes.connect}>
+          <Button variant="contained" type="submit" color="primary" onClick={authenticate} className={classes.connect}>
             Connect with Metamask
-          </button>
+          </Button>
           {metamask.map((item) => (
             <Card>
               <CardMedia

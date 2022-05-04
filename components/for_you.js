@@ -67,7 +67,7 @@ const ForYou = (props) => {
             >
               <Nextlink href={`/product/${item.slug}`} passHref>
                 <CardActionArea
-                  style={{ background: "#222222", height: "310px" }}
+                  style={{ backgroundColor: "rgb(231 231 231)", height: "310px" }}
                 >
                   <CardMedia
                     component="img"
@@ -82,7 +82,7 @@ const ForYou = (props) => {
                       gutterBottom
                       variant="h2"
                       component="h2"
-                      color="secondary"
+                      color="primary"
                       style={{
                         display: "-webkit-box",
                         overflow: "hidden",
@@ -99,7 +99,7 @@ const ForYou = (props) => {
               </Nextlink>
               <CardActions
                 style={{
-                  background: "#1b1b1b",
+                  backgroundColor: "rgb(205 205 205)",
                   top: "0rem",
                   paddingTop: "0rem",
                   width: "100%",
@@ -154,19 +154,20 @@ const ForYou = (props) => {
                 {cartItems.find(({ slug }) => slug === item.slug) ? (
                   <Button
                     size="small"
-                    color="primary"
                     style={{
                       position: "absolute",
                       top: "1rem",
                       right: "1rem",
+                      color: "red",
                     }}
+
                   >
                     Added to Cart
                   </Button>
                 ) : (
                   <Button
                     size="small"
-                    color="secondary"
+                    color="black"
                     style={{
                       position: "absolute",
                       top: "1rem",

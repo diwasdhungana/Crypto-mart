@@ -49,7 +49,7 @@ const Cert = () => {
           {brands.map((item) => (
             <SwiperSlide key={item.id}>
               <Grid item xs={12} key={item.image} spacing={0}>
-                <Card style={{ backgroundColor: "#1b1b1b", padding: "1px" }}>
+                <Card style={{ backgroundColor: "white", padding: "1px" }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -60,14 +60,14 @@ const Cert = () => {
                     ></CardMedia>
                     <CardContent
                       height="4px"
-                      style={{ backgroundColor: "#1b1b1b" }}
+                      style={{ backgroundColor: "rgb(231 231 231)" }}
                     >
                       <Typography
                         gutterBottom
                         variant="h2"
                         component="h3"
                         style={{ fontSize: "18px" }}
-                        color="secondary"
+                        color="primary"
                       >
                         {item.name}
                       </Typography>

@@ -43,13 +43,13 @@ function Right_panel() {
           </Typography>
         </Grid>
         <Grid item xs={6} style={{ textAlign: "left" }}>
-          <Typography color="secondary">
+          <Typography color="primary">
             {cartItems.reduce((a, c) => a + c.quantity, 0)}
           </Typography>
           <hr
             style={{ width: "30px", position: "relative", right: "25px" }}
           ></hr>
-          <Typography style={{ fontSize: "18px" }} color="secondary">
+          <Typography style={{ fontSize: "18px" }} color="primary">
             {cartItems.reduce(
               (acc, item) => acc + item.price * item.quantity,
               0

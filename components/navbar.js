@@ -63,7 +63,7 @@ const Navbar = () => {
         />
         <button className={classes.btn_search}>
           <Navlink href={"/filter"} passHref>
-            <SearchIcon sx={{ fontSize: 20, color: "#ffc107" }} />
+            <SearchIcon sx={{ fontSize: 20}} className={classes.nav_icons} />
           </Navlink>
         </button>
         {/* classes for navbar icon right side  */}
@@ -89,7 +89,7 @@ const Navbar = () => {
               ) : (
                 <Navlink href={"/login"} passHref>
                   <Link style={{ textDecoration: "none" }}>
-                    <LoginIcon sx={{ fontSize: 25 }} />
+                    <LoginIcon sx={{ fontSize: 25 }} className={classes.nav_icons} />
                     <Typography variant="h5" color="primary">
                       LOGIN
                     </Typography>
@@ -102,7 +102,7 @@ const Navbar = () => {
             <div className={classes.growcontentItem}>
               <Navlink href={"/profile"} passHref>
                 <Link style={{ textDecoration: "none" }}>
-                  <AccountCircleIcon sx={{ fontSize: 25 }} />
+                  <AccountCircleIcon sx={{ fontSize: 25 }} className={classes.nav_icons}/>
                   <Typography variant="h5" color="primary">
                     {Cookies.get("userName")
                       ? Cookies.get("userName")
@@ -122,10 +122,10 @@ const Navbar = () => {
                       badgeContent={cart.cartItems.length}
                       color="secondary"
                     >
-                      <ShoppingCartIcon sx={{ fontSize: 25 }} />
+                      <ShoppingCartIcon sx={{ fontSize: 25 }} className={classes.nav_icons} />
                     </Badge>
                   ) : (
-                    <ShoppingCartIcon sx={{ fontSize: 25 }} />
+                    <ShoppingCartIcon sx={{ fontSize: 25 }} className={classes.nav_icons} />
                   )}
                   <Typography variant="h5" color="primary">
                     CART
@@ -138,7 +138,7 @@ const Navbar = () => {
 
             <div className={classes.growcontentItem}>
               <Link href={"/wallet"} style={{ textDecoration: "none" }}>
-                <AccountBalanceWalletIcon sx={{ fontSize: 25 }} />
+                <AccountBalanceWalletIcon sx={{ fontSize: 25 }} className={classes.nav_icons} />
                 <Typography variant="h5" color="primary">
                   WALLET
                 </Typography>
