@@ -14,11 +14,16 @@ handler.post(async (req, res) => {
     res.status(401).json({ message: "Invalid email" });
     return;
   }
+
   const token = signToken(user);
   console.log("token", token);
   await db.disconnect();
   // console.log("user", bcrypt.compareSync(req.body.password, user.password));
   if (bcrypt.compareSync(req.body.password, user.password)) {
+    if (!user.isActive) {
+      res.status(401).json({ message: "Please verify your email" });
+      return;
+    }
     const token = signToken(user);
     // console.log("token", token);
     res.status(200).send({

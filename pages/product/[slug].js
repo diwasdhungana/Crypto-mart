@@ -18,7 +18,8 @@ import { Store } from "../../utils/Store";
 import useStyle from "../../utils/styles";
 import { useRouter } from "next/router";
 import ForYou from "../../components/for_you";
-
+import Reviews from "../../components/reviews";
+import Cookies from "js-cookie";
 export default function ProductScreen(props) {
   const classes = useStyle();
   const router = useRouter();
@@ -27,6 +28,8 @@ export default function ProductScreen(props) {
   const { cart } = state;
   const { cartItems } = cart;
   const { product, Products } = props;
+  const [reviews, setReviews] = useState([]);
+  const [review, setReview] = useState("");
   let currency = "$";
   const addToCartHandler = async () => {
     const data = await axios.get(`/api/products/${product._id}`);
@@ -35,9 +38,24 @@ export default function ProductScreen(props) {
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
-    // router.push("/cart");
+  };
 
-    //Quantity Amount
+  const fetchReviews = async () => {
+    const data = await axios.get(`/api/products/review/${product._id}`);
+    console.log("data received:", data.data);
+    setReviews(data.data);
+  };
+
+  const submitReview = async (e) => {
+    e.preventDefault();
+    const data = await axios.post(`/api/products/review/post`, {
+      review,
+      product_id: product._id,
+      user_id: Cookies.get("userId"),
+      isOwner: true,
+      fullName: Cookies.get("userName") ? Cookies.get("userName") : "Anonymous",
+      email: Cookies.get("userEmail"),
+    });
   };
 
   return (
@@ -143,6 +161,31 @@ export default function ProductScreen(props) {
           </Typography>
         </div>
       </Paper>
+      <button onClick={fetchReviews}>Fetch Reviews</button>
+      {/* <Reviews
+        fullname="Diwash Dhungana"
+        review="Nice product"
+        isOwner="False"
+        email="diwasdhungana@gmail.com"
+      /> */}
+      <form onSubmit={submitReview}>
+        <input
+          type="text"
+          placeholder="Type your review"
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      {reviews.map((review) => (
+        <Reviews
+          fullname={review.fullName}
+          review={review.review}
+          isOwner={review.isOwner}
+          email={review.email}
+        />
+      ))}
+
       <ForYou Products={Products} Name="Related Products" />
     </Container>
   );
