@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import {
   Grid,
@@ -9,6 +9,7 @@ import {
   Button,
   Container,
   Paper,
+  Link,
 } from "@material-ui/core";
 import Nextlink from "next/link";
 import Image from "next/image";
@@ -20,6 +21,8 @@ import { useRouter } from "next/router";
 import ForYou from "../../components/for_you";
 import Reviews from "../../components/reviews";
 import Cookies from "js-cookie";
+import Modal from "../../components/picture_modal";
+
 export default function ProductScreen(props) {
   const classes = useStyle();
   const router = useRouter();
@@ -30,6 +33,12 @@ export default function ProductScreen(props) {
   const { product, Products } = props;
   const [reviews, setReviews] = useState([]);
   const [review, setReview] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    setShowModal(false);
+  }, [router.query.slug]);
+
   let currency = "$";
   const addToCartHandler = async () => {
     const data = await axios.get(`/api/products/${product._id}`);
@@ -69,7 +78,30 @@ export default function ProductScreen(props) {
               height={250}
               width={200}
               layout="responsive"
+              onClick={() => setShowModal(true)}
             />
+            <div
+              className={classes.product_img_modal}
+              style={{
+                display: showModal ? "block" : "none",
+              }}
+            >
+              {showModal && (
+                <Modal show={showModal} onClose={() => setShowModal(false)}>
+                  {" "}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    style={{
+                      width: "200%",
+                      height: "200%",
+                      objectFit: "contain",
+                      objectPosition: "center",
+                    }}
+                  />
+                </Modal>
+              )}
+            </div>
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
@@ -102,11 +134,18 @@ export default function ProductScreen(props) {
 
               <ListItem>
                 <Typography component="h4" variant="h4" color="primary">
-                  <span style={{ fontWeight: "bold" }}>Description: <span style={{ fontWeight: "200" }}>{product.description.short}</span> </span>{" "}
+                  <span style={{ fontWeight: "bold" }}>
+                    Description:{" "}
+                    <span style={{ fontWeight: "200" }}>
+                      {product.description.short}
+                    </span>{" "}
+                  </span>{" "}
                 </Typography>
-                <Typography component="h4" variant="h4" color="primary">
-                 
-                </Typography>
+                <Typography
+                  component="h4"
+                  variant="h4"
+                  color="primary"
+                ></Typography>
               </ListItem>
 
               <ListItem>
@@ -131,7 +170,8 @@ export default function ProductScreen(props) {
                   <Button
                     fullWidth
                     variant="contained"
-                    color="primary"s
+                    color="primary"
+                    s
                     onClick={addToCartHandler}
                     className={classes.log_button}
                   >
@@ -147,7 +187,7 @@ export default function ProductScreen(props) {
           <Typography
             component="h1"
             variant="h1"
-            style={{ 'fontSize': '25px' }}
+            style={{ fontSize: "25px" }}
             color="primary"
           >
             Product Details:

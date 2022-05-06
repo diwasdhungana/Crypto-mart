@@ -32,8 +32,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 
 export default function RegisterProduct() {
   // let imageSrc = [];
@@ -152,11 +152,13 @@ export default function RegisterProduct() {
   return (
     <Container className={classes.container}>
       <Paper className={classes.product_container} elevation={4}>
-        <Typography variant="h1" color="primary" style={{'fontSize':'30px'}}>
+        <Typography variant="h1" color="primary" style={{ fontSize: "30px" }}>
           Register Your Product
         </Typography>
         <br></br>
-        <Typography variant="h1" component='h1'>Product Name</Typography>
+        <Typography variant="h1" component="h1">
+          Product Name
+        </Typography>
         <TextField
           className={classes.product_name}
           id="outlined-adornment-name"
@@ -190,7 +192,13 @@ export default function RegisterProduct() {
             />
           }
         />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "7.5rem" }}>Price: </Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "7.5rem" }}
+        >
+          Price:{" "}
+        </Typography>
         <TextField
           className={classes.product_name}
           id="outlined-basic"
@@ -202,7 +210,11 @@ export default function RegisterProduct() {
           onChange={(e) => setProduct({ ...product, price: e.target.value })}
         />
         <br />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "9rem" }}>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "9rem" }}
+        >
           Product Description:
         </Typography>
         <TextField
@@ -238,7 +250,13 @@ export default function RegisterProduct() {
           }
         />
         <br />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "9rem" }}>Quantity :</Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "9rem" }}
+        >
+          Quantity :
+        </Typography>
         <TextField
           id="outlined-basic"
           label="Quantity"
@@ -249,7 +267,13 @@ export default function RegisterProduct() {
           onChange={(e) => setProduct({ ...product, quantity: e.target.value })}
         />
         <br />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "9rem" }}>Category: </Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "9rem" }}
+        >
+          Category:{" "}
+        </Typography>
         <br></br>
         <FormControlLabel
           control={
@@ -293,7 +317,11 @@ export default function RegisterProduct() {
           <>
             <div className={classes.dimensions}>
               <Grid>
-                <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "15.5rem" }}>
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  style={{ position: "relative", bottom: "15.5rem" }}
+                >
                   Dimensions:{" "}
                 </Typography>
                 <TextField
@@ -497,10 +525,16 @@ export default function RegisterProduct() {
         >
           {images.length > 0 ? (
             <label>
-              <ArrowDropUpIcon style={{'position':'relative', 'left':'4rem', 'fontSize':'35px' }}/>
-              <ArrowDropUpIcon style={{'position':'relative', 'left':'4rem', 'fontSize':'35px' }}/>
-              <ArrowDropUpIcon style={{'position':'relative', 'left':'4rem', 'fontSize':'35px' }}/><br></br> First image will be taken as
-              thumbnail <br />
+              <ArrowDropUpIcon
+                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
+              />
+              <ArrowDropUpIcon
+                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
+              />
+              <ArrowDropUpIcon
+                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
+              />
+              <br></br> First image will be taken as thumbnail <br />
               {product.image == null ? "Change Pictures" : null}
             </label>
           ) : (
@@ -510,12 +544,19 @@ export default function RegisterProduct() {
           <br></br>
           {product.image == null ? (
             <div className={classes.reg_choose}>
-            <input type="file" name="file" multiple/>
+              <input type="file" name="file" multiple />
             </div>
           ) : null}
 
           {images.length > 0 && product.image == null ? (
-            <Button className={classes.log_button} variant="contained" type="submit" color="primary" >Confirm Image</Button>
+            <Button
+              className={classes.log_button}
+              variant="contained"
+              type="submit"
+              color="primary"
+            >
+              Confirm Image
+            </Button>
           ) : null}
         </form>
         {product.image == null ? null : (
