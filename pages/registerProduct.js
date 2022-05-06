@@ -25,13 +25,12 @@ import data from "../utils/data";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y, EffectFade, Autoplay } from "swiper";
-
+import Cookies from "js-cookie";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
-
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 
@@ -40,7 +39,8 @@ export default function RegisterProduct() {
   // useEffect(() => {
   //   handleOnChange();
   // }, []);
-
+  const token = Cookies.get("token");
+  const Seller = Cookies.get("userId");
   const classes = useStyle();
   const { category } = data;
   const [product, setProduct] = useState({
@@ -66,6 +66,7 @@ export default function RegisterProduct() {
     isLiquid: false,
     isFlammable: false,
     isExplosive: false,
+    seller: Seller,
   });
   let imagearray;
   const [images, setImages] = useState([]);
@@ -563,15 +564,16 @@ export default function RegisterProduct() {
           <Button
             className={classes.reg_button}
             onClick={async () => {
-              console.log("PRODUCT :", product);
-              const response = await fetch("/api/registerProduct", {
-                method: "POST",
-                body: JSON.stringify(product),
-                headers: { "Content-Type": "application/json" },
-              });
-              const res = await response.json();
-              alert("upload Successful");
-              // console.log(datatoapi);
+              try {
+                const data = await axios.post("/api/registerProduct", product, {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                });
+                alert("Product added Successful");
+              } catch (err) {
+                alert("error occured!");
+              }
             }}
           >
             {" "}

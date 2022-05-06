@@ -32,6 +32,7 @@ const productSchema = new mongoose.Schema(
     isLiquid: { type: Boolean, required: false, default: false },
     isFlammable: { type: Boolean, required: false, default: false },
     isExplosive: { type: Boolean, required: false, default: false },
+    seller: { type: String, required: true },
   },
   {
     timestamp: true,
