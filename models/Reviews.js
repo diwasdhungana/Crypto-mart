@@ -8,7 +8,6 @@ const reviewSchema = new mongoose.Schema(
     seller: { type: String, required: true, default: "" },
     fullName: { type: String, required: true, default: "" },
     review: { type: String, required: true, default: "" },
-    date: { type: Date, required: true, default: Date.now },
   },
   {
     timestamps: true,

@@ -163,7 +163,6 @@ const data = {
       numInStock: 10,
     },
   ],
-
   orders: [
     {
       id: 1,

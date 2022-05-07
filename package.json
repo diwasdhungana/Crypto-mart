@@ -25,6 +25,7 @@
     "image-to-base64": "^2.2.0",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
+    "local-ipv4-address": "^0.0.2",
     "magic-sdk": "^8.1.0",
     "mongoose": "^6.2.7",
     "moralis": "^1.5.4",

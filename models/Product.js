@@ -36,13 +36,10 @@ const productSchema = new mongoose.Schema(
     isExplosive: { type: Boolean, required: false, default: false },
     seller: { type: String, required: true },
     featured: { type: Boolean, required: true, default: false },
-    dateCreated: { type: Date, default: Date.now },
-    dateUpdated: { type: Date, default: Date.now },
+    vendor: { type: String, required: false },
   },
   {
     timestamp: true,
-    dateCreated: { type: Date, default: Date.now },
-    dateUpdated: { type: Date, default: Date.now },
   }
 );
 
