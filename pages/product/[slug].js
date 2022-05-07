@@ -46,11 +46,21 @@ export default function ProductScreen(props) {
   const [review, setReview] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [openpicture, setOpenpicture] = useState(product.image);
+  const [rating, setRating] = useState(null);
 
   const fetchReviews = async () => {
     const data = await axios.get(`/api/products/review/${product._id}`);
     console.log("data received:", data.data);
     setReviews(data.data);
+  };
+
+  const submitRating = async () => {
+    console.log("rating:", rating);
+    const data = await axios.post(`/api/products/rating/post`, {
+      rating,
+      product_id: product._id,
+      user_id: Cookies.get("userId"),
+    });
   };
 
   useEffect(() => {
@@ -254,6 +264,32 @@ export default function ProductScreen(props) {
           </Typography>
         </div>
       </Paper>
+      Hello
+      <div>
+        <span style={{ fontWeight: "bold" }} onClick={() => setRating(1)}>
+          &#11088;
+        </span>
+        <span style={{ fontWeight: "bold" }} onClick={() => setRating(2)}>
+          &#11088;
+        </span>
+        <span style={{ fontWeight: "bold" }} onClick={() => setRating(3)}>
+          &#11088;
+        </span>
+        <span style={{ fontWeight: "bold" }} onClick={() => setRating(4)}>
+          &#11088;
+        </span>
+        <span style={{ fontWeight: "bold" }} onClick={() => setRating(5)}>
+          &#11088;
+        </span>
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ width: "5%" }}
+          onClick={() => submitRating()}
+        >
+          Submit
+        </Button>
+      </div>
       <form onSubmit={submitReview}>
         <input
           type="text"
@@ -271,7 +307,6 @@ export default function ProductScreen(props) {
           email={review.email}
         />
       ))}
-
       <ForYou Products={Products} Name="Related Products" />
     </Container>
   );

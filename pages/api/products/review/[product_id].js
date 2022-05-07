@@ -20,7 +20,7 @@ handler.get(async (req, res) => {
   await product.save();
   await db.disconnect();
 
-  console.log("reviews:", reviews);
+  // console.log("reviews:", reviews);
   await db.disconnect();
   res.send(reviews);
 });
