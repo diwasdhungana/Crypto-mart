@@ -521,19 +521,7 @@ export default function RegisterProduct() {
           className={classes.reg_img}
         >
           {images.length > 0 ? (
-            <label>
-              <ArrowDropUpIcon
-                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
-              />
-              <ArrowDropUpIcon
-                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
-              />
-              <ArrowDropUpIcon
-                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
-              />
-              <br></br> First image will be taken as thumbnail <br />
-              {product.image == null ? "Change Pictures" : null}
-            </label>
+            <label>{product.image == null ? "Change Pictures" : null}</label>
           ) : (
             <label>Choose Pictures</label>
           )}
