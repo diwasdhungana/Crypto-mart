@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
+
 import {
   Grid,
   List,
@@ -218,7 +219,6 @@ export default function ProductScreen(props) {
                   {product.category}
                 </Typography>
               </ListItem>
-
               <ListItem>
                 {cartItems.find(({ slug }) => slug === product.slug) ? (
                   <Button

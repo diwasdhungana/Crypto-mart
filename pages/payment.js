@@ -4,14 +4,15 @@ import CheckoutWizard from "../components/CheckoutWizard";
 import dynamic from "next/dynamic";
 import { useMoralis, useMoralisWeb3Api } from "react-moralis";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { Store } from "../utils/Store";
 import data from "../utils/data";
 import { Typography, Paper, Button, Container, Grid } from "@material-ui/core";
 
 function Payment({ product }) {
+  const router = useRouter();
   const classes = useStyles();
-  const [delivery, setDelivery] = useState("");
   const { Moralis, account, chainId, authenticate, enableWeb3 } = useMoralis();
 
   const { state } = useContext(Store);
@@ -21,16 +22,16 @@ function Payment({ product }) {
   //For Balance Showing
   const Web3Api = useMoralisWeb3Api();
   const [ethBalance, setEthBalance] = useState();
-  const [totalMatic, setTotalMatic] = useState(0);
+  const [totalMatic, setTotalMatic] = useState();
 
   //Initialize Moralis
-
   const serverUrl = "https://mknm4od3jlmq.usemoralis.com:2053/server";
   const appId = "Yubo28twR1knu4dT7RigGC6X6UmmXneBdDqxImOq";
   Moralis.start({ serverUrl, appId });
 
   let currency = "$";
   const { Products } = data;
+
 
   const fetchNativeBalance = async () => {
     const result = await Web3Api.account
@@ -44,10 +45,7 @@ function Payment({ product }) {
       })
       .catch((e) => console.log(e));
   };
-  useEffect(() => {
-    fetchNativeBalance();
-    handleOk();
-  }, [cartItems]);
+ 
   // cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
   //Total Price
   const total = cartItems.reduce(
@@ -56,30 +54,51 @@ function Payment({ product }) {
   );
   const ProductPrice = total;
 
+  const options = {
+    address: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+    chain: "eth",
+  };
+  const ConvertToMatic = async () => {
+  const price = await Moralis.Web3API.token.getTokenPrice(options);
+
+  const PriceMatic = ProductPrice / price.usdPrice;
+  console.log("MATIC:" + PriceMatic);
+  setTotalMatic(PriceMatic);
+  }
+
   //Transaction
   const handleOk = async () => {
-    const options = {
-      address: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
-      chain: "eth",
-    };
-    const price = await Moralis.Web3API.token.getTokenPrice(options);
 
-    const PriceMatic = ProductPrice / price.usdPrice;
-    console.log("MATIC:" + PriceMatic);
-    setTotalMatic(PriceMatic);
+    ConvertToMatic();
+    if (totalMatic < ethBalance) {
+      const web3Provider = await Moralis.enableWeb3();
+      const options1 = {
+        type: "native",
+        amount: Moralis.Units.ETH(totalMatic),
+        receiver: "0x72563b13Cb51739c0e0eAdA7BF90556c1B80B485",
+      };
+  
+      let receipt = await Moralis.transfer(options1).then((receipt) => {
+        console.log(receipt);
+        alert(("Done!"));
+          }).catch((e) => {
+            if (e.message.includes("User denied transaction signature")) {
+              alert(("User denied transaction signature"));
+            } else {
+              alert(("Pending...."));
+            }
+          }
+      );
+    }
+    else {
+      alert(("Not enough balance"));
+    }
 
-    const web3Provider = await Moralis.enableWeb3();
-    const options1 = {
-      type: "native",
-      amount: Moralis.Units.ETH(PriceMatic),
-      receiver: "0x72563b13Cb51739c0e0eAdA7BF90556c1B80B485",
-    };
-
-    let receipt = await Moralis.transfer(options1).then((receipt) => {
-      console.log(receipt);
-      alert.apply(("Done!"));
-        }).catch((e) => alert(e.message))
   };
+  useEffect(() => {
+    fetchNativeBalance();
+    ConvertToMatic()
+  }, [cartItems]);
 
   return (
     <Container className={classes.container}>
