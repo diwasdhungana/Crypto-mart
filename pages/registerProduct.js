@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-
+import { useRouter } from "next/router";
 import {
   Button,
   ButtonGroup,
@@ -25,30 +25,33 @@ import data from "../utils/data";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y, EffectFade, Autoplay } from "swiper";
-
+import Cookies from "js-cookie";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
-
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import Modal from "../components/thumbnail";
+import { Icon } from "@mui/material";
 
 export default function RegisterProduct() {
   // let imageSrc = [];
   // useEffect(() => {
   //   handleOnChange();
   // }, []);
-
+  const token = Cookies.get("token");
+  const Seller = Cookies.get("userId");
   const classes = useStyle();
   const { category } = data;
+  const router = useRouter();
   const [product, setProduct] = useState({
     name: "",
     same: true,
     title: "",
     price: null,
     image: null,
+    images: [],
     description: {
       short: null,
       long: null,
@@ -66,14 +69,34 @@ export default function RegisterProduct() {
     isLiquid: false,
     isFlammable: false,
     isExplosive: false,
+    seller: Seller,
   });
   let imagearray;
   const [images, setImages] = useState([]);
-  const [uploadData, setUploadData] = useState();
+  const [uploadData, setUploadData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [Thumbnail, setThumbnail] = useState(null);
+
   let Bigdata;
+
+  const final = async () => {
+    product.image = Thumbnail;
+    try {
+      const data = await axios.post("/api/registerProduct", product, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      alert("Product added Successful");
+      router.push("/");
+    } catch (err) {
+      alert("error occured!");
+    }
+  };
 
   function handleOnChange(changeEvent) {
     setImages((images) => (images = []));
+    setUploadData((uploadData) => (uploadData = []));
     if (changeEvent.target.files.length > 0) {
       if (changeEvent.target.files.length > 5) {
         alert("You can only upload 5 images");
@@ -93,58 +116,32 @@ export default function RegisterProduct() {
               id: `${file.name}000${Math.floor(Math.random() * 1000)}`,
             },
           ]);
-          console.log("images", images);
-        });
-
-        const form = changeEvent.currentTarget;
-        const fileInput = Array.from(form.elements).find(
-          ({ name }) => name === "file"
-        );
-        console.log("fileInput", fileInput);
-        const formData = new FormData();
-        for (const file of fileInput.files) {
+          const formData = new FormData();
           formData.append("file", file);
-        }
-        // console.log(formData);
-        formData.append("upload_preset", "cryptomart-images");
-        setUploadData((uploadData) => {
-          uploadData = null;
-          return formData;
+          formData.append("upload_preset", "cryptomart-images");
+          setUploadData((uploadData) => [...uploadData, formData]);
         });
-        console.log("uploadData", uploadData);
       }
     }
-
-    // const reader = new FileReader();
-    // reader.onload = function (onLoadEvent) {
-    //   setImageSrc([...imageSrc, { img: onLoadEvent.target.result }]);
-    //   console.log(onLoadEvent);
-    //   console.log(
-    //     Array.from(changeEvent.target.files).map((file) => file.name)
-    //   );
-    //   setUploadData(undefined);
-    // };
-    // reader.readAsDataURL(changeEvent.target.files[0]);
   }
 
   async function handleOnSubmit(event) {
     event.preventDefault();
-    // console.log(event.currentTarget);
-    Bigdata = await fetch(
-      "https://api.cloudinary.com/v1_1/cryptomart/image/upload",
-      {
-        method: "POST",
-        body: uploadData,
-      }
-    ).then((res) => res.json());
-    alert("Image uploaded successfully, Submit to finalize");
-    console.log("Bigdata :", Bigdata);
-    setUploadData(Bigdata);
-    console.log("URL : ", Bigdata.secure_url);
-    setProduct({
-      ...product,
-      image: Bigdata.secure_url,
+    uploadData.forEach((data) => {
+      axios
+        .post("https://api.cloudinary.com/v1_1/cryptomart/image/upload", data)
+        .then((res) => {
+          Bigdata = res.data;
+          console.log(Bigdata);
+          setProduct((product) => ({
+            ...product,
+            images: [...product.images, Bigdata.secure_url],
+          }));
+        });
     });
+    console.log("length" + product.images.length);
+    setShowModal(() => true);
+    console.log("modal" + showModal);
   }
 
   let tempTitle = product.same ? product.name : product.title;
@@ -152,11 +149,13 @@ export default function RegisterProduct() {
   return (
     <Container className={classes.container}>
       <Paper className={classes.product_container} elevation={4}>
-        <Typography variant="h1" color="primary" style={{'fontSize':'30px'}}>
+        <Typography variant="h1" color="primary" style={{ fontSize: "30px" }}>
           Register Your Product
         </Typography>
         <br></br>
-        <Typography variant="h1" component='h1'>Product Name</Typography>
+        <Typography variant="h1" component="h1">
+          Product Name
+        </Typography>
         <TextField
           className={classes.product_name}
           id="outlined-adornment-name"
@@ -190,7 +189,13 @@ export default function RegisterProduct() {
             />
           }
         />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "7.5rem" }}>Price: </Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "7.5rem" }}
+        >
+          Price:{" "}
+        </Typography>
         <TextField
           className={classes.product_name}
           id="outlined-basic"
@@ -202,7 +207,11 @@ export default function RegisterProduct() {
           onChange={(e) => setProduct({ ...product, price: e.target.value })}
         />
         <br />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "9rem" }}>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "9rem" }}
+        >
           Product Description:
         </Typography>
         <TextField
@@ -238,7 +247,13 @@ export default function RegisterProduct() {
           }
         />
         <br />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "9rem" }}>Quantity :</Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "9rem" }}
+        >
+          Quantity :
+        </Typography>
         <TextField
           id="outlined-basic"
           label="Quantity"
@@ -249,7 +264,13 @@ export default function RegisterProduct() {
           onChange={(e) => setProduct({ ...product, quantity: e.target.value })}
         />
         <br />
-        <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "9rem" }}>Category: </Typography>
+        <Typography
+          variant="h1"
+          component="h1"
+          style={{ position: "relative", bottom: "9rem" }}
+        >
+          Category:{" "}
+        </Typography>
         <br></br>
         <FormControlLabel
           control={
@@ -293,7 +314,11 @@ export default function RegisterProduct() {
           <>
             <div className={classes.dimensions}>
               <Grid>
-                <Typography variant="h1" component='h1' style={{ position: "relative", bottom: "15.5rem" }}>
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  style={{ position: "relative", bottom: "15.5rem" }}
+                >
                   Dimensions:{" "}
                 </Typography>
                 <TextField
@@ -497,10 +522,16 @@ export default function RegisterProduct() {
         >
           {images.length > 0 ? (
             <label>
-              <ArrowDropUpIcon style={{'position':'relative', 'left':'4rem', 'fontSize':'35px' }}/>
-              <ArrowDropUpIcon style={{'position':'relative', 'left':'4rem', 'fontSize':'35px' }}/>
-              <ArrowDropUpIcon style={{'position':'relative', 'left':'4rem', 'fontSize':'35px' }}/><br></br> First image will be taken as
-              thumbnail <br />
+              <ArrowDropUpIcon
+                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
+              />
+              <ArrowDropUpIcon
+                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
+              />
+              <ArrowDropUpIcon
+                style={{ position: "relative", left: "4rem", fontSize: "35px" }}
+              />
+              <br></br> First image will be taken as thumbnail <br />
               {product.image == null ? "Change Pictures" : null}
             </label>
           ) : (
@@ -510,33 +541,89 @@ export default function RegisterProduct() {
           <br></br>
           {product.image == null ? (
             <div className={classes.reg_choose}>
-            <input type="file" name="file" multiple/>
+              <input type="file" name="file" multiple />
             </div>
           ) : null}
 
           {images.length > 0 && product.image == null ? (
-            <Button className={classes.log_button} variant="contained" type="submit" color="primary" >Confirm Image</Button>
+            <Button
+              className={classes.log_button}
+              variant="contained"
+              type="submit"
+              color="primary"
+            >
+              Submit
+            </Button>
           ) : null}
         </form>
-        {product.image == null ? null : (
-          <Button
-            className={classes.reg_button}
-            onClick={async () => {
-              console.log("PRODUCT :", product);
-              const response = await fetch("/api/registerProduct", {
-                method: "POST",
-                body: JSON.stringify(product),
-                headers: { "Content-Type": "application/json" },
-              });
-              const res = await response.json();
-              alert("upload Successful");
-              // console.log(datatoapi);
-            }}
-          >
-            {" "}
-            Submit{" "}
-          </Button>
-        )}
+        <div
+          className={classes.product_img_modal}
+          style={{
+            display: showModal ? "block" : "none",
+          }}
+        >
+          {product.images.length == 0 ? null : (
+            <Modal show={showModal} onClose={() => final()}>
+              <Swiper
+                spaceBetween={20}
+                modules={[Navigation, A11y]}
+                slidesPerView={3}
+                navigation
+                className={classes.cert_swiper_upload}
+              >
+                <Grid
+                  container
+                  direction="column"
+                  className={classes.cert_grid}
+                >
+                  {product.images.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={12}
+                        key={item.image}
+                        spacing={0}
+                      >
+                        <Card>
+                          <CardActionArea>
+                            <CardMedia
+                              component="img"
+                              alt={item}
+                              height="320"
+                              width="320"
+                              image={item}
+                              onClick={() => setThumbnail(item)}
+                            ></CardMedia>
+                            {item == Thumbnail ? (
+                              <CardContent>
+                                <Typography
+                                  gutterBottom
+                                  variant="h2"
+                                  component="h3"
+                                  style={{
+                                    fontSize: "20px",
+                                    position: "relative",
+                                    bottom: "3.5rem",
+                                  }}
+                                  color="primary"
+                                >
+                                  {"\u2705"}
+                                  Thumbnail
+                                </Typography>
+                              </CardContent>
+                            ) : null}
+                          </CardActionArea>
+                        </Card>
+                      </Grid>
+                    </SwiperSlide>
+                  ))}
+                </Grid>
+              </Swiper>
+            </Modal>
+          )}
+        </div>
       </Paper>
     </Container>
   );
