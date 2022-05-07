@@ -5,7 +5,6 @@ import { color } from "@mui/system";
 const colors = {
   container: "#E0E0E0",
   main : '#F7F7F7',
-
 }
 const useStyle = makeStyles(
   {
@@ -192,17 +191,16 @@ const useStyle = makeStyles(
       textAlign: "center",
     },
     cart_items: {
-      listStyle: "none",
       padding: "10px",
-      margin: "20px",
       position: "relative",
       left: "-20px",
-      minHeight: "50px",
-      borderRadius: "20px",
+      margin: "10px",
+      height: "130px",
+      borderRadius: "10px",
       textDecoration: "none",
       border: "1px solid black",
       "&:hover": {
-        background: 'whitesmoke',
+        background: 'white',
         textDecoration: "none",
         transition: "0.3s",
         cursor: "pointer",
@@ -216,7 +214,73 @@ const useStyle = makeStyles(
         textDecoration: "none",
       },
     },
+    item_img:{
+      float: "left",
+      marginRight:'20px'
+    },
+    item_name:{
+      float: "left",
+      textAlign: "left",
+      fontSize: "22px",
+      overflow: "hidden",
+      height:'50px',
+      width: "12rem",
+    },
+    item_rating:{
+      float: "left",
+      width: "3rem",
+      position: "relative",
+      top: "2rem",
+      right: "12rem",
+      textAlign: "left"
+   },
+    item_cat:{
+      float: "left",
+      width: "7rem",
+      position: "relative",
+      top: "3.5rem",
+      right: "15rem",
+      textAlign: "left"
+    },
+    item_price:{
+      float: "left",
+      width: "3rem",
+      position: "relative",
+      top: "0rem",
+      left: "12rem",
+      fontSize: "20px",
+    },
+    item_button: {
+      position: "relative",
+      top: "2.5rem",
+      right: "7rem",
+    },
+    item_quantity: {
+      position: "relative",
+      height: "30px",
+      width: "55px",
+      border: "1px solid black",
+      background:'black'
+    },
+    item_menu: {
+      height: "10px",
+    },
 
+    item_control: {
+      borderRadius: "20px",
+      border: "1px solid black",
+      height: "30px",
+    },
+    item_remove: {
+      borderRadius: "20px",
+      height: "30px",
+      position: "relative",
+      bottom: "4rem",
+      left: "25",
+      '&:hover': {
+        transform: "scale(1.1)",
+      }
+    },
     item_link: {
       textDecoration: "none",
       "&:hover": {
@@ -224,70 +288,7 @@ const useStyle = makeStyles(
         cursor: "pointer",
       },
     },
-    item_name: {
-      margin: " 0 2rem 0",
-      position: "relative",
-      bottom: "60px",
-      fontSize: "20px",
-      fontWeight: "500",
-    },
-    item_rating: {
-      position: "relative",
-      right: "15%",
-      fontSize: "13px",
-      bottom: "40px",
-    },
-    item_cat: {
-      position: "relative",
-      right: "20.6%",
-      fontSize: "13px",
-      bottom: "20px",
-    },
-    item_price: {
-      margin: " 0 2rem 1rem",
-      position: "relative",
-      bottom: "35px",
-      right: "9%",
-    },
-    item_image: {
-      borderRadius: "12px",
-      position: "relative",
-      top: "-10px",
-      left: "-10px",
-    },
 
-    item_quantity: {
-      position: "relative",
-      top: "0px",
-      height: "30px",
-      width: "55px",
-      border: "1px solid black",
-    },
-    item_menu: {
-      position: "relative",
-      height: "5px",
-    },
-    item_button: {
-      margin: "0 2rem 1rem",
-      position: "relative",
-      bottom: "35px",
-      right: "60px",
-      height: "30px",
-    },
-    item_control: {
-      borderRadius: "20px",
-      border: "1px solid black",
-      height: "30px",
-      backgroundColor: colors.main,
-    },
-    item_remove: {
-      borderRadius: "20px",
-      height: "30px",
-      position: "relative",
-      bottom: "35px",
-      right: "27px",
-      backgroundColor: "#363636",
-    },
     checkout_button: {
       background : "rgb(151 71 255)",
       "&:hover": {
