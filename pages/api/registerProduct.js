@@ -40,6 +40,7 @@ handler.post(async (req, res) => {
       dimensions,
       category,
       seller,
+      images,
     } = req.body;
 
     const productData = {
@@ -74,6 +75,7 @@ handler.post(async (req, res) => {
       isFlammable: isFlammable,
       isExplosive: isExplosive,
       seller: seller,
+      images: images,
     };
     // console.log(productData);
     // handler.post(async (req, res) => {
@@ -83,8 +85,8 @@ handler.post(async (req, res) => {
     await User.findOneAndUpdate(
       { _id: seller },
       {
-        $set: {
-          myitems: [...data[0]._id],
+        $push: {
+          myitems: data[0]._id,
         },
       },
       { new: true }

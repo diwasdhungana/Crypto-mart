@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-
+import { useRouter } from "next/router";
 import {
   Button,
   ButtonGroup,
@@ -32,7 +32,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import Modal from "../components/thumbnail";
+import { Icon } from "@mui/material";
 
 export default function RegisterProduct() {
   // let imageSrc = [];
@@ -43,12 +44,14 @@ export default function RegisterProduct() {
   const Seller = Cookies.get("userId");
   const classes = useStyle();
   const { category } = data;
+  const router = useRouter();
   const [product, setProduct] = useState({
     name: "",
     same: true,
     title: "",
     price: null,
     image: null,
+    images: [],
     description: {
       short: null,
       long: null,
@@ -70,11 +73,30 @@ export default function RegisterProduct() {
   });
   let imagearray;
   const [images, setImages] = useState([]);
-  const [uploadData, setUploadData] = useState();
+  const [uploadData, setUploadData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [Thumbnail, setThumbnail] = useState(null);
+
   let Bigdata;
+
+  const final = async () => {
+    product.image = Thumbnail;
+    try {
+      const data = await axios.post("/api/registerProduct", product, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      alert("Product added Successful");
+      router.push("/");
+    } catch (err) {
+      alert("error occured!");
+    }
+  };
 
   function handleOnChange(changeEvent) {
     setImages((images) => (images = []));
+    setUploadData((uploadData) => (uploadData = []));
     if (changeEvent.target.files.length > 0) {
       if (changeEvent.target.files.length > 5) {
         alert("You can only upload 5 images");
@@ -94,58 +116,32 @@ export default function RegisterProduct() {
               id: `${file.name}000${Math.floor(Math.random() * 1000)}`,
             },
           ]);
-          console.log("images", images);
-        });
-
-        const form = changeEvent.currentTarget;
-        const fileInput = Array.from(form.elements).find(
-          ({ name }) => name === "file"
-        );
-        console.log("fileInput", fileInput);
-        const formData = new FormData();
-        for (const file of fileInput.files) {
+          const formData = new FormData();
           formData.append("file", file);
-        }
-        // console.log(formData);
-        formData.append("upload_preset", "cryptomart-images");
-        setUploadData((uploadData) => {
-          uploadData = null;
-          return formData;
+          formData.append("upload_preset", "cryptomart-images");
+          setUploadData((uploadData) => [...uploadData, formData]);
         });
-        console.log("uploadData", uploadData);
       }
     }
-
-    // const reader = new FileReader();
-    // reader.onload = function (onLoadEvent) {
-    //   setImageSrc([...imageSrc, { img: onLoadEvent.target.result }]);
-    //   console.log(onLoadEvent);
-    //   console.log(
-    //     Array.from(changeEvent.target.files).map((file) => file.name)
-    //   );
-    //   setUploadData(undefined);
-    // };
-    // reader.readAsDataURL(changeEvent.target.files[0]);
   }
 
   async function handleOnSubmit(event) {
     event.preventDefault();
-    // console.log(event.currentTarget);
-    Bigdata = await fetch(
-      "https://api.cloudinary.com/v1_1/cryptomart/image/upload",
-      {
-        method: "POST",
-        body: uploadData,
-      }
-    ).then((res) => res.json());
-    alert("Image uploaded successfully, Submit to finalize");
-    console.log("Bigdata :", Bigdata);
-    setUploadData(Bigdata);
-    console.log("URL : ", Bigdata.secure_url);
-    setProduct({
-      ...product,
-      image: Bigdata.secure_url,
+    uploadData.forEach((data) => {
+      axios
+        .post("https://api.cloudinary.com/v1_1/cryptomart/image/upload", data)
+        .then((res) => {
+          Bigdata = res.data;
+          console.log(Bigdata);
+          setProduct((product) => ({
+            ...product,
+            images: [...product.images, Bigdata.secure_url],
+          }));
+        });
     });
+    console.log("length" + product.images.length);
+    setShowModal(() => true);
+    console.log("modal" + showModal);
   }
 
   let tempTitle = product.same ? product.name : product.title;
@@ -556,30 +552,78 @@ export default function RegisterProduct() {
               type="submit"
               color="primary"
             >
-              Confirm Image
+              Submit
             </Button>
           ) : null}
         </form>
-        {product.image == null ? null : (
-          <Button
-            className={classes.reg_button}
-            onClick={async () => {
-              try {
-                const data = await axios.post("/api/registerProduct", product, {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
-                });
-                alert("Product added Successful");
-              } catch (err) {
-                alert("error occured!");
-              }
-            }}
-          >
-            {" "}
-            Submit{" "}
-          </Button>
-        )}
+        <div
+          className={classes.product_img_modal}
+          style={{
+            display: showModal ? "block" : "none",
+          }}
+        >
+          {product.images.length == 0 ? null : (
+            <Modal show={showModal} onClose={() => final()}>
+              <Swiper
+                spaceBetween={20}
+                modules={[Navigation, A11y]}
+                slidesPerView={3}
+                navigation
+                className={classes.cert_swiper_upload}
+              >
+                <Grid
+                  container
+                  direction="column"
+                  className={classes.cert_grid}
+                >
+                  {product.images.map((item) => (
+                    <SwiperSlide key={item.id}>
+                      <Grid
+                        item
+                        xs={12}
+                        sm={6}
+                        md={12}
+                        key={item.image}
+                        spacing={0}
+                      >
+                        <Card>
+                          <CardActionArea>
+                            <CardMedia
+                              component="img"
+                              alt={item}
+                              height="320"
+                              width="320"
+                              image={item}
+                              onClick={() => setThumbnail(item)}
+                            ></CardMedia>
+                            {item == Thumbnail ? (
+                              <CardContent>
+                                <Typography
+                                  gutterBottom
+                                  variant="h2"
+                                  component="h3"
+                                  style={{
+                                    fontSize: "20px",
+                                    position: "relative",
+                                    bottom: "3.5rem",
+                                  }}
+                                  color="primary"
+                                >
+                                  {"\u2705"}
+                                  Thumbnail
+                                </Typography>
+                              </CardContent>
+                            ) : null}
+                          </CardActionArea>
+                        </Card>
+                      </Grid>
+                    </SwiperSlide>
+                  ))}
+                </Grid>
+              </Swiper>
+            </Modal>
+          )}
+        </div>
       </Paper>
     </Container>
   );

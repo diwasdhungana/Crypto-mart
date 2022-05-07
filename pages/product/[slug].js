@@ -9,8 +9,18 @@ import {
   Button,
   Container,
   Paper,
+  Card,
   Link,
 } from "@material-ui/core";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, EffectFade, Autoplay } from "swiper";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css/effect-fade";
+
 import Nextlink from "next/link";
 import Image from "next/image";
 import Product from "../../models/Product";
@@ -34,6 +44,7 @@ export default function ProductScreen(props) {
   const [reviews, setReviews] = useState([]);
   const [review, setReview] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [openpicture, setOpenpicture] = useState(product.image);
 
   useEffect(() => {
     setShowModal(false);
@@ -72,36 +83,74 @@ export default function ProductScreen(props) {
       <Paper className={classes.product_container}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={4} className={classes.product_img}>
-            <Image
-              src={product.image}
+            <Swiper
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: true,
+              }}
+              spaceBetween={30}
+              loop={true}
+              effect={"fade"}
+              className={classes.cert_swiper}
+              modules={[Autoplay, EffectFade, Navigation, Pagination, A11y]}
+              slidesPerView={1}
+              navigation
+              pagination={{ clickable: true }}
+              onSwiper={(swiper) => console.log(swiper)}
+              onSlideChange={() => console.log("slide change")}
+            >
+              {product.images.map((item) => (
+                <SwiperSlide key={item.id}>
+                  <Grid item xs={12} key={item.id} spacing={2}>
+                    <Card>
+                      <Image
+                        src={item}
+                        width={300}
+                        height={300}
+                        alt="product"
+                        className={classes.product_img}
+                        onClick={() => {
+                          setShowModal(true);
+                          setOpenpicture(item);
+                        }}
+                      />
+                      <div
+                        className={classes.product_img_modal}
+                        style={{
+                          display: showModal ? "block" : "none",
+                        }}
+                      >
+                        {showModal && (
+                          <Modal
+                            show={showModal}
+                            onClose={() => setShowModal(false)}
+                          >
+                            <img
+                              src={openpicture}
+                              alt={item}
+                              style={{
+                                width: "200%",
+                                height: "200%",
+                                objectFit: "contain",
+                                objectPosition: "center",
+                              }}
+                            />
+                          </Modal>
+                        )}
+                      </div>
+                    </Card>
+                  </Grid>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {/* <Image
+              src={product.images[0]}
               alt={product.name}
               height={250}
               width={200}
               layout="responsive"
               onClick={() => setShowModal(true)}
-            />
-            <div
-              className={classes.product_img_modal}
-              style={{
-                display: showModal ? "block" : "none",
-              }}
-            >
-              {showModal && (
-                <Modal show={showModal} onClose={() => setShowModal(false)}>
-                  {" "}
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    style={{
-                      width: "200%",
-                      height: "200%",
-                      objectFit: "contain",
-                      objectPosition: "center",
-                    }}
-                  />
-                </Modal>
-              )}
-            </div>
+            /> */}
           </Grid>
 
           <Grid item xs={12} sm={6} md={4}>
