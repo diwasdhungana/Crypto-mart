@@ -8,12 +8,12 @@ const handler = nc();
 handler.post(async (req, res) => {
   try {
     await db.connect();
-    const { product_id, user_id, email, isOwner, fullName, review } = req.body;
+    const { product_id, user_id, email, seller, fullName, review } = req.body;
     const reviewData = {
       product_id,
       user_id,
       email,
-      isOwner,
+      seller,
       fullName,
       review,
     };

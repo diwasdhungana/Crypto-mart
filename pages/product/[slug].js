@@ -48,7 +48,7 @@ export default function ProductScreen(props) {
   const [showModal, setShowModal] = useState(false);
   const [openpicture, setOpenpicture] = useState(product.image);
   const [rating, setRating] = useState(null);
-  const[submitRatingvar, setSubmitRatingvar]=useState(false);
+  const [submitRatingvar, setSubmitRatingvar] = useState(false);
   const fetchReviews = async () => {
     const data = await axios.get(`/api/products/review/${product._id}`);
     console.log("data received:", data.data);
@@ -61,9 +61,8 @@ export default function ProductScreen(props) {
       rating,
       product_id: product._id,
       user_id: Cookies.get("userId"),
-
     });
-    setSubmitRatingvar(()=>true);
+    setSubmitRatingvar(() => true);
   };
 
   useEffect(() => {
@@ -88,7 +87,7 @@ export default function ProductScreen(props) {
       review,
       product_id: product._id,
       user_id: Cookies.get("userId"),
-      isOwner: true,
+      seller: product.seller,
       fullName: Cookies.get("userName") ? Cookies.get("userName") : "Anonymous",
       email: Cookies.get("userEmail"),
     });
@@ -266,75 +265,92 @@ export default function ProductScreen(props) {
           </Typography>
         </div>
       </Paper>
-      
+
       <Paper className={classes.review_container}>
         {submitRatingvar == false ? (
-        
-      <div>
-        <Typography>Submit Your Ratings:</Typography>
+          <div>
+            <Typography>Submit Your Ratings:</Typography>
 
-        <span style={{ fontWeight: "bold", cursor:'pointer' }} onClick={() => setRating(1)}>
-          &#11088;
-        </span>
-        <span style={{ fontWeight: "bold", cursor:'pointer'  }} onClick={() => setRating(2)}>
-          &#11088;
-        </span>
-        <span style={{ fontWeight: "bold", cursor:'pointer'  }} onClick={() => setRating(3)}>
-          &#11088;
-        </span>
-        <span style={{ fontWeight: "bold", cursor:'pointer'  }} onClick={() => setRating(4)}>
-          &#11088;
-        </span>
-        <span style={{ fontWeight: "bold", cursor:'pointer'  }} onClick={() => setRating(5)}>
-          &#11088;
-        </span>
+            <span
+              style={{ fontWeight: "bold", cursor: "pointer" }}
+              onClick={() => setRating(1)}
+            >
+              &#11088;
+            </span>
+            <span
+              style={{ fontWeight: "bold", cursor: "pointer" }}
+              onClick={() => setRating(2)}
+            >
+              &#11088;
+            </span>
+            <span
+              style={{ fontWeight: "bold", cursor: "pointer" }}
+              onClick={() => setRating(3)}
+            >
+              &#11088;
+            </span>
+            <span
+              style={{ fontWeight: "bold", cursor: "pointer" }}
+              onClick={() => setRating(4)}
+            >
+              &#11088;
+            </span>
+            <span
+              style={{ fontWeight: "bold", cursor: "pointer" }}
+              onClick={() => setRating(5)}
+            >
+              &#11088;
+            </span>
 
-        {
-          rating > 0 && (
-        <Button
-          variant="contained"
-          color="primary"
-          style={{ width: "14%", height:"30px" }}
-          onClick={() => submitRating()}
-          className={classes.log_button}
-        >
-          Submit  {rating}  stars
-        </Button>
-          )
-        }
-      </div>
+            {rating > 0 && (
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ width: "14%", height: "30px" }}
+                onClick={() => submitRating()}
+                className={classes.log_button}
+              >
+                Submit {rating} stars
+              </Button>
+            )}
+          </div>
         ) : (
-          <Typography>
-            Your Rating has been submitted
-            </Typography>
+          <Typography>Your Rating has been submitted</Typography>
         )}
-      <Typography>Submit Your Review: </Typography>
-      <form onSubmit={submitReview}>
-        <input
-          type="text" 
-          rows="9" 
-          placeholder="Type your review"
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-          style={{  width: '100%',
-          height: '150px',
-          padding: '12px 20px',
-          margin: '8px 0',
-          boxSizing: 'border-box'}}
-        />
-        <Button variant="contained"
-          color="primary"
-          style={{ width: "5%" }}
-          className={classes.log_button} type="submit">Submit</Button>
-      </form>
-      {reviews.map((review) => (
-        <Reviews
-          fullname={review.fullName}
-          review={review.review}
-          isOwner={review.isOwner}
-          email={review.email}
-        />
-      ))}
+        <Typography>Submit Your Review: </Typography>
+        <form onSubmit={submitReview}>
+          <input
+            type="text"
+            rows="9"
+            placeholder="Type your review"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            style={{
+              width: "100%",
+              height: "150px",
+              padding: "12px 20px",
+              margin: "8px 0",
+              boxSizing: "border-box",
+            }}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ width: "5%" }}
+            className={classes.log_button}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
+        {reviews.map((review) => (
+          <Reviews
+            fullname={review.fullName}
+            review={review.review}
+            isOwner={review.user_id === product.seller ? true : false}
+            email={review.email}
+          ></Reviews>
+        ))}
       </Paper>
       <ForYou Products={Products} Name="Related Products" />
     </Container>

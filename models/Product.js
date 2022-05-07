@@ -35,6 +35,9 @@ const productSchema = new mongoose.Schema(
     isFlammable: { type: Boolean, required: false, default: false },
     isExplosive: { type: Boolean, required: false, default: false },
     seller: { type: String, required: true },
+    featured: { type: Boolean, required: true, default: false },
+    dateCreated: { type: Date, default: Date.now },
+    dateUpdated: { type: Date, default: Date.now },
   },
   {
     timestamp: true,

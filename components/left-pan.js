@@ -18,13 +18,13 @@ function Left_panel() {
         <Navlink href={"/explore/Featured"} passHref>
           <li className={classes.left_list}>Featured</li>
         </Navlink>
-        <Navlink href={"/explore/TopProducts"} passHref>
+        <Navlink href={"/explore/Top Products"} passHref>
           <li className={classes.left_list}>Top Products</li>
         </Navlink>
         <Navlink href={"/explore/Popular"} passHref>
           <li className={classes.left_list}>Popular</li>
         </Navlink>
-        <Navlink href={"/explore/WeeklyBest"} passHref>
+        <Navlink href={"/explore/Weekly Best"} passHref>
           <li className={classes.left_list}>Weekly Best</li>
         </Navlink>
       </ul>

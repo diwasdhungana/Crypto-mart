@@ -5,7 +5,7 @@ const reviewSchema = new mongoose.Schema(
     product_id: { type: String, required: true },
     user_id: { type: String, required: true },
     email: { type: String, required: true },
-    isOwner: { type: Boolean, required: true, default: false },
+    seller: { type: String, required: true, default: "" },
     fullName: { type: String, required: true, default: "" },
     review: { type: String, required: true, default: "" },
     date: { type: Date, required: true, default: Date.now },

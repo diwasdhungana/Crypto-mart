@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ClassNames } from "@emotion/react";
 import useStyle from "../utils/styles";
 
-function reviews({ fullname, review, isOwner, email }) {
+function reviews({ fullname, review, isOwner }) {
   const classes = useStyle();
   return (
     <Grid container spacing={1} className={classes.review_content}>
@@ -36,7 +36,7 @@ function reviews({ fullname, review, isOwner, email }) {
               <span style={{ fontWeight: "bold" }}>Owner: </span>{" "}
             </Typography>
             <Typography component="h4" variant="h4" color="secondary">
-              {isOwner ? "Yes" : "No"}
+              {isOwner == true ? "Yes" : "No"}
             </Typography>
           </ListItem>
         </List>
