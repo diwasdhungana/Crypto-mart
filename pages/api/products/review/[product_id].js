@@ -19,8 +19,6 @@ handler.get(async (req, res) => {
   product.numViews = product.numViews + 1;
   await product.save();
   await db.disconnect();
-
-  // console.log("reviews:", reviews);
   await db.disconnect();
   res.send(reviews);
 });
