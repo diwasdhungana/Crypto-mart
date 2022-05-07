@@ -1,17 +1,19 @@
 import { Paper, Grid, List, ListItem, Typography } from "@material-ui/core";
 import React from "react";
 import Image from "next/image";
+import { ClassNames } from "@emotion/react";
+import useStyle from "../utils/styles";
 
 function reviews({ fullname, review, isOwner, email }) {
+  const classes = useStyle();
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} sm={6} md={4}>
+    <Grid container spacing={1} className={classes.review_content}>
+      <Grid item xs={12} sm={6} md={4} className={classes.review_avatar}>
         <img
           src={`https://ui-avatars.com/api/?name=${fullname}&rounded=true`}
           alt={fullname}
           height={50}
           width={50}
-          layout="responsive"
         />
       </Grid>
       <Grid item xs={12} sm={6} md={4}>
@@ -23,7 +25,7 @@ function reviews({ fullname, review, isOwner, email }) {
           </ListItem>
           <ListItem>
             <Typography component="h2" variant="h2" color="primary">
-              <span style={{ fontWeight: "bold" }}>review posted by: </span>
+              <span style={{ fontWeight: "bold" }}>Review posted by: </span>
             </Typography>
             <Typography component="h2" variant="h2" color="secondary">
               {fullname}

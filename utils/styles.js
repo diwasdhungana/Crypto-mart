@@ -517,6 +517,23 @@ const useStyle = makeStyles(
         borderRadius: "10px",
       },
     },
+    review_container: {
+      minHeight: "500px",
+      background: "white",
+      padding: "25px",
+      borderRadius: "20px",
+      marginTop: "2rem",
+    },
+    review_avatar: {
+      position: "relative",
+      left: "100px",
+      top: "50px",
+    },
+    review_content:{
+      border: '1px solid #cfbebe',
+      borderRadius: '10px',
+      marginTop: '1rem',
+    }
   },
 
   { index: 1 }
