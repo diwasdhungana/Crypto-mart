@@ -81,6 +81,7 @@ export default function RegisterProduct() {
 
   const final = async () => {
     product.image = Thumbnail;
+    product.same && (product.title = product.name);
     try {
       const data = await axios.post("/api/registerProduct", product, {
         headers: {
@@ -166,6 +167,7 @@ export default function RegisterProduct() {
           onChange={(e) => setProduct({ ...product, name: e.target.value })}
         />
         <br />
+        <br />
         <TextField
           className={classes.product_name}
           id="outlined-basic"
@@ -176,10 +178,9 @@ export default function RegisterProduct() {
           value={tempTitle}
           onChange={(e) => setProduct({ ...product, title: e.target.value })}
         />
-        <br />
         <FormControlLabel
-          style={{ position: "relative", bottom: "7.5rem", left: "12rem" }}
-          label="Same as Name (keep it unchecked for now)"
+          style={{ position: "relative", bottom: "1.5rem", left: "1rem" }}
+          label="Same as Name"
           checked={product.same}
           control={
             <Checkbox
@@ -189,6 +190,10 @@ export default function RegisterProduct() {
             />
           }
         />
+        <br />
+        <br />
+        <br />
+        <br />
         <Typography
           variant="h1"
           component="h1"

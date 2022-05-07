@@ -20,6 +20,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/effect-fade";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import Nextlink from "next/link";
 import Image from "next/image";
@@ -46,9 +47,17 @@ export default function ProductScreen(props) {
   const [showModal, setShowModal] = useState(false);
   const [openpicture, setOpenpicture] = useState(product.image);
 
+  const fetchReviews = async () => {
+    const data = await axios.get(`/api/products/review/${product._id}`);
+    console.log("data received:", data.data);
+    setReviews(data.data);
+  };
+
   useEffect(() => {
     setShowModal(false);
-  }, [router.query.slug]);
+    //fetch reviews only when the page is loaded
+    fetchReviews();
+  }, []);
 
   let currency = "$";
   const addToCartHandler = async () => {
@@ -58,12 +67,6 @@ export default function ProductScreen(props) {
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity: 1 } });
-  };
-
-  const fetchReviews = async () => {
-    const data = await axios.get(`/api/products/review/${product._id}`);
-    console.log("data received:", data.data);
-    setReviews(data.data);
   };
 
   const submitReview = async (e) => {
@@ -167,7 +170,7 @@ export default function ProductScreen(props) {
               </ListItem>
               <ListItem>
                 <Typography component="h3" variant="h4" color="primary">
-                  {product.rating} &#11088; ({product.numReviews}) Reviews
+                  {product.rating} &#11088; ({product.numViews}) views
                 </Typography>
               </ListItem>
 
@@ -251,13 +254,6 @@ export default function ProductScreen(props) {
           </Typography>
         </div>
       </Paper>
-      <button onClick={fetchReviews}>Fetch Reviews</button>
-      {/* <Reviews
-        fullname="Diwash Dhungana"
-        review="Nice product"
-        isOwner="False"
-        email="diwasdhungana@gmail.com"
-      /> */}
       <form onSubmit={submitReview}>
         <input
           type="text"

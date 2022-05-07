@@ -1,23 +1,22 @@
 import { makeStyles } from "@material-ui/core";
 import { color } from "@mui/system";
 
-
 const colors = {
   container: "#E0E0E0",
-  main : '#F7F7F7',
-}
+  main: "#F7F7F7",
+};
 const useStyle = makeStyles(
   {
     appBar: {
       padding: "0 5rem",
-      background:  "#CFBEBE",
+      background: "#CFBEBE",
       height: "65px",
       color: "white",
     },
     logo: {
       marginTop: "1rem",
     },
-    nav_icons:{
+    nav_icons: {
       color: "#9747FF",
     },
     field: {
@@ -200,67 +199,75 @@ const useStyle = makeStyles(
       textDecoration: "none",
       border: "1px solid black",
       "&:hover": {
-        background: 'white',
+        background: "white",
         textDecoration: "none",
         transition: "0.3s",
         cursor: "pointer",
       },
     },
     cart_shop: {
-        background: "rgb(151 71 255)",
+      background: "rgb(151 71 255)",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
         textDecoration: "none",
       },
     },
-    item_img:{
+    item_img: {
       float: "left",
-      marginRight:'20px'
+      marginRight: "20px",
     },
-    item_name:{
+    item_name: {
       float: "left",
       textAlign: "left",
       fontSize: "22px",
       overflow: "hidden",
-      height:'50px',
+      height: "50px",
       width: "12rem",
     },
-    item_rating:{
+    item_rating: {
       float: "left",
       width: "3rem",
       position: "relative",
       top: "2rem",
       right: "12rem",
-      textAlign: "left"
-   },
-    item_cat:{
+      textAlign: "left",
+    },
+    item_cat: {
       float: "left",
       width: "7rem",
       position: "relative",
       top: "3.5rem",
       right: "15rem",
-      textAlign: "left"
+      textAlign: "left",
     },
-    item_price:{
-      float: "left",
-      width: "3rem",
-      position: "relative",
-      top: "0rem",
-      left: "12rem",
-      fontSize: "20px",
+    item_price: {
+      position: "absolute",
+      right: "9rem",
+      width: "6rem",
+      top: "1.5rem",
+      fontSize: "23px",
+      textAlign: "left",
+    },
+    item_total_price: {
+      position: "absolute",
+      right: "0rem",
+      width: "6rem",
+      bottom: "0rem",
+      fontSize: "25px",
+      textAlign: "left",
     },
     item_button: {
-      position: "relative",
-      top: "2.5rem",
-      right: "7rem",
+      position: "absolute",
+      right: "10rem",
+      top: "4.5rem",
     },
     item_quantity: {
       position: "relative",
       height: "30px",
       width: "55px",
       border: "1px solid black",
-      background:'black'
+      background: "black",
     },
     item_menu: {
       height: "10px",
@@ -274,12 +281,12 @@ const useStyle = makeStyles(
     item_remove: {
       borderRadius: "20px",
       height: "30px",
-      position: "relative",
-      bottom: "4rem",
-      left: "25",
-      '&:hover': {
+      position: "absolute",
+      top: "0.2rem",
+      right: "0.2rem",
+      "&:hover": {
         transform: "scale(1.1)",
-      }
+      },
     },
     item_link: {
       textDecoration: "none",
@@ -290,7 +297,7 @@ const useStyle = makeStyles(
     },
 
     checkout_button: {
-      background : "rgb(151 71 255)",
+      background: "rgb(151 71 255)",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
@@ -353,21 +360,18 @@ const useStyle = makeStyles(
       color: "white",
       bottom: "3rem",
       padding: "0.5rem",
-      background : "rgb(151 71 255)",
+      background: "rgb(151 71 255)",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
         textDecoration: "none",
       },
-
     },
     reg_img: {
       position: "relative",
       bottom: "5rem",
     },
-    reg_choose: {
-      
-    },
+    reg_choose: {},
     reg_img_container: {
       position: "relative",
       backgroundcolor: "black",
@@ -402,7 +406,7 @@ const useStyle = makeStyles(
       },
     },
     log_button: {
-      background : "rgb(151 71 255)",
+      background: "rgb(151 71 255)",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
@@ -413,11 +417,11 @@ const useStyle = makeStyles(
       position: "relative",
       top: "2rem",
       right: "1rem",
-      color: "#9747FF"
+      color: "#9747FF",
     },
 
     connect: {
-      background : "rgb(151 71 255)",
+      background: "rgb(151 71 255)",
       "&:hover": {
         background: "#cfbebe",
         color: "black",
