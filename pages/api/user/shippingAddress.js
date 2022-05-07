@@ -63,7 +63,7 @@ handler.get(async (req, res) => {
     await db.connect();
     const data = await User.findOne({ _id: user._id });
     await db.disconnect();
-    console.log("data sent from backend");
+    // console.log("data sent from backend");
     res.json({
       message: "Address fetched Successful",
       data,

@@ -7,6 +7,7 @@ const productSchema = new mongoose.Schema(
     title: { type: String, required: true },
     price: { type: Number, required: true },
     image: { type: String, reuired: true },
+    images: { type: Array, required: false, default: [] },
     description: {
       short: { type: String, required: true },
       long: { type: String, required: true },
@@ -32,6 +33,7 @@ const productSchema = new mongoose.Schema(
     isLiquid: { type: Boolean, required: false, default: false },
     isFlammable: { type: Boolean, required: false, default: false },
     isExplosive: { type: Boolean, required: false, default: false },
+    seller: { type: String, required: true },
   },
   {
     timestamp: true,

@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema(
     soldItem: { type: Array, required: false, default: [] },
     myitems: { type: Array, required: false, default: [] },
     isSeller: { type: Boolean, required: false, default: false },
+    token: { type: String, required: false, default: "" },
   },
   {
     timestamps: true,

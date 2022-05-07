@@ -23,6 +23,7 @@ export default class MyDocumet extends Document {
         <body>
           <Main />
           <NextScript />
+          <div id="pictureModal"> </div>
         </body>
       </Html>
     );
