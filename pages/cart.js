@@ -14,13 +14,15 @@ import {
   Container,
   Typography,
   Grid,
-  Stack,
-  Divider,
+  Box,
+  IconButton,
 } from "@material-ui/core";
 import Nextlink from "next/link";
 import Image from "next/image";
 import axios from "axios";
 import useStyle from "../utils/styles";
+
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 
 function CartScreen() {
   const classes = useStyle();
@@ -89,36 +91,57 @@ function CartScreen() {
 
             <ul>
               {cartItems.map((item) => (
-
-                <li key={item._id} className={classes.cart_items}>
+                <Grid container
+                  direction="column"
+                spacing={2}
+                >
+                <div key={item._id} className={classes.cart_items}>
                   <Nextlink href={`/product/${item.slug}`} passHref>
                     <Link className={classes.item_link}>
-                      {
+                
+                  <Box className={classes.item_img}>
                         <Image
-                          className={classes.item_image}
-                          style={{ position: "relative", left: "1rem" }}
+                          style={{ position: "relative", left: "1rem"}}
                           src={item.image}
                           alt={item.name}
-                          width={80}
-                          height={90}
+                          width={100}
+                          height={100}
                         />
-                      }
-                      <span className={classes.item_name}>{item.name}</span>
-                      <span className={classes.item_rating}>
-                        {item.rating} &#11088;{" "}
-                      </span>
-                      <span className={classes.item_cat}>{item.category}</span>
-                    </Link>
+                  </Box>
+
+                  </Link>
                   </Nextlink>
-                  <span
-                    className={classes.item_price}
-                    style={{ color: "orange" }}
-                  >
+
+                    <Box className={classes.item_name}>
+                      <Typography className={classes.item_name_text}
+                        style={{
+                          fontSize: "1.2rem",
+                          position: "absolute",
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: 1,
+                          overflowY: "hidden",
+                          width: "30rem",
+                          overflowX: "hidden",
+                        }}>{item.name}</Typography>
+                    </Box>
+
+                    <Box className={classes.item_rating}>
+                      <Typography >{item.rating} &#11088;{" "}</Typography>
+                    </Box>
+
+                    <Box className={classes.item_cat}>
+                      <Typography >{item.category}</Typography>
+                    </Box>
+
+                  <Box>
+                  <Typography className={classes.item_price}>
                     {" "}
                     {item.price} {currency}
-                  </span>
-
-                  {
+                  </Typography>
+                  </Box>
+      
+                  <Box>
                     <ButtonGroup className={classes.item_button}>
                       <Button
                         className={classes.item_control}
@@ -130,7 +153,7 @@ function CartScreen() {
                         -
                       </Button>
                       <Select
-                        components={{ DropdownIndicator: () => null }}
+                        
                         className={classes.item_quantity}
                         value={item.quantity}
                         labelId="demo-simple-select-label"
@@ -162,23 +185,26 @@ function CartScreen() {
                       </Button>
                       )
                     </ButtonGroup>
+                    </Box>
+
+                  <Box>
+                  <IconButton  className={classes.item_remove} aria-label="delete" onClick={() => {
+                    dispatch({
+                      type: "CART_DELETE_ITEM",
+                      payload: item,
+                    });
                   }
-                  <Button
-                    className={classes.item_remove}
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      dispatch({
-                        type: "CART_DELETE_ITEM",
-                        payload: item,
-                      });
-                    }}
-                  >
-                    Remove
-                  </Button>
-                </li>
-              ))}
-            </ul>
+                  }>
+                   <CancelPresentationIcon style={{"fontSize":'30px', 'color':'red'}}></CancelPresentationIcon>
+                  </IconButton>
+                  </Box>
+
+              </div>
+              
+              </Grid>
+              ))}      
+          </ul>
+
 
             <Nextlink href="/checkout" passHref>
               <Link style={{ textDecoration: "none" }}>
