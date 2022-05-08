@@ -12,20 +12,22 @@ function Doc(props) {
   const newproducts = () => {
     if (params == "Featured") {
       return Products.filter((product) => product.featured);
-    } else if (params == "Weekly Best") {
-      //filter products uploaded within last week
-      return Products.filter((product) => {
-        if (product.dateCreated) {
-          let date = new Date(product.dateCreated);
-          let today = new Date();
-          let diff = today.getTime() - date.getTime();
-          let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
-          if (diffDays <= 7) {
-            return product;
-          }
-        }
-      });
-    } else if (params == "Top Products") {
+    }
+    // else if (params == "Weekly Best") {
+    //   //filter products uploaded within last week
+    //   return Products.filter((product) => {
+    //     if (product.dateCreated) {
+    //       let date = new Date(product.dateCreated);
+    //       let today = new Date();
+    //       let diff = today.getTime() - date.getTime();
+    //       let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+    //       if (diffDays <= 7) {
+    //         return product;
+    //       }
+    //     }
+    //   });
+    // }
+    else if (params == "Top Products") {
       return Products.filter((product) => product.rating > 3);
     } else if (params == "Popular") {
       return Products.filter((product) => product.numViews > 10);

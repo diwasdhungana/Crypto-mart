@@ -24,7 +24,7 @@ import Moralis from "moralis";
 import { Store } from "../utils/Store";
 import React, { useContext } from "react";
 
-function Dash(coins) {
+function Profile(coins) {
   const { logout, user } = useMoralis();
   const Web3Api = useMoralisWeb3Api();
   const classes = useStyle();
@@ -66,5 +66,4 @@ function Dash(coins) {
     </Container>
   );
 }
-
-export default Dash;
+export default Profile;
