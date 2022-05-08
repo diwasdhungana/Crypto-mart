@@ -39,7 +39,7 @@ const productSchema = new mongoose.Schema(
     vendor: { type: String, required: false },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 

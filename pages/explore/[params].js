@@ -16,11 +16,9 @@ function Doc(props) {
       //filter products uploaded within last week
       return Products.filter((product) => {
         if (product.dateCreated) {
-          let date = product.dateCreated;
-          console.log(product.dateCreated);
+          let date = new Date(product.dateCreated);
           let today = new Date();
-          // console.log("today" + today.getTime());
-          let diff = today.getTime() - date;
+          let diff = today.getTime() - date.getTime();
           let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
           if (diffDays <= 7) {
             return product;
