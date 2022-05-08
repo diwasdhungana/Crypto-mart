@@ -50,6 +50,7 @@ function Right_panel() {
             style={{ width: "30px", position: "relative", right: "25px" }}
           ></hr>
           <Typography style={{ fontSize: "18px" }} color="primary">
+            $
             {cartItems.reduce(
               (acc, item) => acc + item.price * item.quantity,
               0

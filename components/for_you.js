@@ -29,7 +29,6 @@ const ForYou = (props) => {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems } = cart;
-  console.log("CartItems", cartItems);
 
   const namehandler = (e) => {
     let name = "";
@@ -67,7 +66,10 @@ const ForYou = (props) => {
             >
               <Nextlink href={`/product/${item.slug}`} passHref>
                 <CardActionArea
-                  style={{ backgroundColor: "rgb(231 231 231)", height: "310px" }}
+                  style={{
+                    backgroundColor: "rgb(231 231 231)",
+                    height: "310px",
+                  }}
                 >
                   <CardMedia
                     component="img"
@@ -160,7 +162,6 @@ const ForYou = (props) => {
                       right: "1rem",
                       color: "red",
                     }}
-
                   >
                     Added to Cart
                   </Button>

@@ -23,6 +23,8 @@ import { useState, useEffect } from "react";
 import Moralis from "moralis";
 import { Store } from "../utils/Store";
 import React, { useContext } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function Profile(coins) {
   const { logout, user } = useMoralis();
@@ -34,7 +36,8 @@ function Profile(coins) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const { cartItems } = cart;
-  console.log("CartItems", cartItems);
+  const userId = Cookies.get("userId");
+  const [userInfo, setUserInfo] = useState();
 
   const fetchNativeBalance = async () => {
     const result = await Web3Api.account
@@ -46,8 +49,31 @@ function Profile(coins) {
       setEthBalance(Moralis.Units.FromWei(result.balance));
     }
   };
+
+  const activateseller = async () => {
+    //get request at /api/user/activate/sellerid
+    //activate seller
+    await axios
+      .get(`/api/user/activate/${userId}`)
+      .then((res) => {
+        console.log("You are now a seller");
+        alert("you are now a seller");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  async function userInfocall() {
+    await axios.get(`/api/user/${userId}`).then((res) => {
+      setUserInfo((userInfo) => res.data.user);
+      console.log(res);
+    });
+  }
+
   useEffect(() => {
     fetchNativeBalance();
+    userInfocall();
   });
 
   return (
@@ -62,6 +88,16 @@ function Profile(coins) {
             Disconnect
           </button>
         </Grid>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            activateseller();
+          }}
+        >
+          Become a Seller
+        </Button>
+        <div>{userInfo}</div>
       </Paper>
     </Container>
   );
